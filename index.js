@@ -13,10 +13,10 @@ module.exports = async function (context) {
         process.env.APPWRITE_FUNCTION_PROJECT_ID;
 
     const databaseId =
-        "6abb1e6a003a48902765";
+        "6abb1c93001ce3a10d64";
 
     const tableId =
-        "6abb1c93001ce3a10d64";
+        "6abb1e6a003a48902765";
 
 
     // =====================================================
