@@ -96,7 +96,7 @@ module.exports = async function (context) {
 
                         data: {
 
-                            userId: userId,
+                            userID: userId,
 
                             coinBalance: 150,
 
