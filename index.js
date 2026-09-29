@@ -3,6 +3,26 @@ module.exports = async function (context) {
     const userId =
         context.req.headers["x-appwrite-user-id"];
 
+    const apiKey =
+        context.req.headers["x-appwrite-key"];
+
+    const endpoint =
+        process.env.APPWRITE_FUNCTION_API_ENDPOINT;
+
+    const projectId =
+        process.env.APPWRITE_FUNCTION_PROJECT_ID;
+
+    const databaseId =
+        "6abb1e6a003a48902765";
+
+    const tableId =
+        "6abb1c93001ce3a10d64";
+
+
+    // =====================================================
+    // CHECK AUTHENTICATION
+    // =====================================================
+
     if (!userId) {
 
         context.error(
@@ -18,32 +38,15 @@ module.exports = async function (context) {
         );
     }
 
-    context.log(
-        "Authenticated user ID: " +
-        userId
-    );
 
-    const endpoint =
-        context.req.headers["x-appwrite-user-jwt"]
-            ? process.env.APPWRITE_FUNCTION_API_ENDPOINT
-            : process.env.APPWRITE_FUNCTION_API_ENDPOINT;
-
-    const projectId =
-        process.env.APPWRITE_FUNCTION_PROJECT_ID;
-
-    const apiKey =
-        process.env.APPWRITE_FUNCTION_API_KEY;
-
-    const databaseId =
-        "6abb1e6a003a48902765";
-
-    const tableId =
-        "6abb1c93001ce3a10d64";
+    // =====================================================
+    // CHECK FUNCTION API KEY
+    // =====================================================
 
     if (!apiKey) {
 
         context.error(
-            "APPWRITE_FUNCTION_API_KEY is missing."
+            "No Appwrite Function API key was provided."
         );
 
         return context.res.json(
@@ -55,12 +58,19 @@ module.exports = async function (context) {
         );
     }
 
+
+    context.log(
+        "Creating Learnpidia user row for: " +
+        userId
+    );
+
+
     try {
 
         const response =
             await fetch(
                 endpoint +
-                "/databases/" +
+                "/tablesdb/" +
                 databaseId +
                 "/tables/" +
                 tableId +
@@ -69,9 +79,15 @@ module.exports = async function (context) {
                     method: "POST",
 
                     headers: {
-                        "Content-Type": "application/json",
-                        "X-Appwrite-Project": projectId,
-                        "X-Appwrite-Key": apiKey
+
+                        "Content-Type":
+                            "application/json",
+
+                        "X-Appwrite-Project":
+                            projectId,
+
+                        "X-Appwrite-Key":
+                            apiKey
                     },
 
                     body: JSON.stringify({
@@ -99,25 +115,30 @@ module.exports = async function (context) {
                         },
 
                         permissions: [
-                            "read(\"user:" + userId + "\")"
+                            "read(\"user:" +
+                            userId +
+                            "\")"
                         ]
 
                     })
                 }
             );
 
+
         const responseText =
             await response.text();
+
 
         context.log(
             "TablesDB response status: " +
             response.status
         );
 
+
         if (!response.ok) {
 
             context.error(
-                "TablesDB row creation failed: " +
+                "Learnpidia user row creation failed: " +
                 response.status +
                 " " +
                 responseText
@@ -133,9 +154,11 @@ module.exports = async function (context) {
             );
         }
 
+
         context.log(
             "Learnpidia user row created successfully."
         );
+
 
         return context.res.json(
             {
@@ -144,6 +167,7 @@ module.exports = async function (context) {
                     "Learnpidia user data created successfully."
             }
         );
+
 
     } catch (error) {
 
