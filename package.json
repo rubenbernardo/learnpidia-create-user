@@ -1,0 +1,7 @@
+{
+  "name": "learnpidia-create-user",
+  "version": "1.0.0",
+  "description": "Creates the Learnpidia user data row after registration.",
+  "main": "index.js",
+  "type": "commonjs"
+}
