@@ -325,11 +325,13 @@ module.exports = async function (context) {
 
     if (operation === "reward_coins") {
 
-        const rewardType =
-            requestData.rewardType;
+      const rewardType =
+    requestData.rewardType ||
+    context.req.headers["x-learnpidia-reward-type"];
 
-        const referenceID =
-            requestData.referenceID;
+const referenceID =
+    requestData.referenceID ||
+    context.req.headers["x-learnpidia-reference-id"];
 
 
         // -------------------------------------------------
