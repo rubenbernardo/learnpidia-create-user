@@ -359,7 +359,7 @@ module.exports = async function (context) {
         const allowedRewards = {
 
             test_reward:
-                10
+                100
 
         };
 
