@@ -19,7 +19,7 @@ module.exports = async function (context) {
         "6abb1e6a003a48902765";
 
     const rewardTableId =
-        "reward-transactions";
+        "6abbf9f8000f2fab9b04";
 
 
     // =====================================================
