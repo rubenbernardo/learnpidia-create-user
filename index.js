@@ -1039,6 +1039,300 @@ module.exports = async function (context) {
 
     // =====================================================
     // OPERATION 2
+    // GET DAILY REWARD STATUS
+    // =====================================================
+
+    if (operation === "get_daily_reward_status") {
+
+        try {
+
+            // -------------------------------------------------
+            // GET CURRENT USER ROW
+            // -------------------------------------------------
+
+            const userRowPath =
+                "/tablesdb/" +
+                databaseId +
+                "/tables/" +
+                userTableId +
+                "/rows/" +
+                encodeURIComponent(
+                    userId
+                );
+
+
+            const userResponse =
+                await appwriteRequest(
+                    userRowPath,
+                    "GET"
+                );
+
+
+            if (!userResponse.ok) {
+
+                context.error(
+                    "Could not read user row for daily reward status: " +
+                    JSON.stringify(
+                        userResponse.data
+                    )
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not read your Learnpidia account."
+                    },
+                    500
+                );
+            }
+
+
+            const userRow =
+                userResponse.data;
+
+
+            const currentStreakDay =
+                Number(
+                    userRow.streakDay || 0
+                );
+
+
+            const lastClaimDate =
+                String(
+                    userRow.streakLastClaimDate || ""
+                );
+
+
+            // -------------------------------------------------
+            // GET TODAY'S DATE IN ANGOLA
+            // -------------------------------------------------
+
+            const dateParts =
+                new Intl.DateTimeFormat(
+                    "en-US",
+                    {
+                        timeZone:
+                            "Africa/Luanda",
+
+                        year:
+                            "numeric",
+
+                        month:
+                            "2-digit",
+
+                        day:
+                            "2-digit"
+                    }
+                ).formatToParts(
+                    new Date()
+                );
+
+
+            const dateValues = {};
+
+
+            dateParts.forEach(
+                function (part) {
+
+                    if (
+                        part.type !== "literal"
+                    ) {
+
+                        dateValues[
+                            part.type
+                        ] =
+                            part.value;
+                    }
+                }
+            );
+
+
+            const today =
+                dateValues.year +
+                "-" +
+                dateValues.month +
+                "-" +
+                dateValues.day;
+
+
+            // -------------------------------------------------
+            // CHECK IF TODAY WAS ALREADY CLAIMED
+            // -------------------------------------------------
+
+            const claimedToday =
+                lastClaimDate === today;
+
+
+            // -------------------------------------------------
+            // DETERMINE WHICH DAY IS AVAILABLE
+            // -------------------------------------------------
+
+            let availableStreakDay =
+                1;
+
+
+            if (claimedToday) {
+
+                // Today's reward has already been claimed.
+                // Keep the current streak day displayed.
+
+                availableStreakDay =
+                    currentStreakDay >= 1 &&
+                    currentStreakDay <= 7
+                        ? currentStreakDay
+                        : 1;
+
+            } else if (lastClaimDate) {
+
+                const previousParts =
+                    lastClaimDate.split(
+                        "-"
+                    );
+
+
+                if (
+                    previousParts.length === 3
+                ) {
+
+                    const previousDate =
+                        Date.UTC(
+                            Number(
+                                previousParts[0]
+                            ),
+
+                            Number(
+                                previousParts[1]
+                            ) - 1,
+
+                            Number(
+                                previousParts[2]
+                            )
+                        );
+
+
+                    const todayParts =
+                        today.split(
+                            "-"
+                        );
+
+
+                    const todayDate =
+                        Date.UTC(
+                            Number(
+                                todayParts[0]
+                            ),
+
+                            Number(
+                                todayParts[1]
+                            ) - 1,
+
+                            Number(
+                                todayParts[2]
+                            )
+                        );
+
+
+                    const differenceInDays =
+                        Math.round(
+                            (
+                                todayDate -
+                                previousDate
+                            ) /
+                            (
+                                1000 *
+                                60 *
+                                60 *
+                                24
+                            )
+                        );
+
+
+                    // -------------------------------------------------
+                    // CLAIMED YESTERDAY
+                    // CONTINUE STREAK
+                    // -------------------------------------------------
+
+                    if (
+                        differenceInDays === 1
+                    ) {
+
+                        availableStreakDay =
+                            currentStreakDay >= 7
+                                ? 1
+                                : currentStreakDay + 1;
+
+                    }
+
+                    // -------------------------------------------------
+                    // MISSED ONE OR MORE DAYS
+                    // RESET TO DAY 1
+                    // -------------------------------------------------
+
+                    else {
+
+                        availableStreakDay =
+                            1;
+                    }
+
+                } else {
+
+                    availableStreakDay =
+                        1;
+                }
+
+            }
+
+
+            // -------------------------------------------------
+            // SUCCESS
+            // -------------------------------------------------
+
+            return context.res.json(
+                {
+                    success: true,
+
+                    operation:
+                        "get_daily_reward_status",
+
+                    streakDay:
+                        availableStreakDay,
+
+                    lastClaimDate:
+                        lastClaimDate,
+
+                    today:
+                        today,
+
+                    claimedToday:
+                        claimedToday
+                }
+            );
+
+
+        } catch (error) {
+
+            context.error(
+                "Daily reward status error: " +
+                (error.message || error)
+            );
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        error.message ||
+                        "Could not get daily reward status."
+                },
+                500
+            );
+        }
+    }
+    
+    // =====================================================
+    // OPERATION 2
     // REWARD COINS
     // =====================================================
 
@@ -1069,8 +1363,7 @@ module.exports = async function (context) {
                 400
             );
         }
-
-
+        
         // -------------------------------------------------
         // SERVER-CONTROLLED REWARD AMOUNTS
         // -------------------------------------------------
