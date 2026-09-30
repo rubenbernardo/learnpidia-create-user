@@ -95,7 +95,9 @@ module.exports = async function (context) {
 
 
     const operation =
-        requestData.operation || "create_user";
+    requestData.operation ||
+    context.req.headers["x-learnpidia-operation"] ||
+    "create_user";
 
 
     context.log(
