@@ -95,9 +95,9 @@ module.exports = async function (context) {
 
 
     const operation =
-    requestData.operation ||
-    context.req.headers["x-learnpidia-operation"] ||
-    "create_user";
+        requestData.operation ||
+        context.req.headers["x-learnpidia-operation"] ||
+        "create_user";
 
 
     context.log(
@@ -325,13 +325,13 @@ module.exports = async function (context) {
 
     if (operation === "reward_coins") {
 
-      const rewardType =
-    requestData.rewardType ||
-    context.req.headers["x-learnpidia-reward-type"];
+        const rewardType =
+            requestData.rewardType ||
+            context.req.headers["x-learnpidia-reward-type"];
 
-const referenceID =
-    requestData.referenceID ||
-    context.req.headers["x-learnpidia-reference-id"];
+        const referenceID =
+            requestData.referenceID ||
+            context.req.headers["x-learnpidia-reference-id"];
 
 
         // -------------------------------------------------
@@ -354,13 +354,6 @@ const referenceID =
 
         // -------------------------------------------------
         // SERVER-CONTROLLED REWARD AMOUNTS
-        // -------------------------------------------------
-        //
-        // IMPORTANT:
-        // The Android app does NOT send the amount.
-        //
-        // The server decides the amount.
-        //
         // -------------------------------------------------
 
         const allowedRewards = {
@@ -529,119 +522,252 @@ const referenceID =
                 rewardAmount;
 
 
-            // -------------------------------------------------
-            // UPDATE USER BALANCE
-            // -------------------------------------------------
-
-            const updateResponse =
-                await appwriteRequest(
-
-                    userRowPath,
-
-                    "PATCH",
-
-                    {
-
-                        data: {
-
-                            coinBalance:
-                                newBalance,
-
-                            lifetimeEarned:
-                                newLifetimeEarned
-                        }
-                    }
-                );
-
-
-            if (!updateResponse.ok) {
-
-                context.error(
-                    "Could not update user balance: " +
-                    JSON.stringify(
-                        updateResponse.data
-                    )
-                );
-
-                return context.res.json(
-                    {
-                        success: false,
-
-                        message:
-                            "Could not update your coin balance."
-                    },
-                    500
-                );
-            }
-
-
-            // -------------------------------------------------
-            // CREATE REWARD TRANSACTION
-            // -------------------------------------------------
+            // =================================================
+            // CREATE DATABASE TRANSACTION
+            // =================================================
 
             const transactionResponse =
                 await appwriteRequest(
 
-                    "/tablesdb/" +
-                    databaseId +
-                    "/tables/" +
-                    rewardTableId +
-                    "/rows",
+                    "/tablesdb/transactions",
 
                     "POST",
 
-                    {
-
-                        rowId:
-                            referenceID,
-
-                        data: {
-
-                            userID:
-                                userId,
-
-                            rewardType:
-                                rewardType,
-
-                            amount:
-                                rewardAmount,
-
-                            referenceID:
-                                referenceID,
-
-                            balanceBefore:
-                                currentBalance,
-
-                            balanceAfter:
-                                newBalance
-                        }
-                    }
+                    {}
                 );
 
 
             if (!transactionResponse.ok) {
 
                 context.error(
-                    "Reward transaction creation failed: " +
+                    "Could not create database transaction: " +
                     JSON.stringify(
                         transactionResponse.data
                     )
                 );
 
-                // IMPORTANT:
-                // The balance was already updated.
-                // We return an error so this situation
-                // is visible in the logs and can be fixed.
                 return context.res.json(
                     {
                         success: false,
 
                         message:
-                            "Reward was processed but transaction logging failed."
+                            "Could not start reward transaction."
                     },
                     500
                 );
             }
+
+
+            const transactionId =
+                transactionResponse.data.$id;
+
+
+            if (!transactionId) {
+
+                context.error(
+                    "Transaction ID was not returned."
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not start reward transaction."
+                    },
+                    500
+                );
+            }
+
+
+            context.log(
+                "Reward transaction created: " +
+                transactionId
+            );
+
+
+            // =================================================
+            // STAGE BOTH DATABASE OPERATIONS
+            // =================================================
+            //
+            // Nothing is permanently changed yet.
+            //
+            // Operation 1:
+            // Update user's balance.
+            //
+            // Operation 2:
+            // Create reward transaction record.
+            //
+            // Both will be committed together.
+            // =================================================
+
+            const operationsResponse =
+                await appwriteRequest(
+
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(
+                        transactionId
+                    ) +
+                    "/operations",
+
+                    "POST",
+
+                    {
+
+                        operations: [
+
+                            {
+                                action:
+                                    "update",
+
+                                databaseId:
+                                    databaseId,
+
+                                tableId:
+                                    userTableId,
+
+                                rowId:
+                                    userId,
+
+                                data: {
+
+                                    coinBalance:
+                                        newBalance,
+
+                                    lifetimeEarned:
+                                        newLifetimeEarned
+                                }
+                            },
+
+                            {
+                                action:
+                                    "create",
+
+                                databaseId:
+                                    databaseId,
+
+                                tableId:
+                                    rewardTableId,
+
+                                rowId:
+                                    referenceID,
+
+                                data: {
+
+                                    userID:
+                                        userId,
+
+                                    rewardType:
+                                        rewardType,
+
+                                    amount:
+                                        rewardAmount,
+
+                                    referenceID:
+                                        referenceID,
+
+                                    balanceBefore:
+                                        currentBalance,
+
+                                    balanceAfter:
+                                        newBalance
+                                }
+                            }
+                        ]
+                    }
+                );
+
+
+            if (!operationsResponse.ok) {
+
+                context.error(
+                    "Could not stage reward operations: " +
+                    JSON.stringify(
+                        operationsResponse.data
+                    )
+                );
+
+
+                // Roll back the transaction.
+                await appwriteRequest(
+
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(
+                        transactionId
+                    ),
+
+                    "PATCH",
+
+                    {
+                        rollback:
+                            true
+                    }
+                );
+
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not prepare reward transaction."
+                    },
+                    500
+                );
+            }
+
+
+            context.log(
+                "Reward operations staged successfully."
+            );
+
+
+            // =================================================
+            // COMMIT TRANSACTION
+            // =================================================
+
+            const commitResponse =
+                await appwriteRequest(
+
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(
+                        transactionId
+                    ),
+
+                    "PATCH",
+
+                    {
+                        commit:
+                            true
+                    }
+                );
+
+
+            if (!commitResponse.ok) {
+
+                context.error(
+                    "Reward transaction commit failed: " +
+                    JSON.stringify(
+                        commitResponse.data
+                    )
+                );
+
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Reward transaction could not be completed."
+                    },
+                    500
+                );
+            }
+
+
+            context.log(
+                "Reward transaction committed successfully."
+            );
 
 
             context.log(
