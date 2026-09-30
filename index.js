@@ -236,6 +236,9 @@ module.exports = async function (context) {
                             streakDay:
                                 0,
 
+                            streakLastClaimDate:
+                                "",
+
                             scratchCards:
                                 2,
 
@@ -317,6 +320,722 @@ module.exports = async function (context) {
         }
     }
 
+    // =====================================================
+    // OPERATION 2
+    // CLAIM DAILY STREAK REWARD
+    // =====================================================
+
+    if (operation === "claim_daily_reward") {
+
+        try {
+
+            // -------------------------------------------------
+            // GET CURRENT USER ROW
+            // -------------------------------------------------
+
+            const userRowPath =
+                "/tablesdb/" +
+                databaseId +
+                "/tables/" +
+                userTableId +
+                "/rows/" +
+                encodeURIComponent(
+                    userId
+                );
+
+
+            const userResponse =
+                await appwriteRequest(
+                    userRowPath,
+                    "GET"
+                );
+
+
+            if (!userResponse.ok) {
+
+                context.error(
+                    "Could not read user row for daily reward: " +
+                    JSON.stringify(
+                        userResponse.data
+                    )
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not read your Learnpidia account."
+                    },
+                    500
+                );
+            }
+
+
+            const userRow =
+                userResponse.data;
+
+
+            const currentBalance =
+                Number(
+                    userRow.coinBalance
+                );
+
+
+            const currentLifetimeEarned =
+                Number(
+                    userRow.lifetimeEarned || 0
+                );
+
+
+            const currentStreakDay =
+                Number(
+                    userRow.streakDay || 0
+                );
+
+
+            const lastClaimDate =
+                String(
+                    userRow.streakLastClaimDate || ""
+                );
+
+
+            // -------------------------------------------------
+            // VALIDATE CURRENT BALANCE
+            // -------------------------------------------------
+
+            if (
+                !Number.isInteger(
+                    currentBalance
+                ) ||
+                currentBalance < 0
+            ) {
+
+                context.error(
+                    "Invalid server coin balance."
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Invalid account balance."
+                    },
+                    500
+                );
+            }
+
+
+            // -------------------------------------------------
+            // GET TODAY'S DATE IN ANGOLA
+            // -------------------------------------------------
+
+            const dateParts =
+                new Intl.DateTimeFormat(
+                    "en-US",
+                    {
+                        timeZone:
+                            "Africa/Luanda",
+
+                        year:
+                            "numeric",
+
+                        month:
+                            "2-digit",
+
+                        day:
+                            "2-digit"
+                    }
+                ).formatToParts(
+                    new Date()
+                );
+
+
+            const dateValues = {};
+
+
+            dateParts.forEach(
+                function (part) {
+
+                    if (
+                        part.type !== "literal"
+                    ) {
+
+                        dateValues[
+                            part.type
+                        ] =
+                            part.value;
+                    }
+                }
+            );
+
+
+            const today =
+                dateValues.year +
+                "-" +
+                dateValues.month +
+                "-" +
+                dateValues.day;
+
+
+            // -------------------------------------------------
+            // CHECK IF ALREADY CLAIMED TODAY
+            // -------------------------------------------------
+
+            if (
+                lastClaimDate === today
+            ) {
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        alreadyClaimed:
+                            true,
+
+                        message:
+                            "Today's daily reward has already been claimed."
+                    },
+                    409
+                );
+            }
+
+
+            // -------------------------------------------------
+            // DETERMINE STREAK DAY
+            // -------------------------------------------------
+
+            let newStreakDay =
+                1;
+
+
+            if (
+                lastClaimDate
+            ) {
+
+                const previousParts =
+                    lastClaimDate.split(
+                        "-"
+                    );
+
+
+                if (
+                    previousParts.length === 3
+                ) {
+
+                    const previousDate =
+                        Date.UTC(
+                            Number(
+                                previousParts[0]
+                            ),
+
+                            Number(
+                                previousParts[1]
+                            ) - 1,
+
+                            Number(
+                                previousParts[2]
+                            )
+                        );
+
+
+                    const todayParts =
+                        today.split(
+                            "-"
+                        );
+
+
+                    const todayDate =
+                        Date.UTC(
+                            Number(
+                                todayParts[0]
+                            ),
+
+                            Number(
+                                todayParts[1]
+                            ) - 1,
+
+                            Number(
+                                todayParts[2]
+                            )
+                        );
+
+
+                    const differenceInDays =
+                        Math.round(
+                            (
+                                todayDate -
+                                previousDate
+                            ) /
+                            (
+                                1000 *
+                                60 *
+                                60 *
+                                24
+                            )
+                        );
+
+
+                    // -------------------------------------------------
+                    // CLAIMED YESTERDAY
+                    // CONTINUE STREAK
+                    // -------------------------------------------------
+
+                    if (
+                        differenceInDays === 1
+                    ) {
+
+                        newStreakDay =
+                            currentStreakDay >= 7
+                                ? 1
+                                : currentStreakDay + 1;
+                    }
+
+
+                    // -------------------------------------------------
+                    // MISSED ONE OR MORE DAYS
+                    // RESET TO DAY 1
+                    // -------------------------------------------------
+
+                    else if (
+                        differenceInDays > 1
+                    ) {
+
+                        newStreakDay =
+                            1;
+                    }
+
+
+                    // -------------------------------------------------
+                    // INVALID / UNEXPECTED DATE
+                    // RESET TO DAY 1
+                    // -------------------------------------------------
+
+                    else {
+
+                        newStreakDay =
+                            1;
+                    }
+
+                }
+
+            }
+
+
+            // -------------------------------------------------
+            // SERVER-CONTROLLED DAILY REWARDS
+            // -------------------------------------------------
+
+            const dailyRewards = {
+
+                1:
+                    20,
+
+                2:
+                    40,
+
+                3:
+                    60,
+
+                4:
+                    80,
+
+                5:
+                    100,
+
+                6:
+                    150,
+
+                7:
+                    300
+            };
+
+
+            const rewardAmount =
+                dailyRewards[
+                    newStreakDay
+                ];
+
+
+            if (
+                !rewardAmount
+            ) {
+
+                context.error(
+                    "Invalid daily streak day: " +
+                    newStreakDay
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Invalid daily reward."
+                    },
+                    500
+                );
+            }
+
+
+            // -------------------------------------------------
+            // UNIQUE REFERENCE FOR THIS USER + DATE
+            // -------------------------------------------------
+
+            const referenceID =
+                "daily-streak-" +
+                userId +
+                "-" +
+                today;
+
+
+            // -------------------------------------------------
+            // CHECK FOR DUPLICATE TRANSACTION
+            // -------------------------------------------------
+
+            const duplicateQuery =
+                "/tablesdb/" +
+                databaseId +
+                "/tables/" +
+                rewardTableId +
+                "/rows/" +
+                encodeURIComponent(
+                    referenceID
+                );
+
+
+            const existingReward =
+                await appwriteRequest(
+                    duplicateQuery,
+                    "GET"
+                );
+
+
+            if (existingReward.ok) {
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        alreadyClaimed:
+                            true,
+
+                        message:
+                            "Today's daily reward has already been claimed."
+                    },
+                    409
+                );
+            }
+
+
+            // -------------------------------------------------
+            // CALCULATE NEW VALUES
+            // -------------------------------------------------
+
+            const newBalance =
+                currentBalance +
+                rewardAmount;
+
+
+            const newLifetimeEarned =
+                currentLifetimeEarned +
+                rewardAmount;
+
+
+            // =================================================
+            // CREATE DATABASE TRANSACTION
+            // =================================================
+
+            const transactionResponse =
+                await appwriteRequest(
+
+                    "/tablesdb/transactions",
+
+                    "POST",
+
+                    {}
+                );
+
+
+            if (!transactionResponse.ok) {
+
+                context.error(
+                    "Could not create daily reward transaction: " +
+                    JSON.stringify(
+                        transactionResponse.data
+                    )
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not start daily reward transaction."
+                    },
+                    500
+                );
+            }
+
+
+            const transactionId =
+                transactionResponse.data.$id;
+
+
+            if (!transactionId) {
+
+                context.error(
+                    "Daily reward transaction ID was not returned."
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not start daily reward transaction."
+                    },
+                    500
+                );
+            }
+
+
+            // =================================================
+            // STAGE BOTH OPERATIONS
+            // =================================================
+
+            const operationsResponse =
+                await appwriteRequest(
+
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(
+                        transactionId
+                    ) +
+                    "/operations",
+
+                    "POST",
+
+                    {
+
+                        operations: [
+
+                            // ---------------------------------
+                            // UPDATE USER
+                            // ---------------------------------
+
+                            {
+                                action:
+                                    "update",
+
+                                databaseId:
+                                    databaseId,
+
+                                tableId:
+                                    userTableId,
+
+                                rowId:
+                                    userId,
+
+                                data: {
+
+                                    coinBalance:
+                                        newBalance,
+
+                                    lifetimeEarned:
+                                        newLifetimeEarned,
+
+                                    streakDay:
+                                        newStreakDay,
+
+                                    streakLastClaimDate:
+                                        today
+                                }
+                            },
+
+
+                            // ---------------------------------
+                            // CREATE REWARD TRANSACTION
+                            // ---------------------------------
+
+                            {
+                                action:
+                                    "create",
+
+                                databaseId:
+                                    databaseId,
+
+                                tableId:
+                                    rewardTableId,
+
+                                rowId:
+                                    referenceID,
+
+                                data: {
+
+                                    userID:
+                                        userId,
+
+                                    rewardType:
+                                        "daily_streak",
+
+                                    amount:
+                                        rewardAmount,
+
+                                    referenceID:
+                                        referenceID,
+
+                                    balanceBefore:
+                                        currentBalance,
+
+                                    balanceAfter:
+                                        newBalance
+                                }
+                            }
+                        ]
+                    }
+                );
+
+
+            if (!operationsResponse.ok) {
+
+                context.error(
+                    "Could not stage daily reward operations: " +
+                    JSON.stringify(
+                        operationsResponse.data
+                    )
+                );
+
+
+                await appwriteRequest(
+
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(
+                        transactionId
+                    ),
+
+                    "PATCH",
+
+                    {
+                        rollback:
+                            true
+                    }
+                );
+
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not prepare daily reward transaction."
+                    },
+                    500
+                );
+            }
+
+
+            // =================================================
+            // COMMIT TRANSACTION
+            // =================================================
+
+            const commitResponse =
+                await appwriteRequest(
+
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(
+                        transactionId
+                    ),
+
+                    "PATCH",
+
+                    {
+                        commit:
+                            true
+                    }
+                );
+
+
+            if (!commitResponse.ok) {
+
+                context.error(
+                    "Daily reward transaction commit failed: " +
+                    JSON.stringify(
+                        commitResponse.data
+                    )
+                );
+
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Daily reward transaction could not be completed."
+                    },
+                    500
+                );
+            }
+
+
+            context.log(
+                "Daily streak reward successfully granted: +" +
+                rewardAmount +
+                " coins. Day " +
+                newStreakDay +
+                " for user " +
+                userId
+            );
+
+
+            // =================================================
+            // SUCCESS
+            // =================================================
+
+            return context.res.json(
+                {
+                    success: true,
+
+                    operation:
+                        "claim_daily_reward",
+
+                    streakDay:
+                        newStreakDay,
+
+                    amount:
+                        rewardAmount,
+
+                    balance:
+                        newBalance,
+
+                    claimDate:
+                        today,
+
+                    message:
+                        "Daily reward claimed successfully."
+                }
+            );
+
+
+        } catch (error) {
+
+            context.error(
+                "Daily reward error: " +
+                (error.message || error)
+            );
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        error.message ||
+                        "Daily reward claim failed."
+                },
+                500
+            );
+        }
+    }
 
     // =====================================================
     // OPERATION 2
