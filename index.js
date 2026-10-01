@@ -1832,6 +1832,444 @@ module.exports = async function (context) {
         }
     }
 
+        // =====================================================
+    // OPERATION 3
+    // ADD EXTRA LUCKY WHEEL SPIN
+    // =====================================================
+
+    if (operation === "add_wheel_spin") {
+
+        const referenceID =
+            requestData.referenceID ||
+            context.req.headers["x-learnpidia-reference-id"];
+
+
+        // -------------------------------------------------
+        // REQUIRED REFERENCE
+        // -------------------------------------------------
+
+        if (!referenceID) {
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        "referenceID is required."
+                },
+                400
+            );
+        }
+
+
+        try {
+
+            // -------------------------------------------------
+            // CHECK FOR DUPLICATE EXTRA-SPIN CLAIM
+            // -------------------------------------------------
+
+            const duplicateQuery =
+                "/tablesdb/" +
+                databaseId +
+                "/tables/" +
+                rewardTableId +
+                "/rows/" +
+                encodeURIComponent(
+                    referenceID
+                );
+
+
+            const existingReward =
+                await appwriteRequest(
+                    duplicateQuery,
+                    "GET"
+                );
+
+
+            if (existingReward.ok) {
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        alreadyClaimed:
+                            true,
+
+                        message:
+                            "This extra wheel spin has already been claimed."
+                    },
+                    409
+                );
+            }
+
+
+            // -------------------------------------------------
+            // GET CURRENT USER ROW
+            // -------------------------------------------------
+
+            const userRowPath =
+                "/tablesdb/" +
+                databaseId +
+                "/tables/" +
+                userTableId +
+                "/rows/" +
+                encodeURIComponent(
+                    userId
+                );
+
+
+            const userResponse =
+                await appwriteRequest(
+                    userRowPath,
+                    "GET"
+                );
+
+
+            if (!userResponse.ok) {
+
+                context.error(
+                    "Could not read user row for extra wheel spin: " +
+                    JSON.stringify(
+                        userResponse.data
+                    )
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not read your Learnpidia account."
+                    },
+                    500
+                );
+            }
+
+
+            const userRow =
+                userResponse.data;
+
+
+            const currentWheelSpins =
+                Number(
+                    userRow.wheelSpins || 0
+                );
+
+
+            // -------------------------------------------------
+            // VALIDATE CURRENT SPINS
+            // -------------------------------------------------
+
+            if (
+                !Number.isInteger(
+                    currentWheelSpins
+                ) ||
+                currentWheelSpins < 0
+            ) {
+
+                context.error(
+                    "Invalid server wheel spin count."
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Invalid wheel spin count."
+                    },
+                    500
+                );
+            }
+
+
+            // -------------------------------------------------
+            // ADD ONE EXTRA SPIN
+            // -------------------------------------------------
+
+            const newWheelSpins =
+                currentWheelSpins + 1;
+
+
+            // =================================================
+            // CREATE DATABASE TRANSACTION
+            // =================================================
+
+            const transactionResponse =
+                await appwriteRequest(
+
+                    "/tablesdb/transactions",
+
+                    "POST",
+
+                    {}
+                );
+
+
+            if (!transactionResponse.ok) {
+
+                context.error(
+                    "Could not create extra wheel spin transaction: " +
+                    JSON.stringify(
+                        transactionResponse.data
+                    )
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not start extra wheel spin transaction."
+                    },
+                    500
+                );
+            }
+
+
+            const transactionId =
+                transactionResponse.data.$id;
+
+
+            if (!transactionId) {
+
+                context.error(
+                    "Extra wheel spin transaction ID was not returned."
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not start extra wheel spin transaction."
+                    },
+                    500
+                );
+            }
+
+
+            // =================================================
+            // STAGE BOTH OPERATIONS
+            // =================================================
+
+            const operationsResponse =
+                await appwriteRequest(
+
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(
+                        transactionId
+                    ) +
+                    "/operations",
+
+                    "POST",
+
+                    {
+
+                        operations: [
+
+                            // ---------------------------------
+                            // UPDATE USER
+                            // ---------------------------------
+
+                            {
+                                action:
+                                    "update",
+
+                                databaseId:
+                                    databaseId,
+
+                                tableId:
+                                    userTableId,
+
+                                rowId:
+                                    userId,
+
+                                data: {
+
+                                    wheelSpins:
+                                        newWheelSpins
+                                }
+                            },
+
+
+                            // ---------------------------------
+                            // CREATE CLAIM RECORD
+                            // ---------------------------------
+
+                            {
+                                action:
+                                    "create",
+
+                                databaseId:
+                                    databaseId,
+
+                                tableId:
+                                    rewardTableId,
+
+                                rowId:
+                                    referenceID,
+
+                                data: {
+
+                                    userID:
+                                        userId,
+
+                                    rewardType:
+                                        "extra_wheel_spin",
+
+                                    amount:
+                                        1,
+
+                                    referenceID:
+                                        referenceID,
+
+                                    balanceBefore:
+                                        Number(
+                                            userRow.coinBalance
+                                        ),
+
+                                    balanceAfter:
+                                        Number(
+                                            userRow.coinBalance
+                                        )
+                                }
+                            }
+                        ]
+                    }
+                );
+
+
+            if (!operationsResponse.ok) {
+
+                context.error(
+                    "Could not stage extra wheel spin operations: " +
+                    JSON.stringify(
+                        operationsResponse.data
+                    )
+                );
+
+
+                await appwriteRequest(
+
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(
+                        transactionId
+                    ),
+
+                    "PATCH",
+
+                    {
+                        rollback:
+                            true
+                    }
+                );
+
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not prepare extra wheel spin transaction."
+                    },
+                    500
+                );
+            }
+
+
+            // =================================================
+            // COMMIT TRANSACTION
+            // =================================================
+
+            const commitResponse =
+                await appwriteRequest(
+
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(
+                        transactionId
+                    ),
+
+                    "PATCH",
+
+                    {
+                        commit:
+                            true
+                    }
+                );
+
+
+            if (!commitResponse.ok) {
+
+                context.error(
+                    "Extra wheel spin transaction commit failed: " +
+                    JSON.stringify(
+                        commitResponse.data
+                    )
+                );
+
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Extra wheel spin could not be completed."
+                    },
+                    500
+                );
+            }
+
+
+            context.log(
+                "Extra lucky wheel spin successfully added. " +
+                "New spin count: " +
+                newWheelSpins +
+                " for user " +
+                userId
+            );
+
+
+            // =================================================
+            // SUCCESS
+            // =================================================
+
+            return context.res.json(
+                {
+                    success: true,
+
+                    operation:
+                        "add_wheel_spin",
+
+                    wheelSpins:
+                        newWheelSpins,
+
+                    message:
+                        "Extra lucky wheel spin added successfully."
+                }
+            );
+
+
+        } catch (error) {
+
+            context.error(
+                "Add wheel spin error: " +
+                (error.message || error)
+            );
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        error.message ||
+                        "Could not add extra wheel spin."
+                },
+                500
+            );
+        }
+    }
+
     // =====================================================
     // OPERATION 3
     // SPIN LUCKY WHEEL
