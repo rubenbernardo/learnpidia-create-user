@@ -1832,7 +1832,506 @@ module.exports = async function (context) {
         }
     }
 
+    // =====================================================
+    // OPERATION 3
+    // SPIN LUCKY WHEEL
+    // =====================================================
 
+    if (operation === "spin_lucky_wheel") {
+
+        try {
+
+            // -------------------------------------------------
+            // GET CURRENT USER ROW
+            // -------------------------------------------------
+
+            const userRowPath =
+                "/tablesdb/" +
+                databaseId +
+                "/tables/" +
+                userTableId +
+                "/rows/" +
+                encodeURIComponent(
+                    userId
+                );
+
+
+            const userResponse =
+                await appwriteRequest(
+                    userRowPath,
+                    "GET"
+                );
+
+
+            if (!userResponse.ok) {
+
+                context.error(
+                    "Could not read user row for lucky wheel: " +
+                    JSON.stringify(
+                        userResponse.data
+                    )
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not read your Learnpidia account."
+                    },
+                    500
+                );
+            }
+
+
+            const userRow =
+                userResponse.data;
+
+
+            const currentBalance =
+                Number(
+                    userRow.coinBalance
+                );
+
+
+            const currentLifetimeEarned =
+                Number(
+                    userRow.lifetimeEarned || 0
+                );
+
+
+            const currentWheelSpins =
+                Number(
+                    userRow.wheelSpins || 0
+                );
+
+
+            // -------------------------------------------------
+            // VALIDATE ACCOUNT VALUES
+            // -------------------------------------------------
+
+            if (
+                !Number.isInteger(
+                    currentBalance
+                ) ||
+                currentBalance < 0
+            ) {
+
+                context.error(
+                    "Invalid server coin balance."
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Invalid account balance."
+                    },
+                    500
+                );
+            }
+
+
+            if (
+                !Number.isInteger(
+                    currentWheelSpins
+                ) ||
+                currentWheelSpins < 0
+            ) {
+
+                context.error(
+                    "Invalid wheel spin count."
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Invalid wheel spin count."
+                    },
+                    500
+                );
+            }
+
+
+            // -------------------------------------------------
+            // CHECK AVAILABLE SPINS
+            // -------------------------------------------------
+
+            if (
+                currentWheelSpins <= 0
+            ) {
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        noSpinsAvailable:
+                            true,
+
+                        message:
+                            "No free wheel spins are available."
+                    },
+                    409
+                );
+            }
+
+
+            // -------------------------------------------------
+            // SERVER-CONTROLLED WHEEL REWARDS
+            // -------------------------------------------------
+
+            const wheelRewards = [
+                10,
+                20,
+                30,
+                50,
+                75,
+                100,
+                150,
+                250
+            ];
+
+
+            // -------------------------------------------------
+            // SERVER CHOOSES WINNING SLICE
+            // -------------------------------------------------
+
+            const selectedIndex =
+                Math.floor(
+                    Math.random() *
+                    wheelRewards.length
+                );
+
+
+            const rewardAmount =
+                wheelRewards[
+                    selectedIndex
+                ];
+
+
+            // -------------------------------------------------
+            // CALCULATE NEW VALUES
+            // -------------------------------------------------
+
+            const newWheelSpins =
+                currentWheelSpins - 1;
+
+
+            const newBalance =
+                currentBalance +
+                rewardAmount;
+
+
+            const newLifetimeEarned =
+                currentLifetimeEarned +
+                rewardAmount;
+
+
+            // -------------------------------------------------
+            // UNIQUE REFERENCE
+            // -------------------------------------------------
+
+            const referenceID =
+                "lucky-wheel-" +
+                userId +
+                "-" +
+                Date.now();
+
+
+            // =================================================
+            // CREATE DATABASE TRANSACTION
+            // =================================================
+
+            const transactionResponse =
+                await appwriteRequest(
+
+                    "/tablesdb/transactions",
+
+                    "POST",
+
+                    {}
+                );
+
+
+            if (!transactionResponse.ok) {
+
+                context.error(
+                    "Could not create lucky wheel transaction: " +
+                    JSON.stringify(
+                        transactionResponse.data
+                    )
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not start lucky wheel transaction."
+                    },
+                    500
+                );
+            }
+
+
+            const transactionId =
+                transactionResponse.data.$id;
+
+
+            if (!transactionId) {
+
+                context.error(
+                    "Lucky wheel transaction ID was not returned."
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not start lucky wheel transaction."
+                    },
+                    500
+                );
+            }
+
+
+            // =================================================
+            // STAGE BOTH OPERATIONS
+            // =================================================
+
+            const operationsResponse =
+                await appwriteRequest(
+
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(
+                        transactionId
+                    ) +
+                    "/operations",
+
+                    "POST",
+
+                    {
+
+                        operations: [
+
+                            // ---------------------------------
+                            // UPDATE USER
+                            // ---------------------------------
+
+                            {
+                                action:
+                                    "update",
+
+                                databaseId:
+                                    databaseId,
+
+                                tableId:
+                                    userTableId,
+
+                                rowId:
+                                    userId,
+
+                                data: {
+
+                                    coinBalance:
+                                        newBalance,
+
+                                    lifetimeEarned:
+                                        newLifetimeEarned,
+
+                                    wheelSpins:
+                                        newWheelSpins
+                                }
+                            },
+
+
+                            // ---------------------------------
+                            // CREATE REWARD TRANSACTION
+                            // ---------------------------------
+
+                            {
+                                action:
+                                    "create",
+
+                                databaseId:
+                                    databaseId,
+
+                                tableId:
+                                    rewardTableId,
+
+                                rowId:
+                                    referenceID,
+
+                                data: {
+
+                                    userID:
+                                        userId,
+
+                                    rewardType:
+                                        "lucky_wheel",
+
+                                    amount:
+                                        rewardAmount,
+
+                                    referenceID:
+                                        referenceID,
+
+                                    balanceBefore:
+                                        currentBalance,
+
+                                    balanceAfter:
+                                        newBalance
+                                }
+                            }
+                        ]
+                    }
+                );
+
+
+            if (!operationsResponse.ok) {
+
+                context.error(
+                    "Could not stage lucky wheel operations: " +
+                    JSON.stringify(
+                        operationsResponse.data
+                    )
+                );
+
+
+                await appwriteRequest(
+
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(
+                        transactionId
+                    ),
+
+                    "PATCH",
+
+                    {
+                        rollback:
+                            true
+                    }
+                );
+
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not prepare lucky wheel transaction."
+                    },
+                    500
+                );
+            }
+
+
+            // =================================================
+            // COMMIT TRANSACTION
+            // =================================================
+
+            const commitResponse =
+                await appwriteRequest(
+
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(
+                        transactionId
+                    ),
+
+                    "PATCH",
+
+                    {
+                        commit:
+                            true
+                    }
+                );
+
+
+            if (!commitResponse.ok) {
+
+                context.error(
+                    "Lucky wheel transaction commit failed: " +
+                    JSON.stringify(
+                        commitResponse.data
+                    )
+                );
+
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Lucky wheel transaction could not be completed."
+                    },
+                    500
+                );
+            }
+
+
+            context.log(
+                "Lucky wheel reward successfully granted: +" +
+                rewardAmount +
+                " coins. Remaining spins: " +
+                newWheelSpins +
+                " for user " +
+                userId
+            );
+
+
+            // =================================================
+            // SUCCESS
+            // =================================================
+
+            return context.res.json(
+                {
+                    success: true,
+
+                    operation:
+                        "spin_lucky_wheel",
+
+                    selectedIndex:
+                        selectedIndex,
+
+                    amount:
+                        rewardAmount,
+
+                    remainingSpins:
+                        newWheelSpins,
+
+                    balance:
+                        newBalance,
+
+                    message:
+                        "Lucky wheel spin completed successfully."
+                }
+            );
+
+
+        } catch (error) {
+
+            context.error(
+                "Lucky wheel error: " +
+                (error.message || error)
+            );
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        error.message ||
+                        "Lucky wheel spin failed."
+                },
+                500
+            );
+        }
+    }
+    
     // =====================================================
     // UNKNOWN OPERATION
     // =====================================================
