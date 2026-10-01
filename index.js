@@ -3048,60 +3048,16 @@ if (
                 savedResetDate !== today
             ) {
             
-                const resetTransaction =
-                    await appwriteRequest(
-                        "/tablesdb/" +
-                        databaseId +
-                        "/transactions",
-                        "POST",
-                        {
-                            mode: "write"
-                        }
-                    );
-            
-            
-                if (!resetTransaction.ok) {
-            
-                    context.error(
-                        "Could not start lucky wheel reset transaction: " +
-                        JSON.stringify(
-                            resetTransaction.data
-                        )
-                    );
-            
-                    return context.res.json(
-                        {
-                            success: false,
-            
-                            message:
-                                "Could not reset your lucky wheel."
-                        },
-                        500
-                    );
-                }
-            
-            
-                const transactionId =
-                    resetTransaction.data.$id;
-            
-            
                 const updateResponse =
                     await appwriteRequest(
                         "/tablesdb/" +
                         databaseId +
-                        "/transactions/" +
-                        transactionId +
-                        "/operations",
-                        "POST",
+                        "/tables/" +
+                        userTableId +
+                        "/rows/" +
+                        userId,
+                        "PATCH",
                         {
-                            action: "update",
-            
-                            tableId:
-                                userTableId,
-            
-                            rowId:
-                                userId,
-            
                             data: {
             
                                 wheelSpins:
@@ -3120,7 +3076,7 @@ if (
                 if (!updateResponse.ok) {
             
                     context.error(
-                        "Could not stage lucky wheel reset: " +
+                        "Could not save lucky wheel reset: " +
                         JSON.stringify(
                             updateResponse.data
                         )
@@ -3136,40 +3092,7 @@ if (
                         500
                     );
                 }
-            
-            
-                const commitResponse =
-                    await appwriteRequest(
-                        "/tablesdb/" +
-                        databaseId +
-                        "/transactions/" +
-                        transactionId +
-                        "/commit",
-                        "POST"
-                    );
-            
-            
-                if (!commitResponse.ok) {
-            
-                    context.error(
-                        "Could not commit lucky wheel reset: " +
-                        JSON.stringify(
-                            commitResponse.data
-                        )
-                    );
-            
-                    return context.res.json(
-                        {
-                            success: false,
-            
-                            message:
-                                "Could not reset your lucky wheel."
-                        },
-                        500
-                    );
-                }
             }
-            
             
             // -------------------------------------------------
             // SUCCESS
