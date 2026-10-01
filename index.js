@@ -2331,6 +2331,136 @@ module.exports = async function (context) {
             );
         }
     }
+
+    // =====================================================
+    // OPERATION 4
+    // GET LUCKY WHEEL STATUS
+    // =====================================================
+
+    if (operation === "get_lucky_wheel_status") {
+
+        try {
+
+            // -------------------------------------------------
+            // GET CURRENT USER ROW
+            // -------------------------------------------------
+
+            const userRowPath =
+                "/tablesdb/" +
+                databaseId +
+                "/tables/" +
+                userTableId +
+                "/rows/" +
+                encodeURIComponent(
+                    userId
+                );
+
+
+            const userResponse =
+                await appwriteRequest(
+                    userRowPath,
+                    "GET"
+                );
+
+
+            if (!userResponse.ok) {
+
+                context.error(
+                    "Could not read user row for lucky wheel status: " +
+                    JSON.stringify(
+                        userResponse.data
+                    )
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not read your Learnpidia account."
+                    },
+                    500
+                );
+            }
+
+
+            // -------------------------------------------------
+            // READ WHEEL SPINS
+            // -------------------------------------------------
+
+            const userRow =
+                userResponse.data;
+
+
+            const wheelSpins =
+                Number(
+                    userRow.wheelSpins || 0
+                );
+
+
+            // -------------------------------------------------
+            // VALIDATE WHEEL SPINS
+            // -------------------------------------------------
+
+            if (
+                !Number.isInteger(
+                    wheelSpins
+                ) ||
+                wheelSpins < 0
+            ) {
+
+                context.error(
+                    "Invalid server wheel spin count."
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Invalid wheel spin count."
+                    },
+                    500
+                );
+            }
+
+
+            // -------------------------------------------------
+            // SUCCESS
+            // -------------------------------------------------
+
+            return context.res.json(
+                {
+                    success: true,
+
+                    operation:
+                        "get_lucky_wheel_status",
+
+                    wheelSpins:
+                        wheelSpins
+                }
+            );
+
+
+        } catch (error) {
+
+            context.error(
+                "Lucky wheel status error: " +
+                (error.message || error)
+            );
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        error.message ||
+                        "Could not load lucky wheel status."
+                },
+                500
+            );
+        }
+    }
     
     // =====================================================
     // UNKNOWN OPERATION
