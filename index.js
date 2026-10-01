@@ -245,6 +245,12 @@ module.exports = async function (context) {
                             wheelSpins:
                                 3,
 
+                            wheelResetDate:
+                                getLuandaDateString(),
+                            
+                            wheelExtraSpinUsed:
+                                false,
+
                             quizAvailable:
                                 true
                         },
@@ -1948,14 +1954,75 @@ module.exports = async function (context) {
 
             const userRow =
                 userResponse.data;
+            
+            
+            const today =
+                getLuandaDateString();
+            
+            
+            const savedResetDate =
+                userRow.wheelResetDate || "";
+            
+            
+            let currentWheelSpins;
+            
+            
+            let currentExtraSpinUsed;
+            
+            
+            if (
+                savedResetDate !== today
+            ) {
+            
+                // -------------------------------------------------
+                // NEW DAY
+                // RESET LUCKY WHEEL
+                // -------------------------------------------------
+            
+                currentWheelSpins =
+                    3;
+            
+                currentExtraSpinUsed =
+                    false;
+            
+            } else {
+            
+                // -------------------------------------------------
+                // SAME DAY
+                // KEEP CURRENT VALUES
+                // -------------------------------------------------
+            
+                currentWheelSpins =
+                    Number(
+                        userRow.wheelSpins || 0
+                    );
+            
+                currentExtraSpinUsed =
+                    userRow.wheelExtraSpinUsed === true;
+            }
 
-
-            const currentWheelSpins =
-                Number(
-                    userRow.wheelSpins || 0
+            // -------------------------------------------------
+            // CHECK EXTRA SPIN AVAILABILITY
+            // -------------------------------------------------
+            
+            if (
+                currentExtraSpinUsed
+            ) {
+            
+                return context.res.json(
+                    {
+                        success: false,
+            
+                        alreadyClaimed:
+                            true,
+            
+                        message:
+                            "Your extra wheel spin has already been used today."
+                    },
+                    409
                 );
-
-
+            }
+            
             // -------------------------------------------------
             // VALIDATE CURRENT SPINS
             // -------------------------------------------------
@@ -2086,9 +2153,14 @@ module.exports = async function (context) {
                                     userId,
 
                                 data: {
-
                                     wheelSpins:
-                                        newWheelSpins
+                                        newWheelSpins,
+                                
+                                    wheelResetDate:
+                                        today,
+                                
+                                    wheelExtraSpinUsed:
+                                        true
                                 }
                             },
 
@@ -2331,17 +2403,56 @@ module.exports = async function (context) {
                     userRow.coinBalance
                 );
 
+const currentLifetimeEarned =
+    Number(
+        userRow.lifetimeEarned || 0
+    );
 
-            const currentLifetimeEarned =
-                Number(
-                    userRow.lifetimeEarned || 0
-                );
+
+const today =
+    getLuandaDateString();
 
 
-            const currentWheelSpins =
-                Number(
-                    userRow.wheelSpins || 0
-                );
+const savedResetDate =
+    userRow.wheelResetDate || "";
+
+
+let currentWheelSpins;
+
+
+let currentExtraSpinUsed;
+
+
+if (
+    savedResetDate !== today
+) {
+
+    // -------------------------------------------------
+    // NEW DAY
+    // RESET LUCKY WHEEL BEFORE SPIN
+    // -------------------------------------------------
+
+    currentWheelSpins =
+        3;
+
+    currentExtraSpinUsed =
+        false;
+
+} else {
+
+    // -------------------------------------------------
+    // SAME DAY
+    // KEEP CURRENT VALUES
+    // -------------------------------------------------
+
+    currentWheelSpins =
+        Number(
+            userRow.wheelSpins || 0
+        );
+
+    currentExtraSpinUsed =
+        userRow.wheelExtraSpinUsed === true;
+}
 
 
             // -------------------------------------------------
@@ -2582,7 +2693,13 @@ module.exports = async function (context) {
                                         newLifetimeEarned,
 
                                     wheelSpins:
-                                        newWheelSpins
+                                    newWheelSpins,
+                                
+                                wheelResetDate:
+                                    today,
+                                
+                                wheelExtraSpinUsed:
+                                    currentExtraSpinUsed
                                 }
                             },
 
@@ -2822,18 +2939,58 @@ module.exports = async function (context) {
             }
 
 
+           // -------------------------------------------------
+            // READ WHEEL SPINS + DAILY RESET
             // -------------------------------------------------
-            // READ WHEEL SPINS
-            // -------------------------------------------------
-
+            
             const userRow =
                 userResponse.data;
-
-
-            const wheelSpins =
-                Number(
-                    userRow.wheelSpins || 0
-                );
+            
+            
+            const today =
+                getLuandaDateString();
+            
+            
+            const savedResetDate =
+                userRow.wheelResetDate || "";
+            
+            
+            let wheelSpins;
+            
+            
+            let extraSpinUsed;
+            
+            
+            if (
+                savedResetDate !== today
+            ) {
+            
+                // -------------------------------------------------
+                // NEW DAY
+                // RESET LUCKY WHEEL
+                // -------------------------------------------------
+            
+                wheelSpins =
+                    3;
+            
+                extraSpinUsed =
+                    false;
+            
+            } else {
+            
+                // -------------------------------------------------
+                // SAME DAY
+                // KEEP CURRENT VALUES
+                // -------------------------------------------------
+            
+                wheelSpins =
+                    Number(
+                        userRow.wheelSpins || 0
+                    );
+            
+                extraSpinUsed =
+                    userRow.wheelExtraSpinUsed === true;
+            }
 
 
             // -------------------------------------------------
@@ -2864,21 +3021,154 @@ module.exports = async function (context) {
 
 
             // -------------------------------------------------
+            // SAVE DAILY RESET
+            // -------------------------------------------------
+            
+            if (
+                savedResetDate !== today
+            ) {
+            
+                const resetTransaction =
+                    await appwriteRequest(
+                        "/tablesdb/" +
+                        databaseId +
+                        "/transactions",
+                        "POST",
+                        {
+                            mode: "write"
+                        }
+                    );
+            
+            
+                if (!resetTransaction.ok) {
+            
+                    context.error(
+                        "Could not start lucky wheel reset transaction: " +
+                        JSON.stringify(
+                            resetTransaction.data
+                        )
+                    );
+            
+                    return context.res.json(
+                        {
+                            success: false,
+            
+                            message:
+                                "Could not reset your lucky wheel."
+                        },
+                        500
+                    );
+                }
+            
+            
+                const transactionId =
+                    resetTransaction.data.$id;
+            
+            
+                const updateResponse =
+                    await appwriteRequest(
+                        "/tablesdb/" +
+                        databaseId +
+                        "/transactions/" +
+                        transactionId +
+                        "/operations",
+                        "POST",
+                        {
+                            action: "update",
+            
+                            tableId:
+                                userTableId,
+            
+                            rowId:
+                                userId,
+            
+                            data: {
+            
+                                wheelSpins:
+                                    3,
+            
+                                wheelResetDate:
+                                    today,
+            
+                                wheelExtraSpinUsed:
+                                    false
+                            }
+                        }
+                    );
+            
+            
+                if (!updateResponse.ok) {
+            
+                    context.error(
+                        "Could not stage lucky wheel reset: " +
+                        JSON.stringify(
+                            updateResponse.data
+                        )
+                    );
+            
+                    return context.res.json(
+                        {
+                            success: false,
+            
+                            message:
+                                "Could not reset your lucky wheel."
+                        },
+                        500
+                    );
+                }
+            
+            
+                const commitResponse =
+                    await appwriteRequest(
+                        "/tablesdb/" +
+                        databaseId +
+                        "/transactions/" +
+                        transactionId +
+                        "/commit",
+                        "POST"
+                    );
+            
+            
+                if (!commitResponse.ok) {
+            
+                    context.error(
+                        "Could not commit lucky wheel reset: " +
+                        JSON.stringify(
+                            commitResponse.data
+                        )
+                    );
+            
+                    return context.res.json(
+                        {
+                            success: false,
+            
+                            message:
+                                "Could not reset your lucky wheel."
+                        },
+                        500
+                    );
+                }
+            }
+            
+            
+            // -------------------------------------------------
             // SUCCESS
             // -------------------------------------------------
-
+            
             return context.res.json(
                 {
                     success: true,
-
+            
                     operation:
                         "get_lucky_wheel_status",
-
+            
                     wheelSpins:
-                        wheelSpins
+                        wheelSpins,
+            
+                    extraSpinUsed:
+                        extraSpinUsed
                 }
             );
-
 
         } catch (error) {
 
