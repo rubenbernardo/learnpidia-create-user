@@ -109,10 +109,30 @@ module.exports = async function (context) {
 
 
     // =====================================================
-    // HELPER: APPWRITE REQUEST
+    // HELPER: LUANDA DATE
     // =====================================================
+    
+    function getLuandaDateString() {
+    
+        return new Intl.DateTimeFormat(
+            "en-CA",
+            {
+                timeZone: "Africa/Luanda",
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit"
+            }
+        ).format(
+            new Date()
+        );
+    }
 
-    async function appwriteRequest(
+
+// =====================================================
+// HELPER: APPWRITE REQUEST
+// =====================================================
+
+async function appwriteRequest(
         path,
         method,
         body
