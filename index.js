@@ -3132,6 +3132,684 @@ if (
             );
         }
     }
+
+        // =====================================================
+    // OPERATION 5
+    // GET SCRATCH CARD STATUS
+    // =====================================================
+
+    if (operation === "get_scratch_card_status") {
+
+        try {
+
+            // -------------------------------------------------
+            // GET CURRENT USER ROW
+            // -------------------------------------------------
+
+            const userRowPath =
+                "/tablesdb/" +
+                databaseId +
+                "/tables/" +
+                userTableId +
+                "/rows/" +
+                encodeURIComponent(
+                    userId
+                );
+
+
+            const userResponse =
+                await appwriteRequest(
+                    userRowPath,
+                    "GET"
+                );
+
+
+            if (!userResponse.ok) {
+
+                context.error(
+                    "Could not read user row for scratch card status: " +
+                    JSON.stringify(
+                        userResponse.data
+                    )
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not read your Learnpidia account."
+                    },
+                    500
+                );
+            }
+
+
+            const userRow =
+                userResponse.data;
+
+
+            const scratchCards =
+                Number(
+                    userRow.scratchCards || 0
+                );
+
+
+            // -------------------------------------------------
+            // VALIDATE SCRATCH CARDS
+            // -------------------------------------------------
+
+            if (
+                !Number.isInteger(
+                    scratchCards
+                ) ||
+                scratchCards < 0
+            ) {
+
+                context.error(
+                    "Invalid server scratch card count."
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Invalid scratch card count."
+                    },
+                    500
+                );
+            }
+
+
+            // -------------------------------------------------
+            // SUCCESS
+            // -------------------------------------------------
+
+            return context.res.json(
+                {
+                    success: true,
+
+                    operation:
+                        "get_scratch_card_status",
+
+                    scratchCards:
+                        scratchCards
+                }
+            );
+
+
+        } catch (error) {
+
+            context.error(
+                "Scratch card status error: " +
+                (error.message || error)
+            );
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        error.message ||
+                        "Could not load scratch card status."
+                },
+                500
+            );
+        }
+    }
+
+
+    // =====================================================
+    // OPERATION 6
+    // SCRATCH CARD
+    // =====================================================
+
+    if (operation === "scratch_card") {
+
+        const referenceID =
+            requestData.referenceID ||
+            context.req.headers["x-learnpidia-reference-id"];
+
+
+        // -------------------------------------------------
+        // REQUIRED REFERENCE
+        // -------------------------------------------------
+
+        if (!referenceID) {
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        "referenceID is required."
+                },
+                400
+            );
+        }
+
+
+        try {
+
+            // -------------------------------------------------
+            // CHECK FOR DUPLICATE SCRATCH REFERENCE
+            // -------------------------------------------------
+
+            const duplicateQuery =
+                "/tablesdb/" +
+                databaseId +
+                "/tables/" +
+                rewardTableId +
+                "/rows/" +
+                encodeURIComponent(
+                    referenceID
+                );
+
+
+            const existingReward =
+                await appwriteRequest(
+                    duplicateQuery,
+                    "GET"
+                );
+
+
+            if (existingReward.ok) {
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        alreadyClaimed:
+                            true,
+
+                        message:
+                            "This scratch card has already been claimed."
+                    },
+                    409
+                );
+            }
+
+
+            // -------------------------------------------------
+            // GET CURRENT USER ROW
+            // -------------------------------------------------
+
+            const userRowPath =
+                "/tablesdb/" +
+                databaseId +
+                "/tables/" +
+                userTableId +
+                "/rows/" +
+                encodeURIComponent(
+                    userId
+                );
+
+
+            const userResponse =
+                await appwriteRequest(
+                    userRowPath,
+                    "GET"
+                );
+
+
+            if (!userResponse.ok) {
+
+                context.error(
+                    "Could not read user row for scratch card: " +
+                    JSON.stringify(
+                        userResponse.data
+                    )
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not read your Learnpidia account."
+                    },
+                    500
+                );
+            }
+
+
+            const userRow =
+                userResponse.data;
+
+
+            const currentBalance =
+                Number(
+                    userRow.coinBalance
+                );
+
+
+            const currentLifetimeEarned =
+                Number(
+                    userRow.lifetimeEarned || 0
+                );
+
+
+            const currentScratchCards =
+                Number(
+                    userRow.scratchCards || 0
+                );
+
+
+            // -------------------------------------------------
+            // VALIDATE ACCOUNT VALUES
+            // -------------------------------------------------
+
+            if (
+                !Number.isInteger(
+                    currentBalance
+                ) ||
+                currentBalance < 0
+            ) {
+
+                context.error(
+                    "Invalid server coin balance."
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Invalid account balance."
+                    },
+                    500
+                );
+            }
+
+
+            if (
+                !Number.isInteger(
+                    currentScratchCards
+                ) ||
+                currentScratchCards < 0
+            ) {
+
+                context.error(
+                    "Invalid server scratch card count."
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Invalid scratch card count."
+                    },
+                    500
+                );
+            }
+
+
+            // -------------------------------------------------
+            // CHECK AVAILABLE SCRATCH CARDS
+            // -------------------------------------------------
+
+            if (
+                currentScratchCards <= 0
+            ) {
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        noCardsAvailable:
+                            true,
+
+                        message:
+                            "No free scratch cards are available."
+                    },
+                    409
+                );
+            }
+
+
+            // -------------------------------------------------
+            // SERVER-CONTROLLED SCRATCH CARD REWARDS
+            // -------------------------------------------------
+
+            const scratchPrizes = [
+                10,
+                20,
+                30,
+                50,
+                75,
+                100,
+                159,
+                250
+            ];
+
+
+            // -------------------------------------------------
+            // SERVER CHOOSES WINNING PRIZE
+            // -------------------------------------------------
+
+            const selectedIndex =
+                Math.floor(
+                    Math.random() *
+                    scratchPrizes.length
+                );
+
+
+            const rewardAmount =
+                scratchPrizes[
+                    selectedIndex
+                ];
+
+
+            // -------------------------------------------------
+            // CALCULATE NEW VALUES
+            // -------------------------------------------------
+
+            const newScratchCards =
+                currentScratchCards - 1;
+
+
+            const newBalance =
+                currentBalance +
+                rewardAmount;
+
+
+            const newLifetimeEarned =
+                currentLifetimeEarned +
+                rewardAmount;
+
+
+            // =================================================
+            // CREATE UNIQUE TRANSACTION
+            // =================================================
+
+            const transactionResponse =
+                await appwriteRequest(
+
+                    "/tablesdb/transactions",
+
+                    "POST",
+
+                    {}
+                );
+
+
+            if (!transactionResponse.ok) {
+
+                context.error(
+                    "Could not create scratch card transaction: " +
+                    JSON.stringify(
+                        transactionResponse.data
+                    )
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not start scratch card transaction."
+                    },
+                    500
+                );
+            }
+
+
+            const transactionId =
+                transactionResponse.data.$id;
+
+
+            if (!transactionId) {
+
+                context.error(
+                    "Scratch card transaction ID was not returned."
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not start scratch card transaction."
+                    },
+                    500
+                );
+            }
+
+
+            // =================================================
+            // STAGE BOTH OPERATIONS
+            // =================================================
+
+            const operationsResponse =
+                await appwriteRequest(
+
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(
+                        transactionId
+                    ) +
+                    "/operations",
+
+                    "POST",
+
+                    {
+
+                        operations: [
+
+                            // ---------------------------------
+                            // UPDATE USER
+                            // ---------------------------------
+
+                            {
+                                action:
+                                    "update",
+
+                                databaseId:
+                                    databaseId,
+
+                                tableId:
+                                    userTableId,
+
+                                rowId:
+                                    userId,
+
+                                data: {
+
+                                    coinBalance:
+                                        newBalance,
+
+                                    lifetimeEarned:
+                                        newLifetimeEarned,
+
+                                    scratchCards:
+                                        newScratchCards
+                                }
+                            },
+
+
+                            // ---------------------------------
+                            // CREATE REWARD TRANSACTION
+                            // ---------------------------------
+
+                            {
+                                action:
+                                    "create",
+
+                                databaseId:
+                                    databaseId,
+
+                                tableId:
+                                    rewardTableId,
+
+                                rowId:
+                                    referenceID,
+
+                                data: {
+
+                                    userID:
+                                        userId,
+
+                                    rewardType:
+                                        "scratch_card",
+
+                                    amount:
+                                        rewardAmount,
+
+                                    referenceID:
+                                        referenceID,
+
+                                    balanceBefore:
+                                        currentBalance,
+
+                                    balanceAfter:
+                                        newBalance
+                                }
+                            }
+                        ]
+                    }
+                );
+
+
+            if (!operationsResponse.ok) {
+
+                context.error(
+                    "Could not stage scratch card operations: " +
+                    JSON.stringify(
+                        operationsResponse.data
+                    )
+                );
+
+
+                await appwriteRequest(
+
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(
+                        transactionId
+                    ),
+
+                    "PATCH",
+
+                    {
+                        rollback:
+                            true
+                    }
+                );
+
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not prepare scratch card transaction."
+                    },
+                    500
+                );
+            }
+
+
+            // =================================================
+            // COMMIT TRANSACTION
+            // =================================================
+
+            const commitResponse =
+                await appwriteRequest(
+
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(
+                        transactionId
+                    ),
+
+                    "PATCH",
+
+                    {
+                        commit:
+                            true
+                    }
+                );
+
+
+            if (!commitResponse.ok) {
+
+                context.error(
+                    "Scratch card transaction commit failed: " +
+                    JSON.stringify(
+                        commitResponse.data
+                    )
+                );
+
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Scratch card transaction could not be completed."
+                    },
+                    500
+                );
+            }
+
+
+            context.log(
+                "Scratch card reward successfully granted: +" +
+                rewardAmount +
+                " coins. Remaining cards: " +
+                newScratchCards +
+                " for user " +
+                userId
+            );
+
+
+            // =================================================
+            // SUCCESS
+            // =================================================
+
+            return context.res.json(
+                {
+                    success: true,
+
+                    operation:
+                        "scratch_card",
+
+                    selectedIndex:
+                        selectedIndex,
+
+                    amount:
+                        rewardAmount,
+
+                    remainingCards:
+                        newScratchCards,
+
+                    balance:
+                        newBalance,
+
+                    message:
+                        "Scratch card completed successfully."
+                }
+            );
+
+
+        } catch (error) {
+
+            context.error(
+                "Scratch card error: " +
+                (error.message || error)
+            );
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        error.message ||
+                        "Scratch card failed."
+                },
+                500
+            );
+        }
+    }
     
     // =====================================================
     // UNKNOWN OPERATION
