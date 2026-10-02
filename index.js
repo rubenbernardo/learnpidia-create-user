@@ -3273,18 +3273,20 @@ if (
     // Reset to 2 cards for the new
     // Luanda calendar day.
 
-    const resetResponse =
-        await appwriteRequest(
+   const resetResponse =
+    await appwriteRequest(
 
-            userRowPath,
+        userRowPath,
 
-            "PATCH",
+        "PATCH",
 
-            {
+        {
+            data: {
                 scratchCards: 2,
                 scratchResetDate: today
             }
-        );
+        }
+    );
 
 
     if (!resetResponse.ok) {
