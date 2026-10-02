@@ -262,6 +262,9 @@ async function appwriteRequest(
                             scratchCards:
                                 2,
 
+                            scratchResetDate:
+                                getLuandaDateString(),
+
                             wheelSpins:
                                 3,
 
