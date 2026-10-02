@@ -1514,14 +1514,75 @@ async function appwriteRequest(
             }
 
 
-            const userRow =
-                userResponse.data;
+           const userRow =
+    userResponse.data;
 
 
-            const currentBalance =
-                Number(
-                    userRow.coinBalance
-                );
+// -------------------------------------------------
+// CHECK DAILY LUANDA RESET
+// -------------------------------------------------
+
+const today =
+    getLuandaDateString();
+
+const scratchResetDate =
+    userRow.scratchResetDate || "";
+
+
+if (
+    scratchResetDate !== today
+) {
+
+    // Reset to 2 cards for the new
+    // Luanda calendar day.
+
+    const resetResponse =
+        await appwriteRequest(
+
+            userRowPath,
+
+            "PATCH",
+
+            {
+                scratchCards: 2,
+                scratchResetDate: today
+            }
+        );
+
+
+        if (!resetResponse.ok) {
+    
+            context.error(
+                "Could not reset daily scratch cards: " +
+                JSON.stringify(
+                    resetResponse.data
+                )
+            );
+    
+            return context.res.json(
+                {
+                    success: false,
+    
+                    message:
+                        "Could not reset your daily scratch cards."
+                },
+                500
+            );
+        }
+    
+    
+        userRow.scratchCards =
+            2;
+    
+        userRow.scratchResetDate =
+            today;
+    }
+    
+    
+    const currentBalance =
+        Number(
+            userRow.coinBalance
+        );
 
 
             const currentLifetimeEarned =
@@ -3188,14 +3249,75 @@ if (
             }
 
 
-            const userRow =
-                userResponse.data;
+          const userRow =
+    userResponse.data;
 
 
-            const scratchCards =
-                Number(
-                    userRow.scratchCards || 0
-                );
+// -------------------------------------------------
+// CHECK DAILY LUANDA RESET
+// -------------------------------------------------
+
+const today =
+    getLuandaDateString();
+
+const scratchResetDate =
+    userRow.scratchResetDate || "";
+
+
+if (
+    scratchResetDate !== today
+) {
+
+    // Reset to 2 cards for the new
+    // Luanda calendar day.
+
+    const resetResponse =
+        await appwriteRequest(
+
+            userRowPath,
+
+            "PATCH",
+
+            {
+                scratchCards: 2,
+                scratchResetDate: today
+            }
+        );
+
+
+    if (!resetResponse.ok) {
+
+        context.error(
+            "Could not reset daily scratch cards: " +
+            JSON.stringify(
+                resetResponse.data
+            )
+        );
+
+        return context.res.json(
+            {
+                success: false,
+
+                message:
+                    "Could not reset your daily scratch cards."
+            },
+            500
+        );
+    }
+
+
+    userRow.scratchCards =
+        2;
+
+    userRow.scratchResetDate =
+        today;
+}
+
+
+const scratchCards =
+    Number(
+        userRow.scratchCards || 0
+    );
 
 
             // -------------------------------------------------
