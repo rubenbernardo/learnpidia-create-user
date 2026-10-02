@@ -1537,17 +1537,19 @@ if (
     // Luanda calendar day.
 
     const resetResponse =
-        await appwriteRequest(
+    await appwriteRequest(
 
-            userRowPath,
+        userRowPath,
 
-            "PATCH",
+        "PATCH",
 
-            {
+        {
+            data: {
                 scratchCards: 2,
                 scratchResetDate: today
             }
-        );
+        }
+    );
 
 
         if (!resetResponse.ok) {
