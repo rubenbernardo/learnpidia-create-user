@@ -275,7 +275,10 @@ async function appwriteRequest(
                                 false,
 
                             quizAvailable:
-                                true
+                                true,
+
+                            quizResetDate:
+                                getLuandaDateString(),
                         },
 
                         permissions: [
@@ -3199,7 +3202,7 @@ if (
         }
     }
 
-        // =====================================================
+    // =====================================================
     // OPERATION 5
     // GET SCRATCH CARD STATUS
     // =====================================================
@@ -3934,6 +3937,719 @@ const scratchCards =
                     message:
                         error.message ||
                         "Scratch card failed."
+                },
+                500
+            );
+        }
+    }
+
+    // =====================================================
+    // OPERATION 7
+    // GET KNOWLEDGE QUIZ STATUS
+    // =====================================================
+
+    if (operation === "get_knowledge_quiz_status") {
+
+        try {
+
+            // -------------------------------------------------
+            // GET CURRENT USER ROW
+            // -------------------------------------------------
+
+            const userRowPath =
+                "/tablesdb/" +
+                databaseId +
+                "/tables/" +
+                userTableId +
+                "/rows/" +
+                encodeURIComponent(
+                    userId
+                );
+
+
+            const userResponse =
+                await appwriteRequest(
+                    userRowPath,
+                    "GET"
+                );
+
+
+            if (!userResponse.ok) {
+
+                context.error(
+                    "Could not read user row for knowledge quiz status: " +
+                    JSON.stringify(
+                        userResponse.data
+                    )
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not read your Learnpidia account."
+                    },
+                    500
+                );
+            }
+
+
+            const userRow =
+                userResponse.data;
+
+
+            // -------------------------------------------------
+            // CHECK DAILY LUANDA RESET
+            // -------------------------------------------------
+
+            const today =
+                getLuandaDateString();
+
+
+            const quizResetDate =
+                userRow.quizResetDate || "";
+
+
+            if (
+                quizResetDate !== today
+            ) {
+
+                // Reset the quiz for the new
+                // Luanda calendar day.
+
+                const resetResponse =
+                    await appwriteRequest(
+
+                        userRowPath,
+
+                        "PATCH",
+
+                        {
+                            data: {
+
+                                quizAvailable:
+                                    true,
+
+                                quizResetDate:
+                                    today
+                            }
+                        }
+                    );
+
+
+                if (!resetResponse.ok) {
+
+                    context.error(
+                        "Could not reset daily knowledge quiz: " +
+                        JSON.stringify(
+                            resetResponse.data
+                        )
+                    );
+
+                    return context.res.json(
+                        {
+                            success: false,
+
+                            message:
+                                "Could not reset your daily knowledge quiz."
+                        },
+                        500
+                    );
+                }
+
+
+                userRow.quizAvailable =
+                    true;
+
+                userRow.quizResetDate =
+                    today;
+            }
+
+
+            // -------------------------------------------------
+            // READ QUIZ AVAILABILITY
+            // -------------------------------------------------
+
+            const quizAvailable =
+                userRow.quizAvailable === true;
+
+
+            // -------------------------------------------------
+            // SUCCESS
+            // -------------------------------------------------
+
+            return context.res.json(
+                {
+                    success: true,
+
+                    operation:
+                        "get_knowledge_quiz_status",
+
+                    quizAvailable:
+                        quizAvailable
+                }
+            );
+
+
+        } catch (error) {
+
+            context.error(
+                "Knowledge quiz status error: " +
+                (error.message || error)
+            );
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        error.message ||
+                        "Could not load knowledge quiz status."
+                },
+                500
+            );
+        }
+    }
+
+    // =====================================================
+    // OPERATION 8
+    // COMPLETE KNOWLEDGE QUIZ
+    // =====================================================
+
+    if (operation === "complete_knowledge_quiz") {
+
+        const referenceID =
+            requestData.referenceID ||
+            context.req.headers["x-learnpidia-reference-id"];
+
+
+        // -------------------------------------------------
+        // REQUIRED REFERENCE
+        // -------------------------------------------------
+
+        if (!referenceID) {
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        "referenceID is required."
+                },
+                400
+            );
+        }
+
+
+        try {
+
+            // -------------------------------------------------
+            // CHECK FOR DUPLICATE QUIZ REFERENCE
+            // -------------------------------------------------
+
+            const duplicateQuery =
+                "/tablesdb/" +
+                databaseId +
+                "/tables/" +
+                rewardTableId +
+                "/rows/" +
+                encodeURIComponent(
+                    referenceID
+                );
+
+
+            const existingReward =
+                await appwriteRequest(
+                    duplicateQuery,
+                    "GET"
+                );
+
+
+            if (existingReward.ok) {
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        alreadyClaimed:
+                            true,
+
+                        message:
+                            "This knowledge quiz has already been claimed."
+                    },
+                    409
+                );
+            }
+
+
+            // -------------------------------------------------
+            // GET CURRENT USER ROW
+            // -------------------------------------------------
+
+            const userRowPath =
+                "/tablesdb/" +
+                databaseId +
+                "/tables/" +
+                userTableId +
+                "/rows/" +
+                encodeURIComponent(
+                    userId
+                );
+
+
+            const userResponse =
+                await appwriteRequest(
+                    userRowPath,
+                    "GET"
+                );
+
+
+            if (!userResponse.ok) {
+
+                context.error(
+                    "Could not read user row for knowledge quiz: " +
+                    JSON.stringify(
+                        userResponse.data
+                    )
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not read your Learnpidia account."
+                    },
+                    500
+                );
+            }
+
+
+            const userRow =
+                userResponse.data;
+
+
+            // -------------------------------------------------
+            // CHECK DAILY LUANDA RESET
+            // -------------------------------------------------
+
+            const today =
+                getLuandaDateString();
+
+
+            const quizResetDate =
+                userRow.quizResetDate || "";
+
+
+            let quizAvailable =
+                userRow.quizAvailable === true;
+
+
+            if (
+                quizResetDate !== today
+            ) {
+
+                quizAvailable =
+                    true;
+
+                userRow.quizResetDate =
+                    today;
+            }
+
+
+            // -------------------------------------------------
+            // CHECK QUIZ AVAILABILITY
+            // -------------------------------------------------
+
+            if (!quizAvailable) {
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        alreadyCompleted:
+                            true,
+
+                        message:
+                            "Today's knowledge quiz has already been completed."
+                    },
+                    409
+                );
+            }
+
+
+            // -------------------------------------------------
+            // GET CURRENT ACCOUNT VALUES
+            // -------------------------------------------------
+
+            const currentBalance =
+                Number(
+                    userRow.coinBalance
+                );
+
+
+            const currentLifetimeEarned =
+                Number(
+                    userRow.lifetimeEarned || 0
+                );
+
+
+            // -------------------------------------------------
+            // VALIDATE ACCOUNT VALUES
+            // -------------------------------------------------
+
+            if (
+                !Number.isInteger(
+                    currentBalance
+                ) ||
+                currentBalance < 0
+            ) {
+
+                context.error(
+                    "Invalid server coin balance."
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Invalid account balance."
+                    },
+                    500
+                );
+            }
+
+
+            if (
+                !Number.isInteger(
+                    currentLifetimeEarned
+                ) ||
+                currentLifetimeEarned < 0
+            ) {
+
+                context.error(
+                    "Invalid lifetime earned value."
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Invalid lifetime earned value."
+                    },
+                    500
+                );
+            }
+
+
+            // -------------------------------------------------
+            // KNOWLEDGE QUIZ REWARD
+            // -------------------------------------------------
+
+            const rewardAmount =
+                150;
+
+
+            // -------------------------------------------------
+            // CALCULATE NEW VALUES
+            // -------------------------------------------------
+
+            const newBalance =
+                currentBalance +
+                rewardAmount;
+
+
+            const newLifetimeEarned =
+                currentLifetimeEarned +
+                rewardAmount;
+
+
+            // =================================================
+            // CREATE UNIQUE TRANSACTION
+            // =================================================
+
+            const transactionResponse =
+                await appwriteRequest(
+
+                    "/tablesdb/transactions",
+
+                    "POST",
+
+                    {}
+                );
+
+
+            if (!transactionResponse.ok) {
+
+                context.error(
+                    "Could not create knowledge quiz transaction: " +
+                    JSON.stringify(
+                        transactionResponse.data
+                    )
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not start knowledge quiz transaction."
+                    },
+                    500
+                );
+            }
+
+
+            const transactionId =
+                transactionResponse.data.$id;
+
+
+            if (!transactionId) {
+
+                context.error(
+                    "Knowledge quiz transaction ID was not returned."
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not start knowledge quiz transaction."
+                    },
+                    500
+                );
+            }
+
+
+            // =================================================
+            // STAGE BOTH OPERATIONS
+            // =================================================
+
+            const operationsResponse =
+                await appwriteRequest(
+
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(
+                        transactionId
+                    ) +
+                    "/operations",
+
+                    "POST",
+
+                    {
+
+                        operations: [
+
+                            // ---------------------------------
+                            // UPDATE USER
+                            // ---------------------------------
+
+                            {
+                                action:
+                                    "update",
+
+                                databaseId:
+                                    databaseId,
+
+                                tableId:
+                                    userTableId,
+
+                                rowId:
+                                    userId,
+
+                                data: {
+
+                                    coinBalance:
+                                        newBalance,
+
+                                    lifetimeEarned:
+                                        newLifetimeEarned,
+
+                                    quizAvailable:
+                                        false,
+
+                                    quizResetDate:
+                                        today
+                                }
+                            },
+
+
+                            // ---------------------------------
+                            // CREATE REWARD TRANSACTION
+                            // ---------------------------------
+
+                            {
+                                action:
+                                    "create",
+
+                                databaseId:
+                                    databaseId,
+
+                                tableId:
+                                    rewardTableId,
+
+                                rowId:
+                                    referenceID,
+
+                                data: {
+
+                                    userID:
+                                        userId,
+
+                                    rewardType:
+                                        "knowledge_quiz",
+
+                                    amount:
+                                        rewardAmount,
+
+                                    referenceID:
+                                        referenceID,
+
+                                    balanceBefore:
+                                        currentBalance,
+
+                                    balanceAfter:
+                                        newBalance
+                                }
+                            }
+                        ]
+                    }
+                );
+
+
+            if (!operationsResponse.ok) {
+
+                context.error(
+                    "Could not stage knowledge quiz operations: " +
+                    JSON.stringify(
+                        operationsResponse.data
+                    )
+                );
+
+
+                await appwriteRequest(
+
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(
+                        transactionId
+                    ),
+
+                    "PATCH",
+
+                    {
+                        rollback:
+                            true
+                    }
+                );
+
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Could not prepare knowledge quiz transaction."
+                    },
+                    500
+                );
+            }
+
+
+            // =================================================
+            // COMMIT TRANSACTION
+            // =================================================
+
+            const commitResponse =
+                await appwriteRequest(
+
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(
+                        transactionId
+                    ),
+
+                    "PATCH",
+
+                    {
+                        commit:
+                            true
+                    }
+                );
+
+
+            if (!commitResponse.ok) {
+
+                context.error(
+                    "Knowledge quiz transaction commit failed: " +
+                    JSON.stringify(
+                        commitResponse.data
+                    )
+                );
+
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Knowledge quiz transaction could not be completed."
+                    },
+                    500
+                );
+            }
+
+
+            context.log(
+                "Knowledge quiz reward successfully granted: +" +
+                rewardAmount +
+                " coins for user " +
+                userId
+            );
+
+
+            // =================================================
+            // SUCCESS
+            // =================================================
+
+            return context.res.json(
+                {
+                    success: true,
+
+                    operation:
+                        "complete_knowledge_quiz",
+
+                    amount:
+                        rewardAmount,
+
+                    balance:
+                        newBalance,
+
+                    quizAvailable:
+                        false,
+
+                    message:
+                        "Knowledge quiz completed successfully."
+                }
+            );
+
+
+        } catch (error) {
+
+            context.error(
+                "Knowledge quiz completion error: " +
+                (error.message || error)
+            );
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        error.message ||
+                        "Knowledge quiz failed."
                 },
                 500
             );
