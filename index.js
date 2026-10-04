@@ -37,6 +37,10 @@ module.exports = async function (context) {
     const cpaleadPayout =
             context.req.query.payout;
     
+        context.log(
+        "CPALEAD API KEY PRESENT: " +
+        Boolean(apiKey)
+    );
     
     if (
             cpaleadSubid &&
@@ -50,14 +54,6 @@ module.exports = async function (context) {
                     cpaleadLeadId +
                     " payout: " +
                     cpaleadPayout
-            );
-    
-            return context.res.json(
-                    {
-                            success: true,
-                            message:
-                                    "CPALead postback detected."
-                    }
             );
     }
     
