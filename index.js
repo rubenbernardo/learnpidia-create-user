@@ -55,6 +55,433 @@ module.exports = async function (context) {
                     " payout: " +
                     cpaleadPayout
             );
+
+                const cpaleadPayoutAmount =
+                Number(cpaleadPayout);
+
+                if (
+                !Number.isFinite(
+                    cpaleadPayoutAmount
+                ) ||
+                cpaleadPayoutAmount <= 0
+        ) {
+        
+            context.error(
+                "Invalid CPALead payout: " +
+                cpaleadPayout
+            );
+        
+            return context.res.json(
+                {
+                    success: false,
+                    message:
+                        "Invalid CPALead payout."
+                },
+                400
+            );
+        }
+        
+        const cpaleadRewardCoins =
+                Math.floor(
+                    cpaleadPayoutAmount * 10000
+                );
+
+                if (
+                cpaleadRewardCoins <= 0
+        ) {
+        
+            context.error(
+                "CPALead reward calculated as zero coins."
+            );
+        
+            return context.res.json(
+                {
+                    success: false,
+                    message:
+                        "CPALead reward is too small."
+                },
+                400
+            );
+        }
+
+        const cpaleadUserId =
+        cpaleadSubid;
+
+const cpaleadUserRowPath =
+        "/tablesdb/" +
+        databaseId +
+        "/tables/" +
+        userTableId +
+        "/rows/" +
+        encodeURIComponent(
+            cpaleadUserId
+        );
+
+        const cpaleadUserResponse =
+        await appwriteRequest(
+            cpaleadUserRowPath,
+            "GET"
+        );
+
+
+if (
+        !cpaleadUserResponse.ok
+) {
+
+    context.error(
+        "Could not find CPALead user: " +
+        JSON.stringify(
+            cpaleadUserResponse.data
+        )
+    );
+
+    return context.res.json(
+        {
+            success: false,
+            message:
+                "Learnpidia user account was not found."
+        },
+        404
+    );
+}
+
+
+const cpaleadUserRow =
+        cpaleadUserResponse.data;
+
+        const cpaleadCurrentBalance =
+        Number(
+            cpaleadUserRow.coinBalance
+        );
+
+const cpaleadCurrentLifetimeEarned =
+        Number(
+            cpaleadUserRow.lifetimeEarned || 0
+        );
+
+
+if (
+        !Number.isInteger(
+            cpaleadCurrentBalance
+        ) ||
+        cpaleadCurrentBalance < 0
+) {
+
+    context.error(
+        "Invalid CPALead user coin balance."
+    );
+
+    return context.res.json(
+        {
+            success: false,
+            message:
+                "Invalid account balance."
+        },
+        500
+    );
+}
+
+
+const cpaleadNewBalance =
+        cpaleadCurrentBalance +
+        cpaleadRewardCoins;
+
+const cpaleadNewLifetimeEarned =
+        cpaleadCurrentLifetimeEarned +
+        cpaleadRewardCoins;
+
+        const cpaleadReferenceID =
+        "cpalead_" +
+        cpaleadLeadId;
+
+
+const cpaleadDuplicateQuery =
+        "/tablesdb/" +
+        databaseId +
+        "/tables/" +
+        rewardTableId +
+        "/rows/" +
+        encodeURIComponent(
+            cpaleadReferenceID
+        );
+
+
+const cpaleadExistingReward =
+        await appwriteRequest(
+            cpaleadDuplicateQuery,
+            "GET"
+        );
+
+
+if (
+        cpaleadExistingReward.ok
+) {
+
+    context.log(
+        "CPALead duplicate lead ignored: " +
+        cpaleadLeadId
+    );
+
+    return context.res.json(
+        {
+            success: true,
+            message:
+                "CPALead lead already rewarded."
+        }
+    );
+}
+
+        const cpaleadTransactionResponse =
+        await appwriteRequest(
+            "/tablesdb/transactions",
+            "POST",
+            {}
+        );
+
+
+if (
+        !cpaleadTransactionResponse.ok
+) {
+
+    context.error(
+        "Could not create CPALead transaction: " +
+        JSON.stringify(
+            cpaleadTransactionResponse.data
+        )
+    );
+
+    return context.res.json(
+        {
+            success: false,
+            message:
+                "Could not start CPALead reward transaction."
+        },
+        500
+    );
+}
+
+
+const cpaleadTransactionId =
+        cpaleadTransactionResponse.data.$id;
+
+
+if (!cpaleadTransactionId) {
+
+    context.error(
+        "CPALead transaction ID was not returned."
+    );
+
+    return context.res.json(
+        {
+            success: false,
+            message:
+                "Could not start CPALead reward transaction."
+        },
+        500
+    );
+
+
+}
+
+
+context.log(
+    "CPALead transaction created: " +
+    cpaleadTransactionId
+);
+
+    const cpaleadOperationsResponse =
+        await appwriteRequest(
+
+            "/tablesdb/transactions/" +
+            encodeURIComponent(
+                cpaleadTransactionId
+            ) +
+            "/operations",
+
+            "POST",
+
+            {
+
+                operations: [
+
+                    {
+                        action:
+                            "update",
+
+                        databaseId:
+                            databaseId,
+
+                        tableId:
+                            userTableId,
+
+                        rowId:
+                            cpaleadUserId,
+
+                        data: {
+
+                            coinBalance:
+                                cpaleadNewBalance,
+
+                            lifetimeEarned:
+                                cpaleadNewLifetimeEarned
+                        }
+                    },
+
+                    {
+                        action:
+                            "create",
+
+                        databaseId:
+                            databaseId,
+
+                        tableId:
+                            rewardTableId,
+
+                        rowId:
+                            cpaleadReferenceID,
+
+                        data: {
+
+                            userID:
+                                cpaleadUserId,
+
+                            rewardType:
+                                "cpalead_offer",
+
+                            amount:
+                                cpaleadRewardCoins,
+
+                            referenceID:
+                                cpaleadReferenceID,
+
+                            balanceBefore:
+                                cpaleadCurrentBalance,
+
+                            balanceAfter:
+                                cpaleadNewBalance
+                        }
+                    }
+                ]
+            }
+        );
+
+        if (
+        !cpaleadOperationsResponse.ok
+) {
+
+    context.error(
+        "Could not stage CPALead reward operations: " +
+        JSON.stringify(
+            cpaleadOperationsResponse.data
+        )
+    );
+
+    await appwriteRequest(
+
+        "/tablesdb/transactions/" +
+        encodeURIComponent(
+            cpaleadTransactionId
+        ),
+
+        "PATCH",
+
+        {
+            rollback:
+                true
+        }
+    );
+
+    return context.res.json(
+        {
+            success: false,
+            message:
+                "Could not prepare CPALead reward."
+        },
+        500
+    );
+}
+
+
+context.log(
+    "CPALead reward operations staged successfully."
+);
+
+        const cpaleadCommitResponse =
+        await appwriteRequest(
+
+            "/tablesdb/transactions/" +
+            encodeURIComponent(
+                cpaleadTransactionId
+            ),
+
+            "PATCH",
+
+            {
+                commit:
+                    true
+            }
+        );
+
+
+if (
+        !cpaleadCommitResponse.ok
+) {
+
+    context.error(
+        "CPALead transaction commit failed: " +
+        JSON.stringify(
+            cpaleadCommitResponse.data
+        )
+    );
+
+    return context.res.json(
+        {
+            success: false,
+            message:
+                "CPALead reward could not be completed."
+        },
+        500
+    );
+}
+
+
+context.log(
+    "CPALead transaction committed successfully."
+);
+
+        context.log(
+    "CPALead reward successfully granted: +" +
+    cpaleadRewardCoins +
+    " coins to " +
+    cpaleadUserId
+);
+
+
+return context.res.json(
+    {
+        success: true,
+
+        operation:
+            "cpalead_reward",
+
+        payout:
+            cpaleadPayoutAmount,
+
+        amount:
+            cpaleadRewardCoins,
+
+        balance:
+            cpaleadNewBalance,
+
+        message:
+            "CPALead reward processed successfully."
+    }
+);
+        
+        context.log(
+            "CPALead reward coins: " +
+            cpaleadRewardCoins
+        );
     }
     
     // =====================================================
