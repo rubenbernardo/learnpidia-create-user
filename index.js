@@ -6,10 +6,6 @@ module.exports = async function (context) {
     const apiKey =
         context.req.headers["x-appwrite-key"];
 
-    const isCPALeadPostback =
-        context.req.query &&
-        context.req.query.subid;
-
     const endpoint =
         process.env.APPWRITE_FUNCTION_API_ENDPOINT;
 
@@ -27,8 +23,7 @@ module.exports = async function (context) {
 
     const knowledgeQuizQuestionsTableId =
     "6ac213c200378ddae29d";
-
-
+    
     // =====================================================
     // CHECK AUTHENTICATION
     // =====================================================
@@ -100,6 +95,10 @@ module.exports = async function (context) {
         );
     }
 
+    context.log(
+    "REQUEST QUERY: " +
+    JSON.stringify(context.req.query)
+);
 
     const operation =
         requestData.operation ||
