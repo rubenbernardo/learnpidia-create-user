@@ -23,6 +23,43 @@ module.exports = async function (context) {
 
     const knowledgeQuizQuestionsTableId =
     "6ac213c200378ddae29d";
+
+    // =====================================================
+    // CHECK FOR CPALEAD POSTBACK
+    // =====================================================
+    
+    const cpaleadSubid =
+            context.req.query.subid;
+    
+    const cpaleadLeadId =
+            context.req.query.lead_id;
+    
+    const cpaleadPayout =
+            context.req.query.payout;
+    
+    
+    if (
+            cpaleadSubid &&
+            cpaleadLeadId
+    ) {
+    
+            context.log(
+                    "CPALead postback received for user: " +
+                    cpaleadSubid +
+                    " lead: " +
+                    cpaleadLeadId +
+                    " payout: " +
+                    cpaleadPayout
+            );
+    
+            return context.res.json(
+                    {
+                            success: true,
+                            message:
+                                    "CPALead postback detected."
+                    }
+            );
+    }
     
     // =====================================================
     // CHECK AUTHENTICATION
