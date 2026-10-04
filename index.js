@@ -21,6 +21,9 @@ module.exports = async function (context) {
     const rewardTableId =
         "6abbf9f8000f2fab9b04";
 
+    const knowledgeQuizQuestionsTableId =
+    "6ac213c200378ddae29d";
+
 
     // =====================================================
     // CHECK AUTHENTICATION
@@ -4112,6 +4115,83 @@ const scratchCards =
         }
     }
 
+// =====================================================
+// GET KNOWLEDGE QUIZ QUESTIONS
+// =====================================================
+
+if (operation === "get_knowledge_quiz_questions") {
+
+    try {
+
+        const questionsPath =
+            "/tablesdb/" +
+            databaseId +
+            "/tables/" +
+            knowledgeQuizQuestionsTableId +
+            "/rows";
+
+        const questionsResponse =
+            await appwriteRequest(
+                questionsPath,
+                "GET"
+            );
+
+        if (!questionsResponse.ok) {
+
+            context.error(
+                "Could not read knowledge quiz questions: " +
+                JSON.stringify(
+                    questionsResponse.data
+                )
+            );
+
+            return context.res.json(
+                {
+                    success: false,
+                    message:
+                        "Could not load knowledge quiz questions."
+                },
+                500
+            );
+        }
+
+        const rows =
+            questionsResponse.data.rows || [];
+
+        const questions =
+            rows.map(
+                row => row.data
+            );
+
+        return context.res.json(
+            {
+                success: true,
+                operation:
+                    "get_knowledge_quiz_questions",
+                questions:
+                    questions
+            }
+        );
+
+    } catch (error) {
+
+        context.error(
+            "Knowledge quiz questions error: " +
+            (error.message || error)
+        );
+
+        return context.res.json(
+            {
+                success: false,
+                message:
+                    error.message ||
+                    "Could not load knowledge quiz questions."
+            },
+            500
+        );
+    }
+}
+    
     // =====================================================
     // OPERATION 8
     // COMPLETE KNOWLEDGE QUIZ
