@@ -4158,9 +4158,9 @@ if (operation === "get_knowledge_quiz_questions") {
         const rows =
             questionsResponse.data.rows || [];
 
-        const questions =
+       const questions =
             rows.map(
-                row => row.data
+                row => row
             );
 
         return context.res.json(
