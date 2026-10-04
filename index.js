@@ -768,9 +768,12 @@ async function appwriteRequest(
 
                             quizAvailable:
                                 true,
-
+                            
                             quizResetDate:
                                 getLuandaDateString(),
+                            
+                            unlockedProducts:
+                                ""
                         },
 
                         permissions: [
@@ -5224,6 +5227,577 @@ if (operation === "get_knowledge_quiz_questions") {
             );
         }
     }
+
+    // =====================================================
+// PURCHASE DIGITAL PRODUCT
+// =====================================================
+
+if (operation === "purchase_product") {
+
+    try {
+
+        // -------------------------------------------------
+        // READ PRODUCT ID
+        // -------------------------------------------------
+
+        const productId =
+            String(
+                requestData.productId || ""
+            ).trim();
+
+
+        if (!productId) {
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        "Product ID is required."
+                },
+                400
+            );
+        }
+
+
+        // -------------------------------------------------
+        // SERVER-SIDE PRODUCT CATALOG
+        // -------------------------------------------------
+
+        const products = {
+
+            "cut-smart": {
+
+                price:
+                    15000,
+
+                fileKey:
+                    "Cut Smart - Ebook.pdf"
+            }
+
+        };
+
+
+        const product =
+            products[productId];
+
+
+        if (!product) {
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        "Product not found."
+                },
+                404
+            );
+        }
+
+
+        // -------------------------------------------------
+        // GET CURRENT USER ROW
+        // -------------------------------------------------
+
+        const userRowPath =
+            "/tablesdb/" +
+            databaseId +
+            "/tables/" +
+            userTableId +
+            "/rows/" +
+            encodeURIComponent(
+                userId
+            );
+
+
+        const userResponse =
+            await appwriteRequest(
+                userRowPath,
+                "GET"
+            );
+
+
+        if (!userResponse.ok) {
+
+            context.error(
+                "Could not read user row for product purchase: " +
+                JSON.stringify(
+                    userResponse.data
+                )
+            );
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        "Could not read your Learnpidia account."
+                },
+                500
+            );
+        }
+
+
+        const userRow =
+            userResponse.data;
+
+
+        // -------------------------------------------------
+        // READ SERVER VALUES
+        // -------------------------------------------------
+
+        const currentBalance =
+            Number(
+                userRow.coinBalance
+            );
+
+
+        const currentTotalSpent =
+            Number(
+                userRow.totalSpent || 0
+            );
+
+
+        const unlockedProductsText =
+            String(
+                userRow.unlockedProducts || ""
+            );
+
+
+        // -------------------------------------------------
+        // VALIDATE SERVER VALUES
+        // -------------------------------------------------
+
+        if (
+            !Number.isInteger(
+                currentBalance
+            ) ||
+            currentBalance < 0
+        ) {
+
+            context.error(
+                "Invalid server coin balance."
+            );
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        "Invalid account balance."
+                },
+                500
+            );
+        }
+
+
+        if (
+            !Number.isInteger(
+                currentTotalSpent
+            ) ||
+            currentTotalSpent < 0
+        ) {
+
+            context.error(
+                "Invalid total spent value."
+            );
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        "Invalid account spending data."
+                },
+                500
+            );
+        }
+
+
+        // -------------------------------------------------
+        // READ UNLOCKED PRODUCTS
+        // -------------------------------------------------
+
+        let unlockedProducts = [];
+
+
+        if (unlockedProductsText) {
+
+            try {
+
+                unlockedProducts =
+                    JSON.parse(
+                        unlockedProductsText
+                    );
+
+            } catch (error) {
+
+                context.error(
+                    "Invalid unlockedProducts data."
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+
+                        message:
+                            "Invalid product ownership data."
+                    },
+                    500
+                );
+            }
+        }
+
+
+        if (
+            !Array.isArray(
+                unlockedProducts
+            )
+        ) {
+
+            context.error(
+                "unlockedProducts is not an array."
+            );
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        "Invalid product ownership data."
+                },
+                500
+            );
+        }
+
+
+        // -------------------------------------------------
+        // CHECK IF ALREADY PURCHASED
+        // -------------------------------------------------
+
+        if (
+            unlockedProducts.includes(
+                productId
+            )
+        ) {
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    alreadyOwned:
+                        true,
+
+                    message:
+                        "You already own this product."
+                },
+                409
+            );
+        }
+
+
+        // -------------------------------------------------
+        // CHECK COIN BALANCE
+        // -------------------------------------------------
+
+        if (
+            currentBalance <
+            product.price
+        ) {
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    insufficientCoins:
+                        true,
+
+                    balance:
+                        currentBalance,
+
+                    price:
+                        product.price,
+
+                    message:
+                        "Not enough LP Coins."
+                },
+                400
+            );
+        }
+
+
+        // -------------------------------------------------
+        // CALCULATE NEW VALUES
+        // -------------------------------------------------
+
+        const newBalance =
+            currentBalance -
+            product.price;
+
+
+        const newTotalSpent =
+            currentTotalSpent +
+            product.price;
+
+
+        unlockedProducts.push(
+            productId
+        );
+
+
+        const newUnlockedProducts =
+            JSON.stringify(
+                unlockedProducts
+            );
+
+
+        // =================================================
+        // CREATE APPWRITE TRANSACTION
+        // =================================================
+
+        const transactionResponse =
+            await appwriteRequest(
+
+                "/tablesdb/transactions",
+
+                "POST",
+
+                {}
+            );
+
+
+        if (!transactionResponse.ok) {
+
+            context.error(
+                "Could not create product purchase transaction: " +
+                JSON.stringify(
+                    transactionResponse.data
+                )
+            );
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        "Could not start product purchase."
+                },
+                500
+            );
+        }
+
+
+        const transactionId =
+            transactionResponse.data.$id;
+
+
+        if (!transactionId) {
+
+            context.error(
+                "Product purchase transaction ID was not returned."
+            );
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        "Could not start product purchase."
+                },
+                500
+            );
+        }
+
+
+        // =================================================
+        // STAGE USER UPDATE
+        // =================================================
+
+        const operationsResponse =
+            await appwriteRequest(
+
+                "/tablesdb/transactions/" +
+                encodeURIComponent(
+                    transactionId
+                ) +
+                "/operations",
+
+                "POST",
+
+                {
+
+                    operations: [
+
+                        {
+                            action:
+                                "update",
+
+                            databaseId:
+                                databaseId,
+
+                            tableId:
+                                userTableId,
+
+                            rowId:
+                                userId,
+
+                            data: {
+
+                                coinBalance:
+                                    newBalance,
+
+                                totalSpent:
+                                    newTotalSpent,
+
+                                unlockedProducts:
+                                    newUnlockedProducts
+                            }
+                        }
+                    ]
+                }
+            );
+
+
+        if (!operationsResponse.ok) {
+
+            context.error(
+                "Could not stage product purchase: " +
+                JSON.stringify(
+                    operationsResponse.data
+                )
+            );
+
+
+            await appwriteRequest(
+
+                "/tablesdb/transactions/" +
+                encodeURIComponent(
+                    transactionId
+                ),
+
+                "PATCH",
+
+                {
+                    rollback:
+                        true
+                }
+            );
+
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        "Could not prepare product purchase."
+                },
+                500
+            );
+        }
+
+
+        // =================================================
+        // COMMIT TRANSACTION
+        // =================================================
+
+        const commitResponse =
+            await appwriteRequest(
+
+                "/tablesdb/transactions/" +
+                encodeURIComponent(
+                    transactionId
+                ),
+
+                "PATCH",
+
+                {
+                    commit:
+                        true
+                }
+            );
+
+
+        if (!commitResponse.ok) {
+
+            context.error(
+                "Product purchase transaction commit failed: " +
+                JSON.stringify(
+                    commitResponse.data
+                )
+            );
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        "Product purchase could not be completed."
+                },
+                500
+            );
+        }
+
+
+        // =================================================
+        // SUCCESS
+        // =================================================
+
+        context.log(
+            "Product purchased: " +
+            productId +
+            " for " +
+            product.price +
+            " coins by user " +
+            userId
+        );
+
+
+        return context.res.json(
+            {
+                success:
+                    true,
+
+                operation:
+                    "purchase_product",
+
+                productId:
+                    productId,
+
+                price:
+                    product.price,
+
+                balance:
+                    newBalance,
+
+                unlocked:
+                    true,
+
+                message:
+                    "Product purchased successfully."
+            }
+        );
+
+
+    } catch (error) {
+
+        context.error(
+            "Product purchase error: " +
+            (error.message || error)
+        );
+
+        return context.res.json(
+            {
+                success: false,
+
+                message:
+                    error.message ||
+                    "Product purchase failed."
+            },
+            500
+        );
+    }
+}
     
     // =====================================================
     // UNKNOWN OPERATION
