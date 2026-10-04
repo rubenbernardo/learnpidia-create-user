@@ -5798,6 +5798,189 @@ if (operation === "purchase_product") {
         );
     }
 }
+
+    // =====================================================
+// GET PRODUCT DOWNLOAD URL
+// =====================================================
+
+if (operation === "get_product_download_url") {
+
+    try {
+
+        const productId =
+            requestData.productId;
+
+        // -------------------------------------------------
+        // SERVER-SIDE PRODUCT CATALOG
+        // -------------------------------------------------
+
+        const products = {
+
+            "cut-smart": {
+
+                fileKey:
+                    "Cut Smart - Ebook.pdf"
+            }
+        };
+
+
+        // -------------------------------------------------
+        // VALIDATE PRODUCT
+        // -------------------------------------------------
+
+        const product =
+            products[productId];
+
+        if (!product) {
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        "Product not found."
+                },
+                404
+            );
+        }
+
+
+        // -------------------------------------------------
+        // GET CURRENT USER
+        // -------------------------------------------------
+
+        const userResponse =
+            await appwriteRequest(
+                "/tablesdb/" +
+                databaseId +
+                "/tables/" +
+                userTableId +
+                "/rows/" +
+                encodeURIComponent(userId),
+
+                "GET"
+            );
+
+
+        if (!userResponse.ok) {
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        "Unable to load user data."
+                },
+                500
+            );
+        }
+
+
+        const userData =
+            userResponse.data;
+
+
+        // -------------------------------------------------
+        // READ UNLOCKED PRODUCTS
+        // -------------------------------------------------
+
+        let unlockedProducts = [];
+
+        try {
+
+            unlockedProducts =
+                userData.unlockedProducts
+                    ? JSON.parse(
+                        userData.unlockedProducts
+                    )
+                    : [];
+
+        } catch (error) {
+
+            unlockedProducts = [];
+        }
+
+
+        // -------------------------------------------------
+        // CHECK OWNERSHIP
+        // -------------------------------------------------
+
+        if (
+            !Array.isArray(unlockedProducts) ||
+            !unlockedProducts.includes(productId)
+        ) {
+
+            return context.res.json(
+                {
+                    success: false,
+
+                    message:
+                        "Product has not been purchased."
+                },
+                403
+            );
+        }
+
+
+        // -------------------------------------------------
+        // CREATE TEMPORARY B2 DOWNLOAD URL
+        // -------------------------------------------------
+
+        const command =
+            new GetObjectCommand({
+                Bucket:
+                    process.env.B2_BUCKET_NAME,
+
+                Key:
+                    product.fileKey
+            });
+
+
+        const downloadUrl =
+            await getSignedUrl(
+                b2Client,
+                command,
+                {
+                    expiresIn:
+                        300
+                }
+            );
+
+
+        // -------------------------------------------------
+        // SUCCESS
+        // -------------------------------------------------
+
+        return context.res.json(
+            {
+                success: true,
+
+                productId:
+                    productId,
+
+                downloadUrl:
+                    downloadUrl
+            }
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Get product download URL error:",
+            error
+        );
+
+        return context.res.json(
+            {
+                success: false,
+
+                message:
+                    "Unable to create download URL."
+            },
+            500
+        );
+    }
+}
     
     // =====================================================
     // UNKNOWN OPERATION
