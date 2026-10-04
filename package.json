@@ -3,5 +3,9 @@
   "version": "1.0.0",
   "description": "Creates the Learnpidia user data row after registration.",
   "main": "index.js",
-  "type": "commonjs"
+  "type": "commonjs",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.879.0",
+    "@aws-sdk/s3-request-presigner": "^3.879.0"
+  }
 }
