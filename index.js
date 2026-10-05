@@ -5273,6 +5273,12 @@ if (operation === "purchase_product") {
 
                 fileKey:
                     "Cut Smart - Ebook.pdf"
+            },
+
+            "hire-right-keep-them-longer": {
+                price: 25000,
+                fileKey:
+                    "Business & Entrepreneurship/Books/Hire Right, Keep Them Longer - Book.pdf"
             }
 
         };
@@ -5799,7 +5805,7 @@ if (operation === "purchase_product") {
     }
 }
 
-    // =====================================================
+// =====================================================
 // GET PRODUCT DOWNLOAD URL
 // =====================================================
 
@@ -5815,11 +5821,14 @@ if (operation === "get_product_download_url") {
         // -------------------------------------------------
 
         const products = {
-
             "cut-smart": {
-
                 fileKey:
                     "Cut Smart - Ebook.pdf"
+            },
+        
+            "hire-right-keep-them-longer": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/Hire Right, Keep Them Longer - Book.pdf"
             }
         };
 
