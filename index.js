@@ -5659,6 +5659,13 @@ if (operation === "purchase_product") {
                     1000,
                 fileKey:
                     "Business & Entrepreneurship/Listicle/21 Workshop Secrets That Create Consistent Revenue - Listicle.pdf"
+            },
+
+            "7-conversion-killers-hiding-on-your-product-pages": {
+                price:
+                    850,
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/7 Conversion Killers Hiding on Your Product Pages - Listicle.pdf"
             },,,
 
         };
@@ -6494,6 +6501,11 @@ if (operation === "get_product_download_url") {
             "21-workshop-secrets-that-create-consistent-revenue": {
                 fileKey:
                     "Business & Entrepreneurship/Listicle/21 Workshop Secrets That Create Consistent Revenue - Listicle.pdf"
+            },
+
+            "7-conversion-killers-hiding-on-your-product-pages": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/7 Conversion Killers Hiding on Your Product Pages - Listicle.pdf"
             },,,
         };
 
