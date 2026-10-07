@@ -5465,6 +5465,76 @@ if (operation === "purchase_product") {
                     "Business & Entrepreneurship/Checklist/The Scalable Service Delivery Setup Checklist.pdf"
             },
 
+            "from-hourly-to-value-based-pricing": {
+                price:
+                    3000,
+                fileKey:
+                    "Business & Entrepreneurship/Guide/From Hourly to Value-Based Pricing - Guide.pdf"
+            },
+
+            "productize-any-freelance-skill-in-one-weekend": {
+                price:
+                    2500,
+                fileKey:
+                    "Business & Entrepreneurship/Guide/Productize Any Freelance Skill in One Weekend - Guide.pdf"
+            },
+
+            "score-your-passive-income-idea-in-30-minutes": {
+                price:
+                    500,
+                fileKey:
+                    "Business & Entrepreneurship/Guide/Score Your Passive Income Idea in 30 Minutes - Guide.pdf"
+            },
+
+            "site-speed-optimization-for-non-technical-store-owners": {
+                price:
+                    1200,
+                fileKey:
+                    "Business & Entrepreneurship/Guide/Site Speed Optimization for Non-Technical Store Owners - Guide.pdf"
+            },
+
+            "stop-losing-top-talent-at-the-interview-stage": {
+                price:
+                    1500,
+                fileKey:
+                    "Business & Entrepreneurship/Guide/Stop Losing Top Talent at the Interview Stage - Guide.pdf"
+            },
+
+            "the-30-day-lean-launch-plan": {
+                price:
+                    2800,
+                fileKey:
+                    "Business & Entrepreneurship/Guide/The 30-Day Lean Launch Plan - Guide.pdf"
+            },
+
+            "the-four-beat-vendor-renegotiation-script": {
+                price:
+                    800,
+                fileKey:
+                    "Business & Entrepreneurship/Guide/The Four-Beat Vendor Renegotiation Script - Guide.pdf"
+            },
+
+            "the-structured-interview-playbook": {
+                price:
+                    1800,
+                fileKey:
+                    "Business & Entrepreneurship/Guide/The Structured Interview Playbook - Guide.pdf"
+            },
+
+            "the-three-number-pricing-formula": {
+                price:
+                    1000,
+                fileKey:
+                    "Business & Entrepreneurship/Guide/The Three-Number Pricing Formula - Guide.pdf"
+            },
+
+            "the-weekend-cash-control-setup": {
+                price:
+                    2200,
+                fileKey:
+                    "Business & Entrepreneurship/Guide/The Weekend Cash Control Setup - Guide.pdf"
+            },,
+
         };
 
 
@@ -6159,6 +6229,56 @@ if (operation === "get_product_download_url") {
                 fileKey:
                     "Business & Entrepreneurship/Checklist/The Scalable Service Delivery Setup Checklist.pdf"
             },
+
+            "from-hourly-to-value-based-pricing": {
+                fileKey:
+                    "Business & Entrepreneurship/Guide/From Hourly to Value-Based Pricing - Guide.pdf"
+            },
+
+            "productize-any-freelance-skill-in-one-weekend": {
+                fileKey:
+                    "Business & Entrepreneurship/Guide/Productize Any Freelance Skill in One Weekend - Guide.pdf"
+            },
+
+            "score-your-passive-income-idea-in-30-minutes": {
+                fileKey:
+                    "Business & Entrepreneurship/Guide/Score Your Passive Income Idea in 30 Minutes - Guide.pdf"
+            },
+
+            "site-speed-optimization-for-non-technical-store-owners": {
+                fileKey:
+                    "Business & Entrepreneurship/Guide/Site Speed Optimization for Non-Technical Store Owners - Guide.pdf"
+            },
+
+            "stop-losing-top-talent-at-the-interview-stage": {
+                fileKey:
+                    "Business & Entrepreneurship/Guide/Stop Losing Top Talent at the Interview Stage - Guide.pdf"
+            },
+
+            "the-30-day-lean-launch-plan": {
+                fileKey:
+                    "Business & Entrepreneurship/Guide/The 30-Day Lean Launch Plan - Guide.pdf"
+            },
+
+            "the-four-beat-vendor-renegotiation-script": {
+                fileKey:
+                    "Business & Entrepreneurship/Guide/The Four-Beat Vendor Renegotiation Script - Guide.pdf"
+            },
+
+            "the-structured-interview-playbook": {
+                fileKey:
+                    "Business & Entrepreneurship/Guide/The Structured Interview Playbook - Guide.pdf"
+            },
+
+            "the-three-number-pricing-formula": {
+                fileKey:
+                    "Business & Entrepreneurship/Guide/The Three-Number Pricing Formula - Guide.pdf"
+            },
+
+            "the-weekend-cash-control-setup": {
+                fileKey:
+                    "Business & Entrepreneurship/Guide/The Weekend Cash Control Setup - Guide.pdf"
+            },,
         };
 
 
