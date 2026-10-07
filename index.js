@@ -5668,6 +5668,69 @@ if (operation === "purchase_product") {
                     "Business & Entrepreneurship/Listicle/7 Conversion Killers Hiding on Your Product Pages - Listicle.pdf"
             },
 
+            "beyond-the-side-hustle": {
+                price:
+                    32000,
+                fileKey:
+                    "Business & Entrepreneurship/Podcast/Beyond the Side Hustle - Podcast.pdf"
+            },
+
+            "business-cash-control": {
+                price:
+                    45000,
+                fileKey:
+                    "Business & Entrepreneurship/Podcast/Business Cash Control - Podcast.pdf"
+            },
+
+            "cost-control-that-compounds": {
+                price:
+                    45000,
+                fileKey:
+                    "Business & Entrepreneurship/Podcast/Cost Control That Compounds - Podcast.pdf"
+            },
+
+            "fast-cash-freelancer": {
+                price:
+                    28000,
+                fileKey:
+                    "Business & Entrepreneurship/Podcast/Fast Cash Freelancer - Podcast.pdf"
+            },
+
+            "hiring-without-regret": {
+                price:
+                    38000,
+                fileKey:
+                    "Business & Entrepreneurship/Podcast/Hiring Without Regret - Podcast.pdf"
+            },
+
+            "stores-that-convert": {
+                price:
+                    35000,
+                fileKey:
+                    "Business & Entrepreneurship/Podcast/Stores That Convert - Podcast.pdf"
+            },
+
+            "the-brain-friendly-workplace": {
+                price:
+                    25000,
+                fileKey:
+                    "Business & Entrepreneurship/Podcast/The Brain-Friendly Workplace - Podcast.pdf"
+            },
+
+            "the-entrepreneur-starting-line": {
+                price:
+                    20000,
+                fileKey:
+                    "Business & Entrepreneurship/Podcast/The Entrepreneur Starting Line - Podcast.pdf"
+            },
+
+            "the-scalable-expert-model": {
+                price:
+                    50000,
+                fileKey:
+                    "Business & Entrepreneurship/Podcast/The Scalable Expert Model - Podcast.pdf"
+            },,
+
         };
 
 
@@ -6507,6 +6570,51 @@ if (operation === "get_product_download_url") {
                 fileKey:
                     "Business & Entrepreneurship/Listicle/7 Conversion Killers Hiding on Your Product Pages - Listicle.pdf"
             },
+
+            "beyond-the-side-hustle": {
+                fileKey:
+                    "Business & Entrepreneurship/Podcast/Beyond the Side Hustle - Podcast.pdf"
+            },
+
+            "business-cash-control": {
+                fileKey:
+                    "Business & Entrepreneurship/Podcast/Business Cash Control - Podcast.pdf"
+            },
+
+            "cost-control-that-compounds": {
+                fileKey:
+                    "Business & Entrepreneurship/Podcast/Cost Control That Compounds - Podcast.pdf"
+            },
+
+            "fast-cash-freelancer": {
+                fileKey:
+                    "Business & Entrepreneurship/Podcast/Fast Cash Freelancer - Podcast.pdf"
+            },
+
+            "hiring-without-regret": {
+                fileKey:
+                    "Business & Entrepreneurship/Podcast/Hiring Without Regret - Podcast.pdf"
+            },
+
+            "stores-that-convert": {
+                fileKey:
+                    "Business & Entrepreneurship/Podcast/Stores That Convert - Podcast.pdf"
+            },
+
+            "the-brain-friendly-workplace": {
+                fileKey:
+                    "Business & Entrepreneurship/Podcast/The Brain-Friendly Workplace - Podcast.pdf"
+            },
+
+            "the-entrepreneur-starting-line": {
+                fileKey:
+                    "Business & Entrepreneurship/Podcast/The Entrepreneur Starting Line - Podcast.pdf"
+            },
+
+            "the-scalable-expert-model": {
+                fileKey:
+                    "Business & Entrepreneurship/Podcast/The Scalable Expert Model - Podcast.pdf"
+            },,
         };
 
 
