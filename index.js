@@ -5661,6 +5661,104 @@ if (operation === "purchase_product") {
                     "Business & Entrepreneurship/Listicle/21 Workshop Secrets That Create Consistent Revenue - Listicle.pdf"
             },
 
+            "agency-transformation-assistant": {
+                price:
+                    1200,
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Agency Transformation Assistant - Prompts.pdf"
+            },
+
+            "build-your-high-ticket-service-business": {
+                price:
+                    1500,
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Build Your High-Ticket Service Business - Prompts.pdf"
+            },
+
+            "control-your-business-cash-flow": {
+                price:
+                    1400,
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Control Your Business Cash Flow - Prompts.pdf"
+            },
+
+            "create-professional-visual-identity": {
+                price:
+                    900,
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Create Professional Visual Identity - Prompts.pdf"
+            },
+
+            "first-time-entrepreneurs-launch-assistant": {
+                price:
+                    750,
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/First-Time Entrepreneurs Launch Assistant - Prompts.pdf"
+            },
+
+            "mastering-confident-sales-closing": {
+                price:
+                    1100,
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Mastering Confident Sales Closing - Prompts.pdf"
+            },
+
+            "neuroinclusive-leadership-copilot": {
+                price:
+                    800,
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Neuroinclusive Leadership Copilot - Prompts.pdf"
+            },
+
+            "passive-income-build-systematize": {
+                price:
+                    1300,
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Passive Income Build & Systematize - Prompts.pdf"
+            },
+
+            "strategic-brand-evolution": {
+                price:
+                    1150,
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Strategic Brand Evolution - Prompts.pdf"
+            },
+
+            "strategic-cost-reduction": {
+                price:
+                    1250,
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Strategic Cost Reduction - Prompts.pdf"
+            },
+
+            "strategic-planning-assistant": {
+                price:
+                    500,
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Strategic Planning Assistant - Prompts.pdf"
+            },
+
+            "talent-acquisition-assistant": {
+                price:
+                    700,
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Talent Acquisition Assistant - Prompts.pdf"
+            },
+
+            "the-e-commerce-store-architect": {
+                price:
+                    1450,
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/The E-Commerce Store Architect - Prompts.pdf"
+            },
+
+            "the-freelancers-fast-cash-strategies": {
+                price:
+                    1000,
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/The Freelancer’s Fast Cash Strategies - Prompts.pdf"
+            },,
+
             "7-conversion-killers-hiding-on-your-product-pages": {
                 price:
                     850,
@@ -6565,6 +6663,76 @@ if (operation === "get_product_download_url") {
                 fileKey:
                     "Business & Entrepreneurship/Listicle/21 Workshop Secrets That Create Consistent Revenue - Listicle.pdf"
             },
+
+            "agency-transformation-assistant": {
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Agency Transformation Assistant - Prompts.pdf"
+            },
+
+            "build-your-high-ticket-service-business": {
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Build Your High-Ticket Service Business - Prompts.pdf"
+            },
+
+            "control-your-business-cash-flow": {
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Control Your Business Cash Flow - Prompts.pdf"
+            },
+
+            "create-professional-visual-identity": {
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Create Professional Visual Identity - Prompts.pdf"
+            },
+
+            "first-time-entrepreneurs-launch-assistant": {
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/First-Time Entrepreneurs Launch Assistant - Prompts.pdf"
+            },
+
+            "mastering-confident-sales-closing": {
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Mastering Confident Sales Closing - Prompts.pdf"
+            },
+
+            "neuroinclusive-leadership-copilot": {
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Neuroinclusive Leadership Copilot - Prompts.pdf"
+            },
+
+            "passive-income-build-systematize": {
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Passive Income Build & Systematize - Prompts.pdf"
+            },
+
+            "strategic-brand-evolution": {
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Strategic Brand Evolution - Prompts.pdf"
+            },
+
+            "strategic-cost-reduction": {
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Strategic Cost Reduction - Prompts.pdf"
+            },
+
+            "strategic-planning-assistant": {
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Strategic Planning Assistant - Prompts.pdf"
+            },
+
+            "talent-acquisition-assistant": {
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/Talent Acquisition Assistant - Prompts.pdf"
+            },
+
+            "the-e-commerce-store-architect": {
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/The E-Commerce Store Architect - Prompts.pdf"
+            },
+
+            "the-freelancers-fast-cash-strategies": {
+                fileKey:
+                    "Business & Entrepreneurship/Prompts/The Freelancer’s Fast Cash Strategies - Prompts.pdf"
+            },,
 
             "7-conversion-killers-hiding-on-your-product-pages": {
                 fileKey:
