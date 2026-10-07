@@ -5393,7 +5393,77 @@ if (operation === "purchase_product") {
                 price: 30000,
                 fileKey:
                     "Business & Entrepreneurship/Books/Visual Selling - Ebook.pdf"
-            }
+            },
+
+            "audit-your-plan-before-you-commit-capital": {
+                price:
+                    500,
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/Audit Your Plan Before You Commit Capital Checklist.pdf"
+            },
+
+            "is-your-marketplace-listing-ready-to-publish": {
+                price:
+                    250,
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/Is Your Marketplace Listing Ready to Publish Checklist.pdf"
+            },
+
+            "kill-the-franken-stack": {
+                price:
+                    350,
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/Kill the Franken-Stack Checklist.pdf"
+            },
+
+            "minimum-viable-offer-design": {
+                price:
+                    400,
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/Minimum Viable Offer Design - Checklist.pdf"
+            },
+
+            "outcome-based-job-posting-creation": {
+                price:
+                    300,
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/Outcome-Based Job Posting Creation Checklist.pdf"
+            },
+
+            "pre-launch-brand-kit-setup": {
+                price:
+                    150,
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/Pre-Launch Brand Kit Setup Checklist.pdf"
+            },
+
+            "pre-launch-store-validation": {
+                price:
+                    420,
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/Pre-Launch Store Validation Checklist.pdf"
+            },
+
+            "red-light-emergency-protocol": {
+                price:
+                    480,
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/Red Light Emergency Protocol - Checklist.pdf"
+            },
+
+            "the-brain-friendly-hiring": {
+                price:
+                    200,
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/The Brain-Friendly Hiring Checklist.pdf"
+            },
+
+            "the-scalable-service-delivery-setup": {
+                price:
+                    450,
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/The Scalable Service Delivery Setup Checklist.pdf"
+            },
 
         };
 
@@ -6038,7 +6108,57 @@ if (operation === "get_product_download_url") {
             "visual-selling": {
                 fileKey:
                     "Business & Entrepreneurship/Books/Visual Selling - Ebook.pdf"
-            }
+            },
+
+            "audit-your-plan-before-you-commit-capital": {
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/Audit Your Plan Before You Commit Capital Checklist.pdf"
+            },
+
+            "is-your-marketplace-listing-ready-to-publish": {
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/Is Your Marketplace Listing Ready to Publish Checklist.pdf"
+            },
+
+            "kill-the-franken-stack": {
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/Kill the Franken-Stack Checklist.pdf"
+            },
+
+            "minimum-viable-offer-design": {
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/Minimum Viable Offer Design - Checklist.pdf"
+            },
+
+            "outcome-based-job-posting-creation": {
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/Outcome-Based Job Posting Creation Checklist.pdf"
+            },
+
+            "pre-launch-brand-kit-setup": {
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/Pre-Launch Brand Kit Setup Checklist.pdf"
+            },
+
+            "pre-launch-store-validation": {
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/Pre-Launch Store Validation Checklist.pdf"
+            },
+
+            "red-light-emergency-protocol": {
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/Red Light Emergency Protocol - Checklist.pdf"
+            },
+
+            "the-brain-friendly-hiring": {
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/The Brain-Friendly Hiring Checklist.pdf"
+            },
+
+            "the-scalable-service-delivery-setup": {
+                fileKey:
+                    "Business & Entrepreneurship/Checklist/The Scalable Service Delivery Setup Checklist.pdf"
+            },
         };
 
 
