@@ -5791,7 +5791,7 @@ if (operation === "purchase_product") {
                 price:
                     1800,
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Digital Creator’s Buddy - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/Digital Creator's Buddy - Toolstack.pdf"
             },
 
             "high-ticket-affiliate-marketing": {
@@ -6868,7 +6868,7 @@ if (operation === "get_product_download_url") {
 
             "digital-creator’s-buddy": {
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Digital Creator’s Buddy - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/Digital Creator's Buddy - Toolstack.pdf"
             },
 
             "high-ticket-affiliate-marketing": {
