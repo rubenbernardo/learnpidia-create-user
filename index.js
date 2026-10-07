@@ -5817,7 +5817,7 @@ if (operation === "purchase_product") {
                     1200,
                 fileKey:
                     "Business & Entrepreneurship/Toolstack/Power Up Your Brand - Toolstack.pdf"
-            },,
+            },
 
             "agency-operations-and-scaling": {
                 price:
@@ -5866,7 +5866,7 @@ if (operation === "purchase_product") {
                     1000,
                 fileKey:
                     "Business & Entrepreneurship/Toolstack/Your Business Plan Playbook - Toolstack.pdf"
-            },,,
+            },
 
             "7-conversion-killers-hiding-on-your-product-pages": {
                 price:
@@ -6953,7 +6953,7 @@ if (operation === "get_product_download_url") {
             "power-up-your-brand": {
                 fileKey:
                     "Business & Entrepreneurship/Toolstack/Power Up Your Brand - Toolstack.pdf"
-            },,
+            },
 
             "agency-operations-and-scaling": {
                 fileKey:
@@ -6988,7 +6988,7 @@ if (operation === "get_product_download_url") {
             "your-business-plan-playbook": {
                 fileKey:
                     "Business & Entrepreneurship/Toolstack/Your Business Plan Playbook - Toolstack.pdf"
-            },,,
+            },
 
             "7-conversion-killers-hiding-on-your-product-pages": {
                 fileKey:
@@ -7038,7 +7038,7 @@ if (operation === "get_product_download_url") {
             "the-scalable-expert-model": {
                 fileKey:
                     "Business & Entrepreneurship/Podcast/The Scalable Expert Model - Podcast.zip"
-            },,
+            },
         
 
             "confidently-close-every-call-workbook": {
