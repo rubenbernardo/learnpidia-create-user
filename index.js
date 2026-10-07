@@ -5282,115 +5282,115 @@ if (operation === "purchase_product") {
             },
 
             "agency-growth-blueprint": {
-                price: 3500,
+                price: 40000,
                 fileKey:
                     "Business & Entrepreneurship/Books/Agency Growth Blueprint - Ebook.pdf"
             },
 
             "build-an-ecommerce-store-that-sells": {
-                price: 3000,
+                price: 35000,
                 fileKey:
                     "Business & Entrepreneurship/Books/Build an Ecommerce Store That Sells - Ebook.pdf"
             },
 
             "creating-the-perfect-customer-experience": {
-                price: 3000,
+                price: 32000,
                 fileKey:
                     "Business & Entrepreneurship/Books/Creating the Perfect Customer Experience - Ebook.pdf"
             },
 
             "how-to-build-a-consistent-visual-identity": {
-                price: 3000,
+                price: 28000,
                 fileKey:
                     "Business & Entrepreneurship/Books/How to Build a Consistent Visual Identity - Book.pdf"
             },
 
             "how-to-franchise-your-business": {
-                price: 4478,
+                price: 50000,
                 fileKey:
                     "Business & Entrepreneurship/Books/How to Franchise Your Business - Ebook.pdf"
             },
 
             "merch-that-sticks": {
-                price: 3000,
+                price: 20000,
                 fileKey:
                     "Business & Entrepreneurship/Books/Merch That Sticks - Ebook.pdf"
             },
 
             "package-what-you-know-into-a-high-ticket-offer": {
-                price: 3000,
+                price: 48000,
                 fileKey:
                     "Business & Entrepreneurship/Books/Package What You Know Into a High-Ticket Offer - Ebook.pdf"
             },
 
             "pick-your-passive-income-stream": {
-                price: 2000,
+                price: 30000,
                 fileKey:
                     "Business & Entrepreneurship/Books/Pick Your Passive Income Stream - Ebook.pdf"
             },
 
             "swot-analysis-simplified": {
-                price: 3000,
+                price: 10000,
                 fileKey:
                     "Business & Entrepreneurship/Books/SWOT Analysis Simplified - Ebook.pdf"
             },
 
             "the-brand-evolution-system-for-modern-creators": {
-                price: 3000,
+                price: 38000,
                 fileKey:
                     "Business & Entrepreneurship/Books/The Brand Evolution System for Modern Creators - Ebook.pdf"
             },
 
             "the-business-model-blueprint": {
-                price: 3000,
+                price: 34000,
                 fileKey:
                     "Business & Entrepreneurship/Books/The Business Model Blueprint - Ebook.pdf"
             },
 
             "the-cash-flow-system-for-small-businesses": {
-                price: 3000,
+                price: 42000,
                 fileKey:
                     "Business & Entrepreneurship/Books/The Cash Flow System for Small Businesses - Ebook.pdf"
             },
 
             "the-first-time-entrepreneur-launchpad": {
-                price: 3000,
+                price: 24000,
                 fileKey:
                     "Business & Entrepreneurship/Books/The First Time Entrepreneur Launchpad - Book.pdf"
             },
 
             "the-freelancers-cash-bridge": {
-                price: 2500,
+                price: 22000,
                 fileKey:
                     "Business & Entrepreneurship/Books/The Freelancer's Cash Bridge - Book.pdf"
             },
 
             "the-neuroinclusive-managers-playbook": {
-                price: 3000,
+                price: 26000,
                 fileKey:
                     "Business & Entrepreneurship/Books/The Neuroinclusive Manager's Playbook - Ebook.pdf"
             },
 
             "the-psychology-of-closing": {
-                price: 3000,
+                price: 36000,
                 fileKey:
                     "Business & Entrepreneurship/Books/The Psychology of Closing - Ebook.pdf"
             },
 
             "turn-sales-into-predictable-growth": {
-                price: 3000,
+                price: 45000,
                 fileKey:
                     "Business & Entrepreneurship/Books/Turn Sales Into Predictable Growth - Ebook.pdf"
             },
 
             "turn-your-expertise-into-5k-workshop-days": {
-                price: 3000,
+                price: 46000,
                 fileKey:
                     "Business & Entrepreneurship/Books/Turn Your Expertise Into $5K Workshop Days - Ebook.pdf"
             },
 
             "visual-selling": {
-                price: 3000,
+                price: 30000,
                 fileKey:
                     "Business & Entrepreneurship/Books/Visual Selling - Ebook.pdf"
             }
