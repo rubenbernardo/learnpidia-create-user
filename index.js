@@ -5278,664 +5278,664 @@ if (operation === "purchase_product") {
             "hire-right-keep-them-longer": {
                 price: 25000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/Hire Right, Keep Them Longer - Book.pdf"
+                    "Business & Entrepreneurship/Books/- Hire Right, Keep Them Longer - Book.pdf"
             },
 
             "agency-growth-blueprint": {
                 price: 40000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/Agency Growth Blueprint - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- Agency Growth Blueprint - Ebook.pdf"
             },
 
             "build-an-ecommerce-store-that-sells": {
                 price: 35000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/Build an Ecommerce Store That Sells - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- Build an Ecommerce Store That Sells - Ebook.pdf"
             },
 
             "creating-the-perfect-customer-experience": {
                 price: 32000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/Creating the Perfect Customer Experience - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- Creating the Perfect Customer Experience - Ebook.pdf"
             },
 
             "how-to-build-a-consistent-visual-identity": {
                 price: 28000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/How to Build a Consistent Visual Identity - Book.pdf"
+                    "Business & Entrepreneurship/Books/- How to Build a Consistent Visual Identity - Book.pdf"
             },
 
             "how-to-franchise-your-business": {
                 price: 50000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/How to Franchise Your Business - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- How to Franchise Your Business - Ebook.pdf"
             },
 
             "merch-that-sticks": {
                 price: 20000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/Merch That Sticks - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- Merch That Sticks - Ebook.pdf"
             },
 
             "package-what-you-know-into-a-high-ticket-offer": {
                 price: 48000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/Package What You Know Into a High-Ticket Offer - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- Package What You Know Into a High-Ticket Offer - Ebook.pdf"
             },
 
             "pick-your-passive-income-stream": {
                 price: 30000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/Pick Your Passive Income Stream - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- Pick Your Passive Income Stream - Ebook.pdf"
             },
 
             "swot-analysis-simplified": {
                 price: 10000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/SWOT Analysis Simplified - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- SWOT Analysis Simplified - Ebook.pdf"
             },
 
             "the-brand-evolution-system-for-modern-creators": {
                 price: 38000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/The Brand Evolution System for Modern Creators - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- The Brand Evolution System for Modern Creators - Ebook.pdf"
             },
 
             "the-business-model-blueprint": {
                 price: 34000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/The Business Model Blueprint - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- The Business Model Blueprint - Ebook.pdf"
             },
 
             "the-cash-flow-system-for-small-businesses": {
                 price: 42000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/The Cash Flow System for Small Businesses - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- The Cash Flow System for Small Businesses - Ebook.pdf"
             },
 
             "the-first-time-entrepreneur-launchpad": {
                 price: 24000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/The First Time Entrepreneur Launchpad - Book.pdf"
+                    "Business & Entrepreneurship/Books/- The First Time Entrepreneur Launchpad - Book.pdf"
             },
 
             "the-freelancers-cash-bridge": {
                 price: 22000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/The Freelancer's Cash Bridge - Book.pdf"
+                    "Business & Entrepreneurship/Books/- The Freelancer's Cash Bridge - Book.pdf"
             },
 
             "the-neuroinclusive-managers-playbook": {
                 price: 26000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/The Neuroinclusive Manager's Playbook - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- The Neuroinclusive Manager's Playbook - Ebook.pdf"
             },
 
             "the-psychology-of-closing": {
                 price: 36000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/The Psychology of Closing - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- The Psychology of Closing - Ebook.pdf"
             },
 
             "turn-sales-into-predictable-growth": {
                 price: 45000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/Turn Sales Into Predictable Growth - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- Turn Sales Into Predictable Growth - Ebook.pdf"
             },
 
             "turn-your-expertise-into-5k-workshop-days": {
                 price: 46000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/Turn Your Expertise Into $5K Workshop Days - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- Turn Your Expertise Into $5K Workshop Days - Ebook.pdf"
             },
 
             "visual-selling": {
                 price: 30000,
                 fileKey:
-                    "Business & Entrepreneurship/Books/Visual Selling - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- Visual Selling - Ebook.pdf"
             },
 
             "audit-your-plan-before-you-commit-capital": {
                 price:
                     500,
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Audit Your Plan Before You Commit Capital Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- Audit Your Plan Before You Commit Capital Checklist.pdf"
             },
 
             "is-your-marketplace-listing-ready-to-publish": {
                 price:
                     250,
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Is Your Marketplace Listing Ready to Publish Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- Is Your Marketplace Listing Ready to Publish Checklist.pdf"
             },
 
             "kill-the-franken-stack": {
                 price:
                     350,
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Kill the Franken-Stack Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- Kill the Franken-Stack Checklist.pdf"
             },
 
             "minimum-viable-offer-design": {
                 price:
                     400,
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Minimum Viable Offer Design - Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- Minimum Viable Offer Design - Checklist.pdf"
             },
 
             "outcome-based-job-posting-creation": {
                 price:
                     300,
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Outcome-Based Job Posting Creation Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- Outcome-Based Job Posting Creation Checklist.pdf"
             },
 
             "pre-launch-brand-kit-setup": {
                 price:
                     150,
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Pre-Launch Brand Kit Setup Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- Pre-Launch Brand Kit Setup Checklist.pdf"
             },
 
             "pre-launch-store-validation": {
                 price:
                     420,
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Pre-Launch Store Validation Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- Pre-Launch Store Validation Checklist.pdf"
             },
 
             "red-light-emergency-protocol": {
                 price:
                     480,
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Red Light Emergency Protocol - Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- Red Light Emergency Protocol - Checklist.pdf"
             },
 
             "the-brain-friendly-hiring": {
                 price:
                     200,
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/The Brain-Friendly Hiring Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- The Brain-Friendly Hiring Checklist.pdf"
             },
 
             "the-scalable-service-delivery-setup": {
                 price:
                     450,
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/The Scalable Service Delivery Setup Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- The Scalable Service Delivery Setup Checklist.pdf"
             },
 
             "from-hourly-to-value-based-pricing": {
                 price:
                     3000,
                 fileKey:
-                    "Business & Entrepreneurship/Guide/From Hourly to Value-Based Pricing - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- From Hourly to Value-Based Pricing - Guide.pdf"
             },
 
             "productize-any-freelance-skill-in-one-weekend": {
                 price:
                     2500,
                 fileKey:
-                    "Business & Entrepreneurship/Guide/Productize Any Freelance Skill in One Weekend - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- Productize Any Freelance Skill in One Weekend - Guide.pdf"
             },
 
             "score-your-passive-income-idea-in-30-minutes": {
                 price:
                     500,
                 fileKey:
-                    "Business & Entrepreneurship/Guide/Score Your Passive Income Idea in 30 Minutes - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- Score Your Passive Income Idea in 30 Minutes - Guide.pdf"
             },
 
             "site-speed-optimization-for-non-technical-store-owners": {
                 price:
                     1200,
                 fileKey:
-                    "Business & Entrepreneurship/Guide/Site Speed Optimization for Non-Technical Store Owners - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- Site Speed Optimization for Non-Technical Store Owners - Guide.pdf"
             },
 
             "stop-losing-top-talent-at-the-interview-stage": {
                 price:
                     1500,
                 fileKey:
-                    "Business & Entrepreneurship/Guide/Stop Losing Top Talent at the Interview Stage - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- Stop Losing Top Talent at the Interview Stage - Guide.pdf"
             },
 
             "the-30-day-lean-launch-plan": {
                 price:
                     2800,
                 fileKey:
-                    "Business & Entrepreneurship/Guide/The 30-Day Lean Launch Plan - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- The 30-Day Lean Launch Plan - Guide.pdf"
             },
 
             "the-four-beat-vendor-renegotiation-script": {
                 price:
                     800,
                 fileKey:
-                    "Business & Entrepreneurship/Guide/The Four-Beat Vendor Renegotiation Script - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- The Four-Beat Vendor Renegotiation Script - Guide.pdf"
             },
 
             "the-structured-interview-playbook": {
                 price:
                     1800,
                 fileKey:
-                    "Business & Entrepreneurship/Guide/The Structured Interview Playbook - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- The Structured Interview Playbook - Guide.pdf"
             },
 
             "the-three-number-pricing-formula": {
                 price:
                     1000,
                 fileKey:
-                    "Business & Entrepreneurship/Guide/The Three-Number Pricing Formula - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- The Three-Number Pricing Formula - Guide.pdf"
             },
 
             "the-weekend-cash-control-setup": {
                 price:
                     2200,
                 fileKey:
-                    "Business & Entrepreneurship/Guide/The Weekend Cash Control Setup - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- The Weekend Cash Control Setup - Guide.pdf"
             },
 
             "7-branding-errors-hidden-in-your-company-merchandise": {
                 price:
                     600,
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/7 Branding Errors Hidden in Your Company Merchandise - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 7 Branding Errors Hidden in Your Company Merchandise - Listicle.pdf"
             },
 
             "7-business-model-blind-spots-that-kill-startups": {
                 price:
                     800,
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/7 Business Model Blind Spots That Kill Startups - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 7 Business Model Blind Spots That Kill Startups - Listicle.pdf"
             },
 
             "7-cash-flow-mistakes-that-sink-profitable-businesses": {
                 price:
                     880,
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/7 Cash Flow Mistakes That Sink Profitable Businesses - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 7 Cash Flow Mistakes That Sink Profitable Businesses - Listicle.pdf"
             },
 
             "7-cost-cuts-that-save-cash-now-and-bleed-profit-later": {
                 price:
                     850,
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/7 Cost Cuts That Save Cash Now and Bleed Profit Later - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 7 Cost Cuts That Save Cash Now and Bleed Profit Later - Listicle.pdf"
             },
 
             "7-critical-mistakes-that-sabotage-most-swot-analyses": {
                 price:
                     680,
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/7 Critical Mistakes That Sabotage Most SWOT Analyses - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 7 Critical Mistakes That Sabotage Most SWOT Analyses - Listicle.pdf"
             },
 
             "7-mistakes-that-keep-agencies-stuck-in-chaos-and-burnout": {
                 price:
                     760,
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/7 Mistakes That Keep Agencies Stuck in Chaos and Burnout - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 7 Mistakes That Keep Agencies Stuck in Chaos and Burnout - Listicle.pdf"
             },
 
             "7-passive-income-lies-that-cost-first-time-builders-20000": {
                 price:
                     940,
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/7 Passive Income Lies That Cost First-Time Builders $20,000 - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 7 Passive Income Lies That Cost First-Time Builders $20,000 - Listicle.pdf"
             },
 
             "7-workplace-policies-that-accidentally-block-neurodivergent-talent": {
                 price:
                     500,
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/7 Workplace Policies That Accidentally Block Neurodivergent Talent - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 7 Workplace Policies That Accidentally Block Neurodivergent Talent - Listicle.pdf"
             },
 
             "12-fatal-mistakes-that-kill-workshop-success": {
                 price:
                     740,
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/12 Fatal Mistakes That Kill Workshop Success - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 12 Fatal Mistakes That Kill Workshop Success - Listicle.pdf"
             },
 
             "12-merchandise-secrets-that-break-the-rules-and-win-big": {
                 price:
                     700,
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/12 Merchandise Secrets That Break the Rules and Win Big - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 12 Merchandise Secrets That Break the Rules and Win Big - Listicle.pdf"
             },
 
             "13-cash-bridge-moves-every-freelancer-needs-before-their-next-net-30-wait": {
                 price:
                     900,
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/13 Cash Bridge Moves Every Freelancer Needs Before Their Next Net-30 Wait - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 13 Cash Bridge Moves Every Freelancer Needs Before Their Next Net-30 Wait - Listicle.pdf"
             },
 
             "13-signals-your-personal-brand-needs-a-strategic-refresh": {
                 price:
                     620,
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/13 Signals Your Personal Brand Needs a Strategic Refresh - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 13 Signals Your Personal Brand Needs a Strategic Refresh - Listicle.pdf"
             },
 
             "13-visual-decisions-that-separate-professional-brands-from-amateur-ones": {
                 price:
                     790,
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/13 Visual Decisions That Separate Professional Brands From Amateur Ones - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 13 Visual Decisions That Separate Professional Brands From Amateur Ones - Listicle.pdf"
             },
 
             "21-business-model-checks-investors-expect-you-to-pass": {
                 price:
                     1000,
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/21 Business Model Checks Investors Expect You to Pass - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 21 Business Model Checks Investors Expect You to Pass - Listicle.pdf"
             },
 
             "21-money-traps-that-kill-first-time-businesses-before-they-start": {
                 price:
                     970,
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/21 Money Traps That Kill First-Time Businesses Before They Start - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 21 Money Traps That Kill First-Time Businesses Before They Start - Listicle.pdf"
             },
 
             "21-objections-that-actually-mean-they-want-to-buy": {
                 price:
                     820,
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/21 Objections That Actually Mean They Want to Buy - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 21 Objections That Actually Mean They Want to Buy - Listicle.pdf"
             },
 
             "21-reasons-why-you-keep-losing-candidates-to-your-competitors": {
                 price:
                     750,
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/21 Reasons Why You Keep Losing Candidates to Your Competitors - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 21 Reasons Why You Keep Losing Candidates to Your Competitors - Listicle.pdf"
             },
 
             "21-workshop-secrets-that-create-consistent-revenue": {
                 price:
                     1000,
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/21 Workshop Secrets That Create Consistent Revenue - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 21 Workshop Secrets That Create Consistent Revenue - Listicle.pdf"
             },
 
             "agency-transformation-assistant": {
                 price:
                     1200,
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Agency Transformation Assistant - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Agency Transformation Assistant - Prompts.pdf"
             },
 
             "build-your-high-ticket-service-business": {
                 price:
                     1500,
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Build Your High-Ticket Service Business - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Build Your High-Ticket Service Business - Prompts.pdf"
             },
 
             "control-your-business-cash-flow": {
                 price:
                     1400,
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Control Your Business Cash Flow - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Control Your Business Cash Flow - Prompts.pdf"
             },
 
             "create-professional-visual-identity": {
                 price:
                     900,
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Create Professional Visual Identity - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Create Professional Visual Identity - Prompts.pdf"
             },
 
             "first-time-entrepreneurs-launch-assistant": {
                 price:
                     750,
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/First-Time Entrepreneurs Launch Assistant - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- First-Time Entrepreneurs Launch Assistant - Prompts.pdf"
             },
 
             "mastering-confident-sales-closing": {
                 price:
                     1100,
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Mastering Confident Sales Closing - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Mastering Confident Sales Closing - Prompts.pdf"
             },
 
             "neuroinclusive-leadership-copilot": {
                 price:
                     800,
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Neuroinclusive Leadership Copilot - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Neuroinclusive Leadership Copilot - Prompts.pdf"
             },
 
             "passive-income-build-systematize": {
                 price:
                     1300,
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Passive Income Build & Systematize - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Passive Income Build & Systematize - Prompts.pdf"
             },
 
             "strategic-brand-evolution": {
                 price:
                     1150,
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Strategic Brand Evolution - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Strategic Brand Evolution - Prompts.pdf"
             },
 
             "strategic-cost-reduction": {
                 price:
                     1250,
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Strategic Cost Reduction - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Strategic Cost Reduction - Prompts.pdf"
             },
 
             "strategic-planning-assistant": {
                 price:
                     500,
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Strategic Planning Assistant - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Strategic Planning Assistant - Prompts.pdf"
             },
 
             "talent-acquisition-assistant": {
                 price:
                     700,
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Talent Acquisition Assistant - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Talent Acquisition Assistant - Prompts.pdf"
             },
 
             "the-e-commerce-store-architect": {
                 price:
                     1450,
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/The E-Commerce Store Architect - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- The E-Commerce Store Architect - Prompts.pdf"
             },
 
             "the-freelancers-fast-cash-strategies": {
                 price:
                     1000,
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/The Freelancer’s Fast Cash Strategies - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- The Freelancer’s Fast Cash Strategies - Prompts.pdf"
             },
             "agency-operations-scaling": {
                 price:
                     5000,
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Agency Operations & Scaling - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Agency Operations & Scaling - Toolstack.pdf"
             },
             "build-positive-digital-presence": {
                 price:
                     2200,
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Build Positive Digital Presence - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Build Positive Digital Presence - Toolstack.pdf"
             },
             "confidently-close-every-call": {
                 price:
                     3600,
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Confidently Close Every Call - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Confidently Close Every Call - Toolstack.pdf"
             },
             "crafting-irresistible-business-offers": {
                 price:
                     4500,
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Crafting Irresistible Business Offers - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Crafting Irresistible Business Offers - Toolstack.pdf"
             },
             "digital-creators-buddy": {
                 price:
                     1800,
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Digital Creator's Buddy - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Digital Creator's Buddy - Toolstack.pdf"
             },
             "high-ticket-affiliate-marketing": {
                 price:
                     4800,
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/High-Ticket Affiliate Marketing - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- High-Ticket Affiliate Marketing - Toolstack.pdf"
             },
             "how-to-build-a-website": {
                 price:
                     2500,
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/How to Build a Website - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- How to Build a Website - Toolstack.pdf"
             },
             "marketing-plan-simplified": {
                 price:
                     1500,
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Marketing Plan Simplified - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Marketing Plan Simplified - Toolstack.pdf"
             },
             "microsaas-success-blueprint": {
                 price:
                     4900,
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/MicroSaas Success Blueprint - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- MicroSaas Success Blueprint - Toolstack.pdf"
             },
             "power-up-your-brand": {
                 price:
                     1200,
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Power Up Your Brand - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Power Up Your Brand - Toolstack.pdf"
             },,
 
             "agency-operations-and-scaling": {
                 price:
                     5000,
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Agency Operations & Scaling - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Agency Operations & Scaling - Toolstack.pdf"
             },
 
             "sell-with-design": {
                 price:
                     2800,
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Sell With Design - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Sell With Design - Toolstack.pdf"
             },
 
             "the-power-of-prototypes": {
                 price:
                     3200,
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/The Power of Prototypes - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- The Power of Prototypes - Toolstack.pdf"
             },
 
             "understanding-business-metrics": {
                 price:
                     4000,
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Understanding Business Metrics - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Understanding Business Metrics - Toolstack.pdf"
             },
 
             "validate-business-ideas": {
                 price:
                     3000,
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Validate Business Ideas - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Validate Business Ideas - Toolstack.pdf"
             },
 
             "winning-product-research": {
                 price:
                     3500,
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Winning Product Research - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Winning Product Research - Toolstack.pdf"
             },
 
             "your-business-plan-playbook": {
                 price:
                     1000,
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Your Business Plan Playbook - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Your Business Plan Playbook - Toolstack.pdf"
             },,,
 
             "7-conversion-killers-hiding-on-your-product-pages": {
                 price:
                     850,
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/7 Conversion Killers Hiding on Your Product Pages - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 7 Conversion Killers Hiding on Your Product Pages - Listicle.pdf"
             },
 
             "beyond-the-side-hustle": {
                 price:
                     32000,
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Beyond the Side Hustle - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/- Beyond the Side Hustle - Podcast.pdf"
             },
 
             "business-cash-control": {
                 price:
                     45000,
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Business Cash Control - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/- Business Cash Control - Podcast.pdf"
             },
 
             "cost-control-that-compounds": {
                 price:
                     45000,
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Cost Control That Compounds - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/- Cost Control That Compounds - Podcast.pdf"
             },
 
             "fast-cash-freelancer": {
                 price:
                     28000,
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Fast Cash Freelancer - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/- Fast Cash Freelancer - Podcast.pdf"
             },
 
             "hiring-without-regret": {
                 price:
                     38000,
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Hiring Without Regret - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/- Hiring Without Regret - Podcast.pdf"
             },
 
             "stores-that-convert": {
                 price:
                     35000,
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Stores That Convert - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/- Stores That Convert - Podcast.pdf"
             },
 
             "the-brain-friendly-workplace": {
                 price:
                     25000,
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/The Brain-Friendly Workplace - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/- The Brain-Friendly Workplace - Podcast.pdf"
             },
 
             "the-entrepreneur-starting-line": {
                 price:
                     20000,
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/The Entrepreneur Starting Line - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/- The Entrepreneur Starting Line - Podcast.pdf"
             },
 
             "the-scalable-expert-model": {
                 price:
                     50000,
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/The Scalable Expert Model - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/- The Scalable Expert Model - Podcast.pdf"
             },
 
         
@@ -5944,70 +5944,70 @@ if (operation === "purchase_product") {
                 price:
                     2200,
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/Confidently Close Every Call - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- Confidently Close Every Call - Workbook.pdf"
             },
 
             "faceless-creator-workbook": {
                 price:
                     1200,
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/Faceless Creator - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- Faceless Creator - Workbook.pdf"
             },
 
             "high-ticket-affiliate-marketing-workbook": {
                 price:
                     2850,
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/High-Ticket Affiliate Marketing - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- High-Ticket Affiliate Marketing - Workbook.pdf"
             },
 
             "how-to-build-a-website-workbook": {
                 price:
                     1600,
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/How to Build a Website - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- How to Build a Website - Workbook.pdf"
             },
 
             "microsaas-success-blueprint-workbook": {
                 price:
                     3000,
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/MicroSaas Success Blueprint - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- MicroSaas Success Blueprint - Workbook.pdf"
             },
 
             "money-psychology-in-business-workbook": {
                 price:
                     2500,
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/Money Psychology in Business - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- Money Psychology in Business - Workbook.pdf"
             },
 
             "the-power-of-prototypes-workbook": {
                 price:
                     1800,
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/The Power of Prototypes - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- The Power of Prototypes - Workbook.pdf"
             },
 
             "understanding-business-metrics-workbook": {
                 price:
                     2600,
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/Understanding Business Metrics - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- Understanding Business Metrics - Workbook.pdf"
             },
 
             "validate-business-ideas-workbook": {
                 price:
                     1900,
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/Validate Business Ideas - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- Validate Business Ideas - Workbook.pdf"
             },
 
             "winning-product-research-workbook": {
                 price:
                     2400,
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/Winning Product Research - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- Winning Product Research - Workbook.pdf"
             },
 
 };
@@ -6557,538 +6557,538 @@ if (operation === "get_product_download_url") {
         
             "hire-right-keep-them-longer": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/Hire Right, Keep Them Longer - Book.pdf"
+                    "Business & Entrepreneurship/Books/- Hire Right, Keep Them Longer - Book.pdf"
             },
 
             "agency-growth-blueprint": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/Agency Growth Blueprint - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- Agency Growth Blueprint - Ebook.pdf"
             },
 
             "build-an-ecommerce-store-that-sells": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/Build an Ecommerce Store That Sells - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- Build an Ecommerce Store That Sells - Ebook.pdf"
             },
 
             "creating-the-perfect-customer-experience": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/Creating the Perfect Customer Experience - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- Creating the Perfect Customer Experience - Ebook.pdf"
             },
 
             "how-to-build-a-consistent-visual-identity": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/How to Build a Consistent Visual Identity - Book.pdf"
+                    "Business & Entrepreneurship/Books/- How to Build a Consistent Visual Identity - Book.pdf"
             },
 
             "how-to-franchise-your-business": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/How to Franchise Your Business - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- How to Franchise Your Business - Ebook.pdf"
             },
 
             "merch-that-sticks": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/Merch That Sticks - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- Merch That Sticks - Ebook.pdf"
             },
 
             "package-what-you-know-into-a-high-ticket-offer": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/Package What You Know Into a High-Ticket Offer - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- Package What You Know Into a High-Ticket Offer - Ebook.pdf"
             },
 
             "pick-your-passive-income-stream": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/Pick Your Passive Income Stream - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- Pick Your Passive Income Stream - Ebook.pdf"
             },
 
             "swot-analysis-simplified": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/SWOT Analysis Simplified - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- SWOT Analysis Simplified - Ebook.pdf"
             },
 
             "the-brand-evolution-system-for-modern-creators": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/The Brand Evolution System for Modern Creators - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- The Brand Evolution System for Modern Creators - Ebook.pdf"
             },
 
             "the-business-model-blueprint": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/The Business Model Blueprint - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- The Business Model Blueprint - Ebook.pdf"
             },
 
             "the-cash-flow-system-for-small-businesses": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/The Cash Flow System for Small Businesses - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- The Cash Flow System for Small Businesses - Ebook.pdf"
             },
 
             "the-first-time-entrepreneur-launchpad": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/The First Time Entrepreneur Launchpad - Book.pdf"
+                    "Business & Entrepreneurship/Books/- The First Time Entrepreneur Launchpad - Book.pdf"
             },
 
             "the-freelancers-cash-bridge": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/The Freelancer's Cash Bridge - Book.pdf"
+                    "Business & Entrepreneurship/Books/- The Freelancer's Cash Bridge - Book.pdf"
             },
 
             "the-neuroinclusive-managers-playbook": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/The Neuroinclusive Manager's Playbook - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- The Neuroinclusive Manager's Playbook - Ebook.pdf"
             },
 
             "the-psychology-of-closing": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/The Psychology of Closing - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- The Psychology of Closing - Ebook.pdf"
             },
 
             "turn-sales-into-predictable-growth": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/Turn Sales Into Predictable Growth - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- Turn Sales Into Predictable Growth - Ebook.pdf"
             },
 
             "turn-your-expertise-into-5k-workshop-days": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/Turn Your Expertise Into $5K Workshop Days - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- Turn Your Expertise Into $5K Workshop Days - Ebook.pdf"
             },
 
             "visual-selling": {
                 fileKey:
-                    "Business & Entrepreneurship/Books/Visual Selling - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/- Visual Selling - Ebook.pdf"
             },
 
             "audit-your-plan-before-you-commit-capital": {
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Audit Your Plan Before You Commit Capital Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- Audit Your Plan Before You Commit Capital Checklist.pdf"
             },
 
             "is-your-marketplace-listing-ready-to-publish": {
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Is Your Marketplace Listing Ready to Publish Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- Is Your Marketplace Listing Ready to Publish Checklist.pdf"
             },
 
             "kill-the-franken-stack": {
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Kill the Franken-Stack Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- Kill the Franken-Stack Checklist.pdf"
             },
 
             "minimum-viable-offer-design": {
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Minimum Viable Offer Design - Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- Minimum Viable Offer Design - Checklist.pdf"
             },
 
             "outcome-based-job-posting-creation": {
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Outcome-Based Job Posting Creation Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- Outcome-Based Job Posting Creation Checklist.pdf"
             },
 
             "pre-launch-brand-kit-setup": {
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Pre-Launch Brand Kit Setup Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- Pre-Launch Brand Kit Setup Checklist.pdf"
             },
 
             "pre-launch-store-validation": {
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Pre-Launch Store Validation Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- Pre-Launch Store Validation Checklist.pdf"
             },
 
             "red-light-emergency-protocol": {
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Red Light Emergency Protocol - Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- Red Light Emergency Protocol - Checklist.pdf"
             },
 
             "the-brain-friendly-hiring": {
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/The Brain-Friendly Hiring Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- The Brain-Friendly Hiring Checklist.pdf"
             },
 
             "the-scalable-service-delivery-setup": {
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/The Scalable Service Delivery Setup Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/- The Scalable Service Delivery Setup Checklist.pdf"
             },
 
             "from-hourly-to-value-based-pricing": {
                 fileKey:
-                    "Business & Entrepreneurship/Guide/From Hourly to Value-Based Pricing - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- From Hourly to Value-Based Pricing - Guide.pdf"
             },
 
             "productize-any-freelance-skill-in-one-weekend": {
                 fileKey:
-                    "Business & Entrepreneurship/Guide/Productize Any Freelance Skill in One Weekend - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- Productize Any Freelance Skill in One Weekend - Guide.pdf"
             },
 
             "score-your-passive-income-idea-in-30-minutes": {
                 fileKey:
-                    "Business & Entrepreneurship/Guide/Score Your Passive Income Idea in 30 Minutes - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- Score Your Passive Income Idea in 30 Minutes - Guide.pdf"
             },
 
             "site-speed-optimization-for-non-technical-store-owners": {
                 fileKey:
-                    "Business & Entrepreneurship/Guide/Site Speed Optimization for Non-Technical Store Owners - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- Site Speed Optimization for Non-Technical Store Owners - Guide.pdf"
             },
 
             "stop-losing-top-talent-at-the-interview-stage": {
                 fileKey:
-                    "Business & Entrepreneurship/Guide/Stop Losing Top Talent at the Interview Stage - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- Stop Losing Top Talent at the Interview Stage - Guide.pdf"
             },
 
             "the-30-day-lean-launch-plan": {
                 fileKey:
-                    "Business & Entrepreneurship/Guide/The 30-Day Lean Launch Plan - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- The 30-Day Lean Launch Plan - Guide.pdf"
             },
 
             "the-four-beat-vendor-renegotiation-script": {
                 fileKey:
-                    "Business & Entrepreneurship/Guide/The Four-Beat Vendor Renegotiation Script - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- The Four-Beat Vendor Renegotiation Script - Guide.pdf"
             },
 
             "the-structured-interview-playbook": {
                 fileKey:
-                    "Business & Entrepreneurship/Guide/The Structured Interview Playbook - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- The Structured Interview Playbook - Guide.pdf"
             },
 
             "the-three-number-pricing-formula": {
                 fileKey:
-                    "Business & Entrepreneurship/Guide/The Three-Number Pricing Formula - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- The Three-Number Pricing Formula - Guide.pdf"
             },
 
             "the-weekend-cash-control-setup": {
                 fileKey:
-                    "Business & Entrepreneurship/Guide/The Weekend Cash Control Setup - Guide.pdf"
+                    "Business & Entrepreneurship/Guide/- The Weekend Cash Control Setup - Guide.pdf"
             },
 
             "7-branding-errors-hidden-in-your-company-merchandise": {
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/7 Branding Errors Hidden in Your Company Merchandise - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 7 Branding Errors Hidden in Your Company Merchandise - Listicle.pdf"
             },
 
             "7-business-model-blind-spots-that-kill-startups": {
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/7 Business Model Blind Spots That Kill Startups - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 7 Business Model Blind Spots That Kill Startups - Listicle.pdf"
             },
 
             "7-cash-flow-mistakes-that-sink-profitable-businesses": {
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/7 Cash Flow Mistakes That Sink Profitable Businesses - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 7 Cash Flow Mistakes That Sink Profitable Businesses - Listicle.pdf"
             },
 
             "7-cost-cuts-that-save-cash-now-and-bleed-profit-later": {
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/7 Cost Cuts That Save Cash Now and Bleed Profit Later - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 7 Cost Cuts That Save Cash Now and Bleed Profit Later - Listicle.pdf"
             },
 
             "7-critical-mistakes-that-sabotage-most-swot-analyses": {
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/7 Critical Mistakes That Sabotage Most SWOT Analyses - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 7 Critical Mistakes That Sabotage Most SWOT Analyses - Listicle.pdf"
             },
 
             "7-mistakes-that-keep-agencies-stuck-in-chaos-and-burnout": {
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/7 Mistakes That Keep Agencies Stuck in Chaos and Burnout - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 7 Mistakes That Keep Agencies Stuck in Chaos and Burnout - Listicle.pdf"
             },
 
             "7-passive-income-lies-that-cost-first-time-builders-20000": {
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/7 Passive Income Lies That Cost First-Time Builders $20,000 - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 7 Passive Income Lies That Cost First-Time Builders $20,000 - Listicle.pdf"
             },
 
             "7-workplace-policies-that-accidentally-block-neurodivergent-talent": {
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/7 Workplace Policies That Accidentally Block Neurodivergent Talent - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 7 Workplace Policies That Accidentally Block Neurodivergent Talent - Listicle.pdf"
             },
 
             "12-fatal-mistakes-that-kill-workshop-success": {
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/12 Fatal Mistakes That Kill Workshop Success - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 12 Fatal Mistakes That Kill Workshop Success - Listicle.pdf"
             },
 
             "12-merchandise-secrets-that-break-the-rules-and-win-big": {
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/12 Merchandise Secrets That Break the Rules and Win Big - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 12 Merchandise Secrets That Break the Rules and Win Big - Listicle.pdf"
             },
 
             "13-cash-bridge-moves-every-freelancer-needs-before-their-next-net-30-wait": {
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/13 Cash Bridge Moves Every Freelancer Needs Before Their Next Net-30 Wait - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 13 Cash Bridge Moves Every Freelancer Needs Before Their Next Net-30 Wait - Listicle.pdf"
             },
 
             "13-signals-your-personal-brand-needs-a-strategic-refresh": {
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/13 Signals Your Personal Brand Needs a Strategic Refresh - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 13 Signals Your Personal Brand Needs a Strategic Refresh - Listicle.pdf"
             },
 
             "13-visual-decisions-that-separate-professional-brands-from-amateur-ones": {
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/13 Visual Decisions That Separate Professional Brands From Amateur Ones - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 13 Visual Decisions That Separate Professional Brands From Amateur Ones - Listicle.pdf"
             },
 
             "21-business-model-checks-investors-expect-you-to-pass": {
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/21 Business Model Checks Investors Expect You to Pass - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 21 Business Model Checks Investors Expect You to Pass - Listicle.pdf"
             },
 
             "21-money-traps-that-kill-first-time-businesses-before-they-start": {
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/21 Money Traps That Kill First-Time Businesses Before They Start - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 21 Money Traps That Kill First-Time Businesses Before They Start - Listicle.pdf"
             },
 
             "21-objections-that-actually-mean-they-want-to-buy": {
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/21 Objections That Actually Mean They Want to Buy - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 21 Objections That Actually Mean They Want to Buy - Listicle.pdf"
             },
 
             "21-reasons-why-you-keep-losing-candidates-to-your-competitors": {
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/21 Reasons Why You Keep Losing Candidates to Your Competitors - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 21 Reasons Why You Keep Losing Candidates to Your Competitors - Listicle.pdf"
             },
 
             "21-workshop-secrets-that-create-consistent-revenue": {
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/21 Workshop Secrets That Create Consistent Revenue - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 21 Workshop Secrets That Create Consistent Revenue - Listicle.pdf"
             },
 
             "agency-transformation-assistant": {
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Agency Transformation Assistant - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Agency Transformation Assistant - Prompts.pdf"
             },
 
             "build-your-high-ticket-service-business": {
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Build Your High-Ticket Service Business - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Build Your High-Ticket Service Business - Prompts.pdf"
             },
 
             "control-your-business-cash-flow": {
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Control Your Business Cash Flow - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Control Your Business Cash Flow - Prompts.pdf"
             },
 
             "create-professional-visual-identity": {
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Create Professional Visual Identity - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Create Professional Visual Identity - Prompts.pdf"
             },
 
             "first-time-entrepreneurs-launch-assistant": {
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/First-Time Entrepreneurs Launch Assistant - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- First-Time Entrepreneurs Launch Assistant - Prompts.pdf"
             },
 
             "mastering-confident-sales-closing": {
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Mastering Confident Sales Closing - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Mastering Confident Sales Closing - Prompts.pdf"
             },
 
             "neuroinclusive-leadership-copilot": {
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Neuroinclusive Leadership Copilot - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Neuroinclusive Leadership Copilot - Prompts.pdf"
             },
 
             "passive-income-build-systematize": {
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Passive Income Build & Systematize - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Passive Income Build & Systematize - Prompts.pdf"
             },
 
             "strategic-brand-evolution": {
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Strategic Brand Evolution - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Strategic Brand Evolution - Prompts.pdf"
             },
 
             "strategic-cost-reduction": {
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Strategic Cost Reduction - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Strategic Cost Reduction - Prompts.pdf"
             },
 
             "strategic-planning-assistant": {
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Strategic Planning Assistant - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Strategic Planning Assistant - Prompts.pdf"
             },
 
             "talent-acquisition-assistant": {
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/Talent Acquisition Assistant - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- Talent Acquisition Assistant - Prompts.pdf"
             },
 
             "the-e-commerce-store-architect": {
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/The E-Commerce Store Architect - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- The E-Commerce Store Architect - Prompts.pdf"
             },
 
             "the-freelancers-fast-cash-strategies": {
                 fileKey:
-                    "Business & Entrepreneurship/Prompts/The Freelancer’s Fast Cash Strategies - Prompts.pdf"
+                    "Business & Entrepreneurship/Prompts/- The Freelancer’s Fast Cash Strategies - Prompts.pdf"
             },
             "agency-operations-scaling": {
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Agency Operations & Scaling - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Agency Operations & Scaling - Toolstack.pdf"
             },
             "build-positive-digital-presence": {
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Build Positive Digital Presence - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Build Positive Digital Presence - Toolstack.pdf"
             },
             "confidently-close-every-call": {
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Confidently Close Every Call - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Confidently Close Every Call - Toolstack.pdf"
             },
             "crafting-irresistible-business-offers": {
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Crafting Irresistible Business Offers - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Crafting Irresistible Business Offers - Toolstack.pdf"
             },
             "digital-creators-buddy": {
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Digital Creator's Buddy - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Digital Creator's Buddy - Toolstack.pdf"
             },
             "high-ticket-affiliate-marketing": {
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/High-Ticket Affiliate Marketing - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- High-Ticket Affiliate Marketing - Toolstack.pdf"
             },
             "how-to-build-a-website": {
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/How to Build a Website - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- How to Build a Website - Toolstack.pdf"
             },
             "marketing-plan-simplified": {
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Marketing Plan Simplified - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Marketing Plan Simplified - Toolstack.pdf"
             },
             "microsaas-success-blueprint": {
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/MicroSaas Success Blueprint - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- MicroSaas Success Blueprint - Toolstack.pdf"
             },
             "power-up-your-brand": {
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Power Up Your Brand - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Power Up Your Brand - Toolstack.pdf"
             },,
 
             "agency-operations-and-scaling": {
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Agency Operations & Scaling - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Agency Operations & Scaling - Toolstack.pdf"
             },
 
             "sell-with-design": {
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Sell With Design - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Sell With Design - Toolstack.pdf"
             },
 
             "the-power-of-prototypes": {
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/The Power of Prototypes - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- The Power of Prototypes - Toolstack.pdf"
             },
 
             "understanding-business-metrics": {
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Understanding Business Metrics - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Understanding Business Metrics - Toolstack.pdf"
             },
 
             "validate-business-ideas": {
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Validate Business Ideas - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Validate Business Ideas - Toolstack.pdf"
             },
 
             "winning-product-research": {
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Winning Product Research - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Winning Product Research - Toolstack.pdf"
             },
 
             "your-business-plan-playbook": {
                 fileKey:
-                    "Business & Entrepreneurship/Toolstack/Your Business Plan Playbook - Toolstack.pdf"
+                    "Business & Entrepreneurship/Toolstack/- Your Business Plan Playbook - Toolstack.pdf"
             },,,
 
             "7-conversion-killers-hiding-on-your-product-pages": {
                 fileKey:
-                    "Business & Entrepreneurship/Listicle/7 Conversion Killers Hiding on Your Product Pages - Listicle.pdf"
+                    "Business & Entrepreneurship/Listicle/- 7 Conversion Killers Hiding on Your Product Pages - Listicle.pdf"
             },
 
             "beyond-the-side-hustle": {
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Beyond the Side Hustle - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/- Beyond the Side Hustle - Podcast.pdf"
             },
 
             "business-cash-control": {
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Business Cash Control - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/- Business Cash Control - Podcast.pdf"
             },
 
             "cost-control-that-compounds": {
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Cost Control That Compounds - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/- Cost Control That Compounds - Podcast.pdf"
             },
 
             "fast-cash-freelancer": {
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Fast Cash Freelancer - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/- Fast Cash Freelancer - Podcast.pdf"
             },
 
             "hiring-without-regret": {
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Hiring Without Regret - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/- Hiring Without Regret - Podcast.pdf"
             },
 
             "stores-that-convert": {
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Stores That Convert - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/- Stores That Convert - Podcast.pdf"
             },
 
             "the-brain-friendly-workplace": {
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/The Brain-Friendly Workplace - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/- The Brain-Friendly Workplace - Podcast.pdf"
             },
 
             "the-entrepreneur-starting-line": {
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/The Entrepreneur Starting Line - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/- The Entrepreneur Starting Line - Podcast.pdf"
             },
 
             "the-scalable-expert-model": {
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/The Scalable Expert Model - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/- The Scalable Expert Model - Podcast.pdf"
             },,
         
 
             "confidently-close-every-call-workbook": {
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/Confidently Close Every Call - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- Confidently Close Every Call - Workbook.pdf"
             },
 
             "faceless-creator-workbook": {
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/Faceless Creator - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- Faceless Creator - Workbook.pdf"
             },
 
             "high-ticket-affiliate-marketing-workbook": {
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/High-Ticket Affiliate Marketing - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- High-Ticket Affiliate Marketing - Workbook.pdf"
             },
 
             "how-to-build-a-website-workbook": {
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/How to Build a Website - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- How to Build a Website - Workbook.pdf"
             },
 
             "microsaas-success-blueprint-workbook": {
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/MicroSaas Success Blueprint - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- MicroSaas Success Blueprint - Workbook.pdf"
             },
 
             "money-psychology-in-business-workbook": {
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/Money Psychology in Business - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- Money Psychology in Business - Workbook.pdf"
             },
 
             "the-power-of-prototypes-workbook": {
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/The Power of Prototypes - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- The Power of Prototypes - Workbook.pdf"
             },
 
             "understanding-business-metrics-workbook": {
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/Understanding Business Metrics - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- Understanding Business Metrics - Workbook.pdf"
             },
 
             "validate-business-ideas-workbook": {
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/Validate Business Ideas - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- Validate Business Ideas - Workbook.pdf"
             },
 
             "winning-product-research-workbook": {
                 fileKey:
-                    "Business & Entrepreneurship/Workbook/Winning Product Research - Workbook.pdf"
+                    "Business & Entrepreneurship/Workbook/- Winning Product Research - Workbook.pdf"
             },
 
 };
