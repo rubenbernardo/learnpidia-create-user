@@ -5879,63 +5879,63 @@ if (operation === "purchase_product") {
                 price:
                     32000,
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Beyond the Side Hustle - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/Beyond the Side Hustle - Podcast.zip"
             },
 
             "business-cash-control": {
                 price:
                     45000,
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Business Cash Control - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/Business Cash Control - Podcast.zip"
             },
 
             "cost-control-that-compounds": {
                 price:
                     45000,
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Cost Control That Compounds - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/Cost Control That Compounds - Podcast.zip"
             },
 
             "fast-cash-freelancer": {
                 price:
                     28000,
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Fast Cash Freelancer - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/Fast Cash Freelancer - Podcast.zip"
             },
 
             "hiring-without-regret": {
                 price:
                     38000,
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Hiring Without Regret - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/Hiring Without Regret - Podcast.zip"
             },
 
             "stores-that-convert": {
                 price:
                     35000,
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Stores That Convert - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/Stores That Convert - Podcast.zip"
             },
 
             "the-brain-friendly-workplace": {
                 price:
                     25000,
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/The Brain-Friendly Workplace - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/The Brain-Friendly Workplace - Podcast.zip"
             },
 
             "the-entrepreneur-starting-line": {
                 price:
                     20000,
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/The Entrepreneur Starting Line - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/The Entrepreneur Starting Line - Podcast.zip"
             },
 
             "the-scalable-expert-model": {
                 price:
                     50000,
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/The Scalable Expert Model - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/The Scalable Expert Model - Podcast.zip"
             },
 
         
@@ -6997,47 +6997,47 @@ if (operation === "get_product_download_url") {
 
             "beyond-the-side-hustle": {
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Beyond the Side Hustle - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/Beyond the Side Hustle - Podcast.zip"
             },
 
             "business-cash-control": {
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Business Cash Control - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/Business Cash Control - Podcast.zip"
             },
 
             "cost-control-that-compounds": {
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Cost Control That Compounds - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/Cost Control That Compounds - Podcast.zip"
             },
 
             "fast-cash-freelancer": {
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Fast Cash Freelancer - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/Fast Cash Freelancer - Podcast.zip"
             },
 
             "hiring-without-regret": {
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Hiring Without Regret - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/Hiring Without Regret - Podcast.zip"
             },
 
             "stores-that-convert": {
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/Stores That Convert - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/Stores That Convert - Podcast.zip"
             },
 
             "the-brain-friendly-workplace": {
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/The Brain-Friendly Workplace - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/The Brain-Friendly Workplace - Podcast.zip"
             },
 
             "the-entrepreneur-starting-line": {
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/The Entrepreneur Starting Line - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/The Entrepreneur Starting Line - Podcast.zip"
             },
 
             "the-scalable-expert-model": {
                 fileKey:
-                    "Business & Entrepreneurship/Podcast/The Scalable Expert Model - Podcast.pdf"
+                    "Business & Entrepreneurship/Podcast/The Scalable Expert Model - Podcast.zip"
             },,
         
 
