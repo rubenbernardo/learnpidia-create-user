@@ -5272,7 +5272,7 @@ if (operation === "purchase_product") {
                     15000,
 
                 fileKey:
-                    "Cut Smart - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/Cut Smart - Ebook.pdf"
             },
 
             "hire-right-keep-them-longer": {
@@ -6552,7 +6552,7 @@ if (operation === "get_product_download_url") {
         const products = {
             "cut-smart": {
                 fileKey:
-                    "Cut Smart - Ebook.pdf"
+                    "Business & Entrepreneurship/Books/Cut Smart - Ebook.pdf"
             },
         
             "hire-right-keep-them-longer": {
