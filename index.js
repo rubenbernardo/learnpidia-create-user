@@ -5757,7 +5757,119 @@ if (operation === "purchase_product") {
                     1000,
                 fileKey:
                     "Business & Entrepreneurship/Prompts/The Freelancer’s Fast Cash Strategies - Prompts.pdf"
-            },,
+            },
+
+            "agency-operations-and-scaling": {
+                price:
+                    5000,
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Agency Operations & Scaling - Toolstack.pdf"
+            },
+
+            "build-positive-digital-presence": {
+                price:
+                    2200,
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Build Positive Digital Presence - Toolstack.pdf"
+            },
+
+            "confidently-close-every-call": {
+                price:
+                    3600,
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Confidently Close Every Call - Toolstack.pdf"
+            },
+
+            "crafting-irresistible-business-offers": {
+                price:
+                    4500,
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Crafting Irresistible Business Offers - Toolstack.pdf"
+            },
+
+            "digital-creator’s-buddy": {
+                price:
+                    1800,
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Digital Creator’s Buddy - Toolstack.pdf"
+            },
+
+            "high-ticket-affiliate-marketing": {
+                price:
+                    4800,
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/High-Ticket Affiliate Marketing - Toolstack.pdf"
+            },
+
+            "how-to-build-a-website": {
+                price:
+                    2500,
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/How to Build a Website - Toolstack.pdf"
+            },
+
+            "marketing-plan-simplified": {
+                price:
+                    1500,
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Marketing Plan Simplified - Toolstack.pdf"
+            },
+
+            "microsaas-success-blueprint": {
+                price:
+                    4900,
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/MicroSaas Success Blueprint - Toolstack.pdf"
+            },
+
+            "power-up-your-brand": {
+                price:
+                    1200,
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Power Up Your Brand - Toolstack.pdf"
+            },
+
+            "sell-with-design": {
+                price:
+                    2800,
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Sell With Design - Toolstack.pdf"
+            },
+
+            "the-power-of-prototypes": {
+                price:
+                    3200,
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/The Power of Prototypes - Toolstack.pdf"
+            },
+
+            "understanding-business-metrics": {
+                price:
+                    4000,
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Understanding Business Metrics - Toolstack.pdf"
+            },
+
+            "validate-business-ideas": {
+                price:
+                    3000,
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Validate Business Ideas - Toolstack.pdf"
+            },
+
+            "winning-product-research": {
+                price:
+                    3500,
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Winning Product Research - Toolstack.pdf"
+            },
+
+            "your-business-plan-playbook": {
+                price:
+                    1000,
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Your Business Plan Playbook - Toolstack.pdf"
+            },,,
 
             "7-conversion-killers-hiding-on-your-product-pages": {
                 price:
@@ -6732,7 +6844,87 @@ if (operation === "get_product_download_url") {
             "the-freelancers-fast-cash-strategies": {
                 fileKey:
                     "Business & Entrepreneurship/Prompts/The Freelancer’s Fast Cash Strategies - Prompts.pdf"
-            },,
+            },
+
+            "agency-operations-and-scaling": {
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Agency Operations & Scaling - Toolstack.pdf"
+            },
+
+            "build-positive-digital-presence": {
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Build Positive Digital Presence - Toolstack.pdf"
+            },
+
+            "confidently-close-every-call": {
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Confidently Close Every Call - Toolstack.pdf"
+            },
+
+            "crafting-irresistible-business-offers": {
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Crafting Irresistible Business Offers - Toolstack.pdf"
+            },
+
+            "digital-creator’s-buddy": {
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Digital Creator’s Buddy - Toolstack.pdf"
+            },
+
+            "high-ticket-affiliate-marketing": {
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/High-Ticket Affiliate Marketing - Toolstack.pdf"
+            },
+
+            "how-to-build-a-website": {
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/How to Build a Website - Toolstack.pdf"
+            },
+
+            "marketing-plan-simplified": {
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Marketing Plan Simplified - Toolstack.pdf"
+            },
+
+            "microsaas-success-blueprint": {
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/MicroSaas Success Blueprint - Toolstack.pdf"
+            },
+
+            "power-up-your-brand": {
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Power Up Your Brand - Toolstack.pdf"
+            },
+
+            "sell-with-design": {
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Sell With Design - Toolstack.pdf"
+            },
+
+            "the-power-of-prototypes": {
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/The Power of Prototypes - Toolstack.pdf"
+            },
+
+            "understanding-business-metrics": {
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Understanding Business Metrics - Toolstack.pdf"
+            },
+
+            "validate-business-ideas": {
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Validate Business Ideas - Toolstack.pdf"
+            },
+
+            "winning-product-research": {
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Winning Product Research - Toolstack.pdf"
+            },
+
+            "your-business-plan-playbook": {
+                fileKey:
+                    "Business & Entrepreneurship/Toolstack/Your Business Plan Playbook - Toolstack.pdf"
+            },,,
 
             "7-conversion-killers-hiding-on-your-product-pages": {
                 fileKey:
