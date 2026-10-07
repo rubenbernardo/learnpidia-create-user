@@ -5279,6 +5279,120 @@ if (operation === "purchase_product") {
                 price: 25000,
                 fileKey:
                     "Business & Entrepreneurship/Books/Hire Right, Keep Them Longer - Book.pdf"
+            },
+
+            "agency-growth-blueprint": {
+                price: 3500,
+                fileKey:
+                    "Business & Entrepreneurship/Books/Agency Growth Blueprint - Ebook.pdf"
+            },
+
+            "build-an-ecommerce-store-that-sells": {
+                price: 3000,
+                fileKey:
+                    "Business & Entrepreneurship/Books/Build an Ecommerce Store That Sells - Ebook.pdf"
+            },
+
+            "creating-the-perfect-customer-experience": {
+                price: 3000,
+                fileKey:
+                    "Business & Entrepreneurship/Books/Creating the Perfect Customer Experience - Ebook.pdf"
+            },
+
+            "how-to-build-a-consistent-visual-identity": {
+                price: 3000,
+                fileKey:
+                    "Business & Entrepreneurship/Books/How to Build a Consistent Visual Identity - Book.pdf"
+            },
+
+            "how-to-franchise-your-business": {
+                price: 4478,
+                fileKey:
+                    "Business & Entrepreneurship/Books/How to Franchise Your Business - Ebook.pdf"
+            },
+
+            "merch-that-sticks": {
+                price: 3000,
+                fileKey:
+                    "Business & Entrepreneurship/Books/Merch That Sticks - Ebook.pdf"
+            },
+
+            "package-what-you-know-into-a-high-ticket-offer": {
+                price: 3000,
+                fileKey:
+                    "Business & Entrepreneurship/Books/Package What You Know Into a High-Ticket Offer - Ebook.pdf"
+            },
+
+            "pick-your-passive-income-stream": {
+                price: 2000,
+                fileKey:
+                    "Business & Entrepreneurship/Books/Pick Your Passive Income Stream - Ebook.pdf"
+            },
+
+            "swot-analysis-simplified": {
+                price: 3000,
+                fileKey:
+                    "Business & Entrepreneurship/Books/SWOT Analysis Simplified - Ebook.pdf"
+            },
+
+            "the-brand-evolution-system-for-modern-creators": {
+                price: 3000,
+                fileKey:
+                    "Business & Entrepreneurship/Books/The Brand Evolution System for Modern Creators - Ebook.pdf"
+            },
+
+            "the-business-model-blueprint": {
+                price: 3000,
+                fileKey:
+                    "Business & Entrepreneurship/Books/The Business Model Blueprint - Ebook.pdf"
+            },
+
+            "the-cash-flow-system-for-small-businesses": {
+                price: 3000,
+                fileKey:
+                    "Business & Entrepreneurship/Books/The Cash Flow System for Small Businesses - Ebook.pdf"
+            },
+
+            "the-first-time-entrepreneur-launchpad": {
+                price: 3000,
+                fileKey:
+                    "Business & Entrepreneurship/Books/The First Time Entrepreneur Launchpad - Book.pdf"
+            },
+
+            "the-freelancers-cash-bridge": {
+                price: 2500,
+                fileKey:
+                    "Business & Entrepreneurship/Books/The Freelancer's Cash Bridge - Book.pdf"
+            },
+
+            "the-neuroinclusive-managers-playbook": {
+                price: 3000,
+                fileKey:
+                    "Business & Entrepreneurship/Books/The Neuroinclusive Manager's Playbook - Ebook.pdf"
+            },
+
+            "the-psychology-of-closing": {
+                price: 3000,
+                fileKey:
+                    "Business & Entrepreneurship/Books/The Psychology of Closing - Ebook.pdf"
+            },
+
+            "turn-sales-into-predictable-growth": {
+                price: 3000,
+                fileKey:
+                    "Business & Entrepreneurship/Books/Turn Sales Into Predictable Growth - Ebook.pdf"
+            },
+
+            "turn-your-expertise-into-5k-workshop-days": {
+                price: 3000,
+                fileKey:
+                    "Business & Entrepreneurship/Books/Turn Your Expertise Into $5K Workshop Days - Ebook.pdf"
+            },
+
+            "visual-selling": {
+                price: 3000,
+                fileKey:
+                    "Business & Entrepreneurship/Books/Visual Selling - Ebook.pdf"
             }
 
         };
@@ -5829,6 +5943,101 @@ if (operation === "get_product_download_url") {
             "hire-right-keep-them-longer": {
                 fileKey:
                     "Business & Entrepreneurship/Books/Hire Right, Keep Them Longer - Book.pdf"
+            },
+
+            "agency-growth-blueprint": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/Agency Growth Blueprint - Ebook.pdf"
+            },
+
+            "build-an-ecommerce-store-that-sells": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/Build an Ecommerce Store That Sells - Ebook.pdf"
+            },
+
+            "creating-the-perfect-customer-experience": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/Creating the Perfect Customer Experience - Ebook.pdf"
+            },
+
+            "how-to-build-a-consistent-visual-identity": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/How to Build a Consistent Visual Identity - Book.pdf"
+            },
+
+            "how-to-franchise-your-business": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/How to Franchise Your Business - Ebook.pdf"
+            },
+
+            "merch-that-sticks": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/Merch That Sticks - Ebook.pdf"
+            },
+
+            "package-what-you-know-into-a-high-ticket-offer": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/Package What You Know Into a High-Ticket Offer - Ebook.pdf"
+            },
+
+            "pick-your-passive-income-stream": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/Pick Your Passive Income Stream - Ebook.pdf"
+            },
+
+            "swot-analysis-simplified": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/SWOT Analysis Simplified - Ebook.pdf"
+            },
+
+            "the-brand-evolution-system-for-modern-creators": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/The Brand Evolution System for Modern Creators - Ebook.pdf"
+            },
+
+            "the-business-model-blueprint": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/The Business Model Blueprint - Ebook.pdf"
+            },
+
+            "the-cash-flow-system-for-small-businesses": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/The Cash Flow System for Small Businesses - Ebook.pdf"
+            },
+
+            "the-first-time-entrepreneur-launchpad": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/The First Time Entrepreneur Launchpad - Book.pdf"
+            },
+
+            "the-freelancers-cash-bridge": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/The Freelancer's Cash Bridge - Book.pdf"
+            },
+
+            "the-neuroinclusive-managers-playbook": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/The Neuroinclusive Manager's Playbook - Ebook.pdf"
+            },
+
+            "the-psychology-of-closing": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/The Psychology of Closing - Ebook.pdf"
+            },
+
+            "turn-sales-into-predictable-growth": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/Turn Sales Into Predictable Growth - Ebook.pdf"
+            },
+
+            "turn-your-expertise-into-5k-workshop-days": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/Turn Your Expertise Into $5K Workshop Days - Ebook.pdf"
+            },
+
+            "visual-selling": {
+                fileKey:
+                    "Business & Entrepreneurship/Books/Visual Selling - Ebook.pdf"
             }
         };
 
