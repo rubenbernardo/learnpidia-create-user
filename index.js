@@ -5666,7 +5666,7 @@ if (operation === "purchase_product") {
                     850,
                 fileKey:
                     "Business & Entrepreneurship/Listicle/7 Conversion Killers Hiding on Your Product Pages - Listicle.pdf"
-            },,,
+            },
 
         };
 
@@ -6506,7 +6506,7 @@ if (operation === "get_product_download_url") {
             "7-conversion-killers-hiding-on-your-product-pages": {
                 fileKey:
                     "Business & Entrepreneurship/Listicle/7 Conversion Killers Hiding on Your Product Pages - Listicle.pdf"
-            },,,
+            },
         };
 
 
