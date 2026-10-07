@@ -5787,7 +5787,7 @@ if (operation === "purchase_product") {
                     "Business & Entrepreneurship/Toolstack/Crafting Irresistible Business Offers - Toolstack.pdf"
             },
 
-            "digital-creator’s-buddy": {
+            "digital-creators-buddy": {
                 price:
                     1800,
                 fileKey:
@@ -6866,7 +6866,7 @@ if (operation === "get_product_download_url") {
                     "Business & Entrepreneurship/Toolstack/Crafting Irresistible Business Offers - Toolstack.pdf"
             },
 
-            "digital-creator’s-buddy": {
+            "digital-creators-buddy": {
                 fileKey:
                     "Business & Entrepreneurship/Toolstack/Digital Creator's Buddy - Toolstack.pdf"
             },
