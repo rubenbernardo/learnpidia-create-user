@@ -5533,7 +5533,133 @@ if (operation === "purchase_product") {
                     2200,
                 fileKey:
                     "Business & Entrepreneurship/Guide/The Weekend Cash Control Setup - Guide.pdf"
-            },,
+            },
+
+            "7-branding-errors-hidden-in-your-company-merchandise": {
+                price:
+                    600,
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/7 Branding Errors Hidden in Your Company Merchandise - Listicle.pdf"
+            },
+
+            "7-business-model-blind-spots-that-kill-startups": {
+                price:
+                    800,
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/7 Business Model Blind Spots That Kill Startups - Listicle.pdf"
+            },
+
+            "7-cash-flow-mistakes-that-sink-profitable-businesses": {
+                price:
+                    880,
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/7 Cash Flow Mistakes That Sink Profitable Businesses - Listicle.pdf"
+            },
+
+            "7-cost-cuts-that-save-cash-now-and-bleed-profit-later": {
+                price:
+                    850,
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/7 Cost Cuts That Save Cash Now and Bleed Profit Later - Listicle.pdf"
+            },
+
+            "7-critical-mistakes-that-sabotage-most-swot-analyses": {
+                price:
+                    680,
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/7 Critical Mistakes That Sabotage Most SWOT Analyses - Listicle.pdf"
+            },
+
+            "7-mistakes-that-keep-agencies-stuck-in-chaos-and-burnout": {
+                price:
+                    760,
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/7 Mistakes That Keep Agencies Stuck in Chaos and Burnout - Listicle.pdf"
+            },
+
+            "7-passive-income-lies-that-cost-first-time-builders-20000": {
+                price:
+                    940,
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/7 Passive Income Lies That Cost First-Time Builders $20,000 - Listicle.pdf"
+            },
+
+            "7-workplace-policies-that-accidentally-block-neurodivergent-talent": {
+                price:
+                    500,
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/7 Workplace Policies That Accidentally Block Neurodivergent Talent - Listicle.pdf"
+            },
+
+            "12-fatal-mistakes-that-kill-workshop-success": {
+                price:
+                    740,
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/12 Fatal Mistakes That Kill Workshop Success - Listicle.pdf"
+            },
+
+            "12-merchandise-secrets-that-break-the-rules-and-win-big": {
+                price:
+                    700,
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/12 Merchandise Secrets That Break the Rules and Win Big - Listicle.pdf"
+            },
+
+            "13-cash-bridge-moves-every-freelancer-needs-before-their-next-net-30-wait": {
+                price:
+                    900,
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/13 Cash Bridge Moves Every Freelancer Needs Before Their Next Net-30 Wait - Listicle.pdf"
+            },
+
+            "13-signals-your-personal-brand-needs-a-strategic-refresh": {
+                price:
+                    620,
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/13 Signals Your Personal Brand Needs a Strategic Refresh - Listicle.pdf"
+            },
+
+            "13-visual-decisions-that-separate-professional-brands-from-amateur-ones": {
+                price:
+                    790,
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/13 Visual Decisions That Separate Professional Brands From Amateur Ones - Listicle.pdf"
+            },
+
+            "21-business-model-checks-investors-expect-you-to-pass": {
+                price:
+                    1000,
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/21 Business Model Checks Investors Expect You to Pass - Listicle.pdf"
+            },
+
+            "21-money-traps-that-kill-first-time-businesses-before-they-start": {
+                price:
+                    970,
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/21 Money Traps That Kill First-Time Businesses Before They Start - Listicle.pdf"
+            },
+
+            "21-objections-that-actually-mean-they-want-to-buy": {
+                price:
+                    820,
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/21 Objections That Actually Mean They Want to Buy - Listicle.pdf"
+            },
+
+            "21-reasons-why-you-keep-losing-candidates-to-your-competitors": {
+                price:
+                    750,
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/21 Reasons Why You Keep Losing Candidates to Your Competitors - Listicle.pdf"
+            },
+
+            "21-workshop-secrets-that-create-consistent-revenue": {
+                price:
+                    1000,
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/21 Workshop Secrets That Create Consistent Revenue - Listicle.pdf"
+            },,,
 
         };
 
@@ -6278,7 +6404,97 @@ if (operation === "get_product_download_url") {
             "the-weekend-cash-control-setup": {
                 fileKey:
                     "Business & Entrepreneurship/Guide/The Weekend Cash Control Setup - Guide.pdf"
-            },,
+            },
+
+            "7-branding-errors-hidden-in-your-company-merchandise": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/7 Branding Errors Hidden in Your Company Merchandise - Listicle.pdf"
+            },
+
+            "7-business-model-blind-spots-that-kill-startups": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/7 Business Model Blind Spots That Kill Startups - Listicle.pdf"
+            },
+
+            "7-cash-flow-mistakes-that-sink-profitable-businesses": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/7 Cash Flow Mistakes That Sink Profitable Businesses - Listicle.pdf"
+            },
+
+            "7-cost-cuts-that-save-cash-now-and-bleed-profit-later": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/7 Cost Cuts That Save Cash Now and Bleed Profit Later - Listicle.pdf"
+            },
+
+            "7-critical-mistakes-that-sabotage-most-swot-analyses": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/7 Critical Mistakes That Sabotage Most SWOT Analyses - Listicle.pdf"
+            },
+
+            "7-mistakes-that-keep-agencies-stuck-in-chaos-and-burnout": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/7 Mistakes That Keep Agencies Stuck in Chaos and Burnout - Listicle.pdf"
+            },
+
+            "7-passive-income-lies-that-cost-first-time-builders-20000": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/7 Passive Income Lies That Cost First-Time Builders $20,000 - Listicle.pdf"
+            },
+
+            "7-workplace-policies-that-accidentally-block-neurodivergent-talent": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/7 Workplace Policies That Accidentally Block Neurodivergent Talent - Listicle.pdf"
+            },
+
+            "12-fatal-mistakes-that-kill-workshop-success": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/12 Fatal Mistakes That Kill Workshop Success - Listicle.pdf"
+            },
+
+            "12-merchandise-secrets-that-break-the-rules-and-win-big": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/12 Merchandise Secrets That Break the Rules and Win Big - Listicle.pdf"
+            },
+
+            "13-cash-bridge-moves-every-freelancer-needs-before-their-next-net-30-wait": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/13 Cash Bridge Moves Every Freelancer Needs Before Their Next Net-30 Wait - Listicle.pdf"
+            },
+
+            "13-signals-your-personal-brand-needs-a-strategic-refresh": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/13 Signals Your Personal Brand Needs a Strategic Refresh - Listicle.pdf"
+            },
+
+            "13-visual-decisions-that-separate-professional-brands-from-amateur-ones": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/13 Visual Decisions That Separate Professional Brands From Amateur Ones - Listicle.pdf"
+            },
+
+            "21-business-model-checks-investors-expect-you-to-pass": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/21 Business Model Checks Investors Expect You to Pass - Listicle.pdf"
+            },
+
+            "21-money-traps-that-kill-first-time-businesses-before-they-start": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/21 Money Traps That Kill First-Time Businesses Before They Start - Listicle.pdf"
+            },
+
+            "21-objections-that-actually-mean-they-want-to-buy": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/21 Objections That Actually Mean They Want to Buy - Listicle.pdf"
+            },
+
+            "21-reasons-why-you-keep-losing-candidates-to-your-competitors": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/21 Reasons Why You Keep Losing Candidates to Your Competitors - Listicle.pdf"
+            },
+
+            "21-workshop-secrets-that-create-consistent-revenue": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/21 Workshop Secrets That Create Consistent Revenue - Listicle.pdf"
+            },,,
         };
 
 
