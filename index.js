@@ -5936,9 +5936,81 @@ if (operation === "purchase_product") {
                     50000,
                 fileKey:
                     "Business & Entrepreneurship/Podcast/The Scalable Expert Model - Podcast.pdf"
-            },,
+            },
 
-        };
+        
+
+            "confidently-close-every-call-workbook": {
+                price:
+                    2200,
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/Confidently Close Every Call - Workbook.pdf"
+            },
+
+            "faceless-creator-workbook": {
+                price:
+                    1200,
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/Faceless Creator - Workbook.pdf"
+            },
+
+            "high-ticket-affiliate-marketing-workbook": {
+                price:
+                    2850,
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/High-Ticket Affiliate Marketing - Workbook.pdf"
+            },
+
+            "how-to-build-a-website-workbook": {
+                price:
+                    1600,
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/How to Build a Website - Workbook.pdf"
+            },
+
+            "microsaas-success-blueprint-workbook": {
+                price:
+                    3000,
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/MicroSaas Success Blueprint - Workbook.pdf"
+            },
+
+            "money-psychology-in-business-workbook": {
+                price:
+                    2500,
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/Money Psychology in Business - Workbook.pdf"
+            },
+
+            "the-power-of-prototypes-workbook": {
+                price:
+                    1800,
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/The Power of Prototypes - Workbook.pdf"
+            },
+
+            "understanding-business-metrics-workbook": {
+                price:
+                    2600,
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/Understanding Business Metrics - Workbook.pdf"
+            },
+
+            "validate-business-ideas-workbook": {
+                price:
+                    1900,
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/Validate Business Ideas - Workbook.pdf"
+            },
+
+            "winning-product-research-workbook": {
+                price:
+                    2400,
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/Winning Product Research - Workbook.pdf"
+            },
+
+};
 
 
         const product =
@@ -6967,7 +7039,59 @@ if (operation === "get_product_download_url") {
                 fileKey:
                     "Business & Entrepreneurship/Podcast/The Scalable Expert Model - Podcast.pdf"
             },,
-        };
+        
+
+            "confidently-close-every-call-workbook": {
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/Confidently Close Every Call - Workbook.pdf"
+            },
+
+            "faceless-creator-workbook": {
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/Faceless Creator - Workbook.pdf"
+            },
+
+            "high-ticket-affiliate-marketing-workbook": {
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/High-Ticket Affiliate Marketing - Workbook.pdf"
+            },
+
+            "how-to-build-a-website-workbook": {
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/How to Build a Website - Workbook.pdf"
+            },
+
+            "microsaas-success-blueprint-workbook": {
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/MicroSaas Success Blueprint - Workbook.pdf"
+            },
+
+            "money-psychology-in-business-workbook": {
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/Money Psychology in Business - Workbook.pdf"
+            },
+
+            "the-power-of-prototypes-workbook": {
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/The Power of Prototypes - Workbook.pdf"
+            },
+
+            "understanding-business-metrics-workbook": {
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/Understanding Business Metrics - Workbook.pdf"
+            },
+
+            "validate-business-ideas-workbook": {
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/Validate Business Ideas - Workbook.pdf"
+            },
+
+            "winning-product-research-workbook": {
+                fileKey:
+                    "Business & Entrepreneurship/Workbook/Winning Product Research - Workbook.pdf"
+            },
+
+};
 
 
         // -------------------------------------------------
