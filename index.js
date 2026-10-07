@@ -5826,69 +5826,6 @@ if (operation === "purchase_product") {
                     "Business & Entrepreneurship/Toolstack/Agency Operations & Scaling - Toolstack.pdf"
             },
 
-            "build-positive-digital-presence": {
-                price:
-                    2200,
-                fileKey:
-                    "Business & Entrepreneurship/Toolstack/Build Positive Digital Presence - Toolstack.pdf"
-            },
-
-            "confidently-close-every-call": {
-                price:
-                    3600,
-                fileKey:
-                    "Business & Entrepreneurship/Toolstack/Confidently Close Every Call - Toolstack.pdf"
-            },
-
-            "crafting-irresistible-business-offers": {
-                price:
-                    4500,
-                fileKey:
-                    "Business & Entrepreneurship/Toolstack/Crafting Irresistible Business Offers - Toolstack.pdf"
-            },
-
-            "digital-creators-buddy": {
-                price:
-                    1800,
-                fileKey:
-                    "Business & Entrepreneurship/Toolstack/Digital Creator's Buddy - Toolstack.pdf"
-            },
-
-            "high-ticket-affiliate-marketing": {
-                price:
-                    4800,
-                fileKey:
-                    "Business & Entrepreneurship/Toolstack/High-Ticket Affiliate Marketing - Toolstack.pdf"
-            },
-
-            "how-to-build-a-website": {
-                price:
-                    2500,
-                fileKey:
-                    "Business & Entrepreneurship/Toolstack/How to Build a Website - Toolstack.pdf"
-            },
-
-            "marketing-plan-simplified": {
-                price:
-                    1500,
-                fileKey:
-                    "Business & Entrepreneurship/Toolstack/Marketing Plan Simplified - Toolstack.pdf"
-            },
-
-            "microsaas-success-blueprint": {
-                price:
-                    4900,
-                fileKey:
-                    "Business & Entrepreneurship/Toolstack/MicroSaas Success Blueprint - Toolstack.pdf"
-            },
-
-            "power-up-your-brand": {
-                price:
-                    1200,
-                fileKey:
-                    "Business & Entrepreneurship/Toolstack/Power Up Your Brand - Toolstack.pdf"
-            },
-
             "sell-with-design": {
                 price:
                     2800,
@@ -6949,51 +6886,6 @@ if (operation === "get_product_download_url") {
             "agency-operations-and-scaling": {
                 fileKey:
                     "Business & Entrepreneurship/Toolstack/Agency Operations & Scaling - Toolstack.pdf"
-            },
-
-            "build-positive-digital-presence": {
-                fileKey:
-                    "Business & Entrepreneurship/Toolstack/Build Positive Digital Presence - Toolstack.pdf"
-            },
-
-            "confidently-close-every-call": {
-                fileKey:
-                    "Business & Entrepreneurship/Toolstack/Confidently Close Every Call - Toolstack.pdf"
-            },
-
-            "crafting-irresistible-business-offers": {
-                fileKey:
-                    "Business & Entrepreneurship/Toolstack/Crafting Irresistible Business Offers - Toolstack.pdf"
-            },
-
-            "digital-creators-buddy": {
-                fileKey:
-                    "Business & Entrepreneurship/Toolstack/Digital Creator's Buddy - Toolstack.pdf"
-            },
-
-            "high-ticket-affiliate-marketing": {
-                fileKey:
-                    "Business & Entrepreneurship/Toolstack/High-Ticket Affiliate Marketing - Toolstack.pdf"
-            },
-
-            "how-to-build-a-website": {
-                fileKey:
-                    "Business & Entrepreneurship/Toolstack/How to Build a Website - Toolstack.pdf"
-            },
-
-            "marketing-plan-simplified": {
-                fileKey:
-                    "Business & Entrepreneurship/Toolstack/Marketing Plan Simplified - Toolstack.pdf"
-            },
-
-            "microsaas-success-blueprint": {
-                fileKey:
-                    "Business & Entrepreneurship/Toolstack/MicroSaas Success Blueprint - Toolstack.pdf"
-            },
-
-            "power-up-your-brand": {
-                fileKey:
-                    "Business & Entrepreneurship/Toolstack/Power Up Your Brand - Toolstack.pdf"
             },
 
             "sell-with-design": {
