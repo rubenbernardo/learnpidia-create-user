@@ -7185,7 +7185,7 @@ if (operation === "get_product_download_url") {
                     success: false,
 
                     message:
-                        "Product has not been purchased."
+                        "Product has not been unlocked."
                 },
                 403
             );
