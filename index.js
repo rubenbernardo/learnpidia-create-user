@@ -5406,14 +5406,14 @@ if (operation === "purchase_product") {
                 price:
                     250,
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Is Your Marketplace Listing Ready to Publish Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/Is Your Marketplace Listing Ready to Publish - Checklist.pdf"
             },
 
             "kill-the-franken-stack": {
                 price:
                     350,
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Kill the Franken-Stack Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/Kill the Franken-Stack - Checklist.pdf"
             },
 
             "minimum-viable-offer-design": {
@@ -5427,21 +5427,21 @@ if (operation === "purchase_product") {
                 price:
                     300,
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Outcome-Based Job Posting Creation Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/Outcome-Based Job Posting Creation - Checklist.pdf"
             },
 
             "pre-launch-brand-kit-setup": {
                 price:
                     150,
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Pre-Launch Brand Kit Setup Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/Pre-Launch Brand Kit Setup - Checklist.pdf"
             },
 
             "pre-launch-store-validation": {
                 price:
                     420,
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Pre-Launch Store Validation Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/Pre-Launch Store Validation - Checklist.pdf"
             },
 
             "red-light-emergency-protocol": {
@@ -5455,14 +5455,14 @@ if (operation === "purchase_product") {
                 price:
                     200,
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/The Brain-Friendly Hiring Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/The Brain-Friendly Hiring - Checklist.pdf"
             },
 
             "the-scalable-service-delivery-setup": {
                 price:
                     450,
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/The Scalable Service Delivery Setup Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/The Scalable Service Delivery Setup - Checklist.pdf"
             },
 
             "from-hourly-to-value-based-pricing": {
@@ -6845,6 +6845,11 @@ if (operation === "get_product_download_url") {
                     "Business & Entrepreneurship/Listicle/21 Workshop Secrets That Create Consistent Revenue - Listicle.pdf"
             },
 
+             "7-conversion-killers-hiding-on-your-product-pages": {
+                fileKey:
+                    "Business & Entrepreneurship/Listicle/7 Conversion Killers Hiding on Your Product Pages - Listicle.pdf"
+            },
+
             "agency-transformation-assistant": {
                 fileKey:
                     "Business & Entrepreneurship/Prompts/Agency Transformation Assistant - Prompts.pdf"
@@ -6988,11 +6993,6 @@ if (operation === "get_product_download_url") {
             "your-business-plan-playbook": {
                 fileKey:
                     "Business & Entrepreneurship/Toolstack/Your Business Plan Playbook - Toolstack.pdf"
-            },
-
-            "7-conversion-killers-hiding-on-your-product-pages": {
-                fileKey:
-                    "Business & Entrepreneurship/Listicle/7 Conversion Killers Hiding on Your Product Pages - Listicle.pdf"
             },
 
             "beyond-the-side-hustle": {
