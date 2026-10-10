@@ -6657,17 +6657,17 @@ if (operation === "get_product_download_url") {
 
             "audit-your-plan-before-you-commit-capital": {
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Audit Your Plan Before You Commit Capital Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/Audit Your Plan Before You Commit Capital - Checklist.pdf"
             },
 
             "is-your-marketplace-listing-ready-to-publish": {
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Is Your Marketplace Listing Ready to Publish Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/Is Your Marketplace Listing Ready to Publish - Checklist.pdf"
             },
 
             "kill-the-franken-stack": {
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Kill the Franken-Stack Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/Kill the Franken-Stack - Checklist.pdf"
             },
 
             "minimum-viable-offer-design": {
@@ -6677,17 +6677,17 @@ if (operation === "get_product_download_url") {
 
             "outcome-based-job-posting-creation": {
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Outcome-Based Job Posting Creation Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/Outcome-Based Job Posting Creation - Checklist.pdf"
             },
 
             "pre-launch-brand-kit-setup": {
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Pre-Launch Brand Kit Setup Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/Pre-Launch Brand Kit Setup - Checklist.pdf"
             },
 
             "pre-launch-store-validation": {
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/Pre-Launch Store Validation Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/Pre-Launch Store Validation - Checklist.pdf"
             },
 
             "red-light-emergency-protocol": {
@@ -6697,12 +6697,12 @@ if (operation === "get_product_download_url") {
 
             "the-brain-friendly-hiring": {
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/The Brain-Friendly Hiring Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/The Brain-Friendly Hiring - Checklist.pdf"
             },
 
             "the-scalable-service-delivery-setup": {
                 fileKey:
-                    "Business & Entrepreneurship/Checklist/The Scalable Service Delivery Setup Checklist.pdf"
+                    "Business & Entrepreneurship/Checklist/The Scalable Service Delivery Setup - Checklist.pdf"
             },
 
             "from-hourly-to-value-based-pricing": {
