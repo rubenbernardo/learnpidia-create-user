@@ -3472,6 +3472,111 @@ if (
     }
 
     // =====================================================
+    // =====================================================
+    // DISMISS EXTRA LUCKY WHEEL SPIN OFFER
+    // =====================================================
+
+    if (operation === "dismiss_wheel_extra_spin") {
+        try {
+            const userRowPath =
+                "/tablesdb/" + databaseId + "/tables/" + userTableId +
+                "/rows/" + encodeURIComponent(userId);
+            const userResponse = await appwriteRequest(userRowPath, "GET");
+
+            if (!userResponse.ok) {
+                context.error("Could not read user row while dismissing extra wheel spin: " +
+                    JSON.stringify(userResponse.data));
+                return context.res.json(
+                    { success: false, message: "Could not read your Learnpidia account." }, 500
+                );
+            }
+
+            const userRow = userResponse.data;
+            const today = getLuandaDateString();
+            const savedResetDate = userRow.wheelResetDate || "";
+            let currentWheelSpins;
+            let currentExtraSpinUsed;
+
+            if (savedResetDate !== today) {
+                currentWheelSpins = 3;
+                currentExtraSpinUsed = false;
+            } else {
+                currentWheelSpins = Number(userRow.wheelSpins || 0);
+                currentExtraSpinUsed = userRow.wheelExtraSpinUsed === true;
+            }
+
+            if (!Number.isInteger(currentWheelSpins) || currentWheelSpins < 0) {
+                context.error("Invalid server wheel spin count while dismissing extra spin.");
+                return context.res.json(
+                    { success: false, message: "Invalid wheel spin count." }, 500
+                );
+            }
+
+            // If the reset happened while the wheel was open, preserve the new day's spins.
+            if (currentWheelSpins > 0) {
+                if (savedResetDate !== today) {
+                    const resetResponse = await appwriteRequest(
+                        userRowPath,
+                        "PATCH",
+                        {
+                            data: {
+                                wheelSpins: 3,
+                                wheelResetDate: today,
+                                wheelExtraSpinUsed: false
+                            }
+                        }
+                    );
+                    if (!resetResponse.ok) {
+                        context.error("Could not save daily wheel reset: " +
+                            JSON.stringify(resetResponse.data));
+                        return context.res.json(
+                            { success: false, message: "Could not reset your lucky wheel." }, 500
+                        );
+                    }
+                }
+                return context.res.json({
+                    success: true,
+                    operation: "dismiss_wheel_extra_spin",
+                    extraSpinUsed: currentExtraSpinUsed,
+                    wheelSpins: currentWheelSpins
+                });
+            }
+
+            const updateResponse = await appwriteRequest(
+                userRowPath,
+                "PATCH",
+                {
+                    data: {
+                        wheelSpins: currentWheelSpins,
+                        wheelResetDate: today,
+                        wheelExtraSpinUsed: true
+                    }
+                }
+            );
+
+            if (!updateResponse.ok) {
+                context.error("Could not save extra wheel spin dismissal: " +
+                    JSON.stringify(updateResponse.data));
+                return context.res.json(
+                    { success: false, message: "Could not save your wheel choice." }, 500
+                );
+            }
+
+            return context.res.json({
+                success: true,
+                operation: "dismiss_wheel_extra_spin",
+                extraSpinUsed: true,
+                wheelSpins: currentWheelSpins
+            });
+        } catch (error) {
+            context.error("Dismiss extra wheel spin error: " + (error.message || error));
+            return context.res.json(
+                { success: false, message: "Could not save your wheel choice." }, 500
+            );
+        }
+    }
+
+
     // OPERATION 4
     // GET LUCKY WHEEL STATUS
     // =====================================================
