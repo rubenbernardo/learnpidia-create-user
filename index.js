@@ -3541,30 +3541,12 @@ if (
                 });
             }
 
-            const updateResponse = await appwriteRequest(
-                userRowPath,
-                "PATCH",
-                {
-                    data: {
-                        wheelSpins: currentWheelSpins,
-                        wheelResetDate: today,
-                        wheelExtraSpinUsed: true
-                    }
-                }
-            );
-
-            if (!updateResponse.ok) {
-                context.error("Could not save extra wheel spin dismissal: " +
-                    JSON.stringify(updateResponse.data));
-                return context.res.json(
-                    { success: false, message: "Could not save your wheel choice." }, 500
-                );
-            }
-
+            // Closing the wheel popup must not consume the extra-spin offer.
+            // Only claiming an extra spin should set wheelExtraSpinUsed to true.
             return context.res.json({
                 success: true,
                 operation: "dismiss_wheel_extra_spin",
-                extraSpinUsed: true,
+                extraSpinUsed: currentExtraSpinUsed,
                 wheelSpins: currentWheelSpins
             });
         } catch (error) {
