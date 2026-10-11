@@ -139,13 +139,101 @@ module.exports = async function (context) {
             );
 
             if (cpxOriginalReward.status === 404) {
+                // Save a cancellation marker so a later status=1 callback
+                // for this transaction cannot credit a canceled reward.
+                const cpxPendingCancelResponse = await appwriteRequest(
+                    "/tablesdb/transactions",
+                    "POST",
+                    {}
+                );
+
+                if (
+                    !cpxPendingCancelResponse.ok ||
+                    !cpxPendingCancelResponse.data.$id
+                ) {
+                    return context.res.json(
+                        { success: false, message: "Could not record pending cancellation." },
+                        500
+                    );
+                }
+
+                const cpxPendingCancelTxId = cpxPendingCancelResponse.data.$id;
+                const cpxPendingCancelOps = await appwriteRequest(
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(cpxPendingCancelTxId) +
+                    "/operations",
+                    "POST",
+                    {
+                        operations: [{
+                            action: "create",
+                            databaseId: databaseId,
+                            tableId: rewardTableId,
+                            rowId: cpxCancellationID,
+                            data: {
+                                userID: cpxUserId,
+                                rewardType: "cpx_cancellation_pending",
+                                amount: 0,
+                                referenceID: cpxCancellationID,
+                                balanceBefore: 0,
+                                balanceAfter: 0,
+                                shortfall: 0
+                            }
+                        }]
+                    }
+                );
+
+                if (!cpxPendingCancelOps.ok) {
+                    await appwriteRequest(
+                        "/tablesdb/transactions/" +
+                        encodeURIComponent(cpxPendingCancelTxId),
+                        "PATCH",
+                        { rollback: true }
+                    );
+
+                    // Another callback may have recorded the marker first.
+                    const cpxMarkerCheck = await appwriteRequest(
+                        "/tablesdb/" + databaseId +
+                        "/tables/" + rewardTableId +
+                        "/rows/" + encodeURIComponent(cpxCancellationID),
+                        "GET"
+                    );
+
+                    if (cpxMarkerCheck.ok) {
+                        return context.res.json({
+                            success: true,
+                            message: "CPX cancellation already recorded."
+                        });
+                    }
+
+                    return context.res.json(
+                        { success: false, message: "Could not record pending cancellation." },
+                        500
+                    );
+                }
+
+                const cpxPendingCancelCommit = await appwriteRequest(
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(cpxPendingCancelTxId),
+                    "PATCH",
+                    { commit: true }
+                );
+
+                if (!cpxPendingCancelCommit.ok) {
+                    context.error("Could not commit pending CPX cancellation.");
+                    return context.res.json(
+                        { success: false, message: "Could not commit pending cancellation." },
+                        500
+                    );
+                }
+
                 context.log(
-                    "CPX cancellation received without a recorded reward: " +
+                    "CPX cancellation recorded before reward: " +
                     cpxTransactionId
                 );
                 return context.res.json({
                     success: true,
-                    message: "No previously credited reward to reverse."
+                    operation: "cpx_cancellation_pending",
+                    message: "Cancellation recorded; no reward will be credited."
                 });
             }
 
@@ -204,6 +292,10 @@ module.exports = async function (context) {
                 0,
                 cpxCancelBalance - cpxOriginalAmount
             );
+            const cpxCancellationShortfall = Math.max(
+                0,
+                cpxOriginalAmount - cpxCancelBalance
+            );
 
             const cpxCancelTxResponse = await appwriteRequest(
                 "/tablesdb/transactions",
@@ -246,7 +338,8 @@ module.exports = async function (context) {
                                 amount: cpxOriginalAmount,
                                 referenceID: cpxCancellationID,
                                 balanceBefore: cpxCancelBalance,
-                                balanceAfter: cpxBalanceAfterCancellation
+                                balanceAfter: cpxBalanceAfterCancellation,
+                                shortfall: cpxCancellationShortfall
                             }
                         }
                     ]
@@ -313,6 +406,35 @@ module.exports = async function (context) {
         }
 
         const cpxReferenceID = "cpx_" + cpxTransactionId;
+        const cpxCancellationID = "cpx_cancel_" + cpxTransactionId;
+
+        // A cancellation marker takes precedence over a later completion callback.
+        const cpxCancellationCheck = await appwriteRequest(
+            "/tablesdb/" + databaseId +
+            "/tables/" + rewardTableId +
+            "/rows/" + encodeURIComponent(cpxCancellationID),
+            "GET"
+        );
+
+        if (cpxCancellationCheck.ok) {
+            context.log(
+                "CPX completion ignored because transaction is canceled: " +
+                cpxTransactionId
+            );
+            return context.res.json({
+                success: true,
+                operation: "cpx_canceled_no_credit",
+                message: "Transaction was canceled; no reward credited."
+            });
+        }
+
+        if (cpxCancellationCheck.status !== 404) {
+            context.error("Could not verify CPX cancellation marker.");
+            return context.res.json(
+                { success: false, message: "Could not verify cancellation status." },
+                500
+            );
+        }
 
         // Check whether this transaction was already rewarded.
         const cpxExistingReward = await appwriteRequest(
