@@ -14,6 +14,7 @@ module.exports = async function (context) {
 
     const apiKey =
         context.req.headers["x-appwrite-key"] ||
+        process.env.APPWRITE_FUNCTION_API_KEY ||
         process.env.APPWRITE_API_KEY;
 
     const endpoint =
