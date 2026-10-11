@@ -104,16 +104,186 @@ module.exports = async function (context) {
             );
         }
 
-        // CPX status 2 is a reversal. Do not grant new coins for it.
+        // CPX status 2 cancels a previously credited completion.
         if (String(cpxStatus) === "2") {
-            context.log(
-                "CPX reversal received for transaction: " +
-                cpxTransactionId
+            const cpxReferenceID = "cpx_" + cpxTransactionId;
+            const cpxCancellationID = "cpx_cancel_" + cpxTransactionId;
+
+            const cpxExistingCancellation = await appwriteRequest(
+                "/tablesdb/" + databaseId +
+                "/tables/" + rewardTableId +
+                "/rows/" + encodeURIComponent(cpxCancellationID),
+                "GET"
             );
 
+            if (cpxExistingCancellation.ok) {
+                return context.res.json({
+                    success: true,
+                    message: "CPX cancellation already processed."
+                });
+            }
+
+            if (cpxExistingCancellation.status !== 404) {
+                context.error("Could not verify CPX cancellation status.");
+                return context.res.json(
+                    { success: false, message: "Could not verify cancellation." },
+                    500
+                );
+            }
+
+            const cpxOriginalReward = await appwriteRequest(
+                "/tablesdb/" + databaseId +
+                "/tables/" + rewardTableId +
+                "/rows/" + encodeURIComponent(cpxReferenceID),
+                "GET"
+            );
+
+            if (cpxOriginalReward.status === 404) {
+                context.log(
+                    "CPX cancellation received without a recorded reward: " +
+                    cpxTransactionId
+                );
+                return context.res.json({
+                    success: true,
+                    message: "No previously credited reward to reverse."
+                });
+            }
+
+            if (!cpxOriginalReward.ok) {
+                context.error("Could not retrieve original CPX reward.");
+                return context.res.json(
+                    { success: false, message: "Could not verify original reward." },
+                    500
+                );
+            }
+
+            const cpxOriginal = cpxOriginalReward.data;
+            const cpxOriginalAmount = Number(cpxOriginal.amount);
+
+            if (
+                cpxOriginal.userID !== cpxUserId ||
+                !Number.isSafeInteger(cpxOriginalAmount) ||
+                cpxOriginalAmount <= 0
+            ) {
+                context.error("CPX cancellation does not match the original reward.");
+                return context.res.json(
+                    { success: false, message: "Original reward mismatch." },
+                    400
+                );
+            }
+
+            const cpxCancelUserResponse = await appwriteRequest(
+                "/tablesdb/" + databaseId +
+                "/tables/" + userTableId +
+                "/rows/" + encodeURIComponent(cpxUserId),
+                "GET"
+            );
+
+            if (!cpxCancelUserResponse.ok) {
+                return context.res.json(
+                    { success: false, message: "User not found for cancellation." },
+                    404
+                );
+            }
+
+            const cpxCancelUser = cpxCancelUserResponse.data;
+            const cpxCancelBalance = Number(cpxCancelUser.coinBalance);
+
+            if (!Number.isSafeInteger(cpxCancelBalance) || cpxCancelBalance < 0) {
+                return context.res.json(
+                    { success: false, message: "Invalid user balance." },
+                    500
+                );
+            }
+
+            // Never allow a reversal to make the coin balance negative.
+            const cpxBalanceAfterCancellation = Math.max(
+                0,
+                cpxCancelBalance - cpxOriginalAmount
+            );
+
+            const cpxCancelTxResponse = await appwriteRequest(
+                "/tablesdb/transactions",
+                "POST",
+                {}
+            );
+
+            if (!cpxCancelTxResponse.ok || !cpxCancelTxResponse.data.$id) {
+                return context.res.json(
+                    { success: false, message: "Could not start cancellation." },
+                    500
+                );
+            }
+
+            const cpxCancelTxId = cpxCancelTxResponse.data.$id;
+            const cpxCancelOpsResponse = await appwriteRequest(
+                "/tablesdb/transactions/" +
+                encodeURIComponent(cpxCancelTxId) +
+                "/operations",
+                "POST",
+                {
+                    operations: [
+                        {
+                            action: "update",
+                            databaseId: databaseId,
+                            tableId: userTableId,
+                            rowId: cpxUserId,
+                            data: {
+                                coinBalance: cpxBalanceAfterCancellation
+                            }
+                        },
+                        {
+                            action: "create",
+                            databaseId: databaseId,
+                            tableId: rewardTableId,
+                            rowId: cpxCancellationID,
+                            data: {
+                                userID: cpxUserId,
+                                rewardType: "cpx_reversal",
+                                amount: cpxOriginalAmount,
+                                referenceID: cpxCancellationID,
+                                balanceBefore: cpxCancelBalance,
+                                balanceAfter: cpxBalanceAfterCancellation
+                            }
+                        }
+                    ]
+                }
+            );
+
+            if (!cpxCancelOpsResponse.ok) {
+                await appwriteRequest(
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(cpxCancelTxId),
+                    "PATCH",
+                    { rollback: true }
+                );
+                return context.res.json(
+                    { success: false, message: "Could not prepare cancellation." },
+                    500
+                );
+            }
+
+            const cpxCancelCommitResponse = await appwriteRequest(
+                "/tablesdb/transactions/" +
+                encodeURIComponent(cpxCancelTxId),
+                "PATCH",
+                { commit: true }
+            );
+
+            if (!cpxCancelCommitResponse.ok) {
+                context.error("Could not commit CPX cancellation.");
+                return context.res.json(
+                    { success: false, message: "Could not commit cancellation." },
+                    500
+                );
+            }
+
+            context.log("CPX reward reversed for transaction: " + cpxTransactionId);
             return context.res.json({
                 success: true,
-                message: "Reversal received; no new coins credited."
+                operation: "cpx_reversal",
+                amount: cpxOriginalAmount,
+                message: "CPX cancellation processed."
             });
         }
 
