@@ -188,28 +188,21 @@ module.exports = async function (context) {
 
             const cpxCancelUser = cpxCancelUserResponse.data;
             const cpxCancelBalance = Number(cpxCancelUser.coinBalance);
-            const cpxCancelLifetime = Number(cpxCancelUser.lifetimeEarned || 0);
 
             if (
                 !Number.isSafeInteger(cpxCancelBalance) ||
-                cpxCancelBalance < 0 ||
-                !Number.isSafeInteger(cpxCancelLifetime) ||
-                cpxCancelLifetime < 0
+                cpxCancelBalance < 0
             ) {
                 return context.res.json(
-                    { success: false, message: "Invalid user balance or lifetime earnings." },
+                    { success: false, message: "Invalid user balance." },
                     500
                 );
             }
 
-            // Reverse the canceled reward from both spendable balance and net lifetime earnings.
+            // Reverse only the spendable balance. lifetimeEarned is gross lifetime credits.
             const cpxBalanceAfterCancellation = Math.max(
                 0,
                 cpxCancelBalance - cpxOriginalAmount
-            );
-            const cpxLifetimeAfterCancellation = Math.max(
-                0,
-                cpxCancelLifetime - cpxOriginalAmount
             );
 
             const cpxCancelTxResponse = await appwriteRequest(
@@ -239,8 +232,7 @@ module.exports = async function (context) {
                             tableId: userTableId,
                             rowId: cpxUserId,
                             data: {
-                                coinBalance: cpxBalanceAfterCancellation,
-                                lifetimeEarned: cpxLifetimeAfterCancellation
+                                coinBalance: cpxBalanceAfterCancellation
                             }
                         },
                         {
