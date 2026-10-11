@@ -175,8 +175,7 @@ module.exports = async function (context) {
                                 amount: 0,
                                 referenceID: cpxCancellationID,
                                 balanceBefore: 0,
-                                balanceAfter: 0,
-                                shortfall: 0
+                                balanceAfter: 0
                             }
                         }]
                     }
@@ -338,8 +337,7 @@ module.exports = async function (context) {
                                 amount: cpxOriginalAmount,
                                 referenceID: cpxCancellationID,
                                 balanceBefore: cpxCancelBalance,
-                                balanceAfter: cpxBalanceAfterCancellation,
-                                shortfall: cpxCancellationShortfall
+                                balanceAfter: cpxBalanceAfterCancellation
                             }
                         }
                     ]
