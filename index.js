@@ -417,14 +417,162 @@ module.exports = async function (context) {
         );
 
         if (cpxCancellationCheck.ok) {
+            // The reward was canceled, so do not add spendable coins.
+            // Keep lifetimeEarned gross by recording the completed survey once.
+            const cpxCanceledExistingReward = await appwriteRequest(
+                "/tablesdb/" + databaseId +
+                "/tables/" + rewardTableId +
+                "/rows/" + encodeURIComponent(cpxReferenceID),
+                "GET"
+            );
+
+            if (cpxCanceledExistingReward.ok) {
+                return context.res.json({
+                    success: true,
+                    operation: "cpx_canceled_lifetime_already_recorded",
+                    message: "Canceled survey already recorded in lifetime earnings."
+                });
+            }
+
+            if (cpxCanceledExistingReward.status !== 404) {
+                context.error("Could not verify canceled CPX completion.");
+                return context.res.json(
+                    { success: false, message: "Could not verify canceled completion." },
+                    500
+                );
+            }
+
+            const cpxCanceledUserResponse = await appwriteRequest(
+                "/tablesdb/" + databaseId +
+                "/tables/" + userTableId +
+                "/rows/" + encodeURIComponent(cpxUserId),
+                "GET"
+            );
+
+            if (!cpxCanceledUserResponse.ok) {
+                return context.res.json(
+                    { success: false, message: "User not found." },
+                    404
+                );
+            }
+
+            const cpxCanceledUser = cpxCanceledUserResponse.data;
+            const cpxCanceledBalance = Number(cpxCanceledUser.coinBalance);
+            const cpxCanceledLifetime = Number(cpxCanceledUser.lifetimeEarned || 0);
+
+            if (
+                !Number.isSafeInteger(cpxCanceledBalance) ||
+                cpxCanceledBalance < 0 ||
+                !Number.isFinite(cpxCanceledLifetime) ||
+                cpxCanceledLifetime < 0
+            ) {
+                return context.res.json(
+                    { success: false, message: "Invalid user balance." },
+                    500
+                );
+            }
+
+            const cpxCanceledTxResponse = await appwriteRequest(
+                "/tablesdb/transactions",
+                "POST",
+                {}
+            );
+
+            if (!cpxCanceledTxResponse.ok || !cpxCanceledTxResponse.data.$id) {
+                return context.res.json(
+                    { success: false, message: "Could not start canceled reward record." },
+                    500
+                );
+            }
+
+            const cpxCanceledTxId = cpxCanceledTxResponse.data.$id;
+            const cpxCanceledOpsResponse = await appwriteRequest(
+                "/tablesdb/transactions/" +
+                encodeURIComponent(cpxCanceledTxId) +
+                "/operations",
+                "POST",
+                {
+                    operations: [
+                        {
+                            action: "update",
+                            databaseId: databaseId,
+                            tableId: userTableId,
+                            rowId: cpxUserId,
+                            data: {
+                                lifetimeEarned: cpxCanceledLifetime + cpxCoins
+                            }
+                        },
+                        {
+                            action: "create",
+                            databaseId: databaseId,
+                            tableId: rewardTableId,
+                            rowId: cpxReferenceID,
+                            data: {
+                                userID: cpxUserId,
+                                rewardType: "cpx_research_canceled",
+                                amount: cpxCoins,
+                                referenceID: cpxReferenceID,
+                                balanceBefore: cpxCanceledBalance,
+                                balanceAfter: cpxCanceledBalance
+                            }
+                        }
+                    ]
+                }
+            );
+
+            if (!cpxCanceledOpsResponse.ok) {
+                await appwriteRequest(
+                    "/tablesdb/transactions/" +
+                    encodeURIComponent(cpxCanceledTxId),
+                    "PATCH",
+                    { rollback: true }
+                );
+
+                const cpxCanceledRetryCheck = await appwriteRequest(
+                    "/tablesdb/" + databaseId +
+                    "/tables/" + rewardTableId +
+                    "/rows/" + encodeURIComponent(cpxReferenceID),
+                    "GET"
+                );
+
+                if (cpxCanceledRetryCheck.ok) {
+                    return context.res.json({
+                        success: true,
+                        operation: "cpx_canceled_lifetime_already_recorded",
+                        message: "Canceled survey already recorded in lifetime earnings."
+                    });
+                }
+
+                return context.res.json(
+                    { success: false, message: "Could not prepare canceled reward record." },
+                    500
+                );
+            }
+
+            const cpxCanceledCommitResponse = await appwriteRequest(
+                "/tablesdb/transactions/" +
+                encodeURIComponent(cpxCanceledTxId),
+                "PATCH",
+                { commit: true }
+            );
+
+            if (!cpxCanceledCommitResponse.ok) {
+                context.error("Could not commit canceled CPX lifetime earnings.");
+                return context.res.json(
+                    { success: false, message: "Could not commit lifetime earnings." },
+                    500
+                );
+            }
+
             context.log(
-                "CPX completion ignored because transaction is canceled: " +
+                "CPX canceled survey added to lifetimeEarned only: " +
                 cpxTransactionId
             );
             return context.res.json({
                 success: true,
-                operation: "cpx_canceled_no_credit",
-                message: "Transaction was canceled; no reward credited."
+                operation: "cpx_canceled_lifetime_only",
+                amount: cpxCoins,
+                message: "Canceled survey recorded in lifetime earnings only; coinBalance unchanged."
             });
         }
 
