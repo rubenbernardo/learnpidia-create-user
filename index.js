@@ -367,7 +367,7 @@ module.exports = async function (context) {
             );
 
             if (!cpxCancelCommitResponse.ok) {
-                context.error("Could not commit CPX cancellation.");
+                context.error("Could not commit CPX cancellation: " + JSON.stringify(cpxCancelCommitResponse.data));
                 return context.res.json(
                     { success: false, message: "Could not commit cancellation." },
                     500
