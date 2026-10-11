@@ -13,7 +13,8 @@ module.exports = async function (context) {
         context.req.headers["x-appwrite-user-id"];
 
     const apiKey =
-        context.req.headers["x-appwrite-key"];
+        context.req.headers["x-appwrite-key"] ||
+        process.env.APPWRITE_API_KEY;
 
     const endpoint =
         process.env.APPWRITE_FUNCTION_API_ENDPOINT;
@@ -49,6 +50,251 @@ module.exports = async function (context) {
 
     const knowledgeQuizQuestionsTableId =
     "6ac213c200378ddae29d";
+
+    // =====================================================
+    // CHECK FOR CPX RESEARCH POSTBACK
+    // =====================================================
+
+    const cpxStatus = context.req.query.status;
+    const cpxTransactionId = context.req.query.trans_id;
+    const cpxUserId = context.req.query.user_id;
+    const cpxAmountLocal = context.req.query.amount_local;
+    const cpxHash = context.req.query.hash;
+
+    if (
+        cpxStatus !== undefined ||
+        cpxTransactionId !== undefined ||
+        cpxHash !== undefined
+    ) {
+        const crypto = require("crypto");
+        const cpxSecret = process.env.CPX_SECURE_HASH;
+
+        if (
+            !cpxSecret ||
+            !cpxTransactionId ||
+            !cpxUserId ||
+            !cpxHash ||
+            !cpxStatus
+        ) {
+            context.error("CPX postback missing required fields.");
+            return context.res.json(
+                { success: false, message: "Missing required fields." },
+                400
+            );
+        }
+
+        // CPX postback signature: MD5(transaction ID + "-" + app secure hash).
+        const expectedHash = crypto
+            .createHash("md5")
+            .update(cpxTransactionId + "-" + cpxSecret)
+            .digest("hex");
+
+        const received = Buffer.from(String(cpxHash).toLowerCase(), "utf8");
+        const expected = Buffer.from(expectedHash, "utf8");
+
+        if (
+            received.length !== expected.length ||
+            !crypto.timingSafeEqual(received, expected)
+        ) {
+            context.error("CPX postback signature validation failed.");
+            return context.res.json(
+                { success: false, message: "Invalid signature." },
+                403
+            );
+        }
+
+        // CPX status 2 is a reversal. Do not grant new coins for it.
+        if (String(cpxStatus) === "2") {
+            context.log(
+                "CPX reversal received for transaction: " +
+                cpxTransactionId
+            );
+
+            return context.res.json({
+                success: true,
+                message: "Reversal received; no new coins credited."
+            });
+        }
+
+        if (String(cpxStatus) !== "1") {
+            return context.res.json(
+                { success: false, message: "Unsupported CPX status." },
+                400
+            );
+        }
+
+        const cpxAmount = Number(cpxAmountLocal);
+        const cpxCoins = Math.floor(cpxAmount);
+
+        if (
+            !Number.isFinite(cpxAmount) ||
+            cpxAmount <= 0 ||
+            !Number.isSafeInteger(cpxCoins) ||
+            cpxCoins <= 0
+        ) {
+            return context.res.json(
+                { success: false, message: "Invalid CPX reward amount." },
+                400
+            );
+        }
+
+        const cpxReferenceID = "cpx_" + cpxTransactionId;
+
+        // Check whether this transaction was already rewarded.
+        const cpxExistingReward = await appwriteRequest(
+            "/tablesdb/" + databaseId +
+            "/tables/" + rewardTableId +
+            "/rows/" + encodeURIComponent(cpxReferenceID),
+            "GET"
+        );
+
+        if (cpxExistingReward.ok) {
+            return context.res.json({
+                success: true,
+                message: "CPX transaction already rewarded."
+            });
+        }
+
+        if (cpxExistingReward.status !== 404) {
+            context.error(
+                "Could not verify CPX duplicate status: " +
+                JSON.stringify(cpxExistingReward.data)
+            );
+            return context.res.json(
+                { success: false, message: "Could not verify transaction." },
+                500
+            );
+        }
+
+        // CPX user_id must match the Learnpidia user-row ID.
+        const cpxUserResponse = await appwriteRequest(
+            "/tablesdb/" + databaseId +
+            "/tables/" + userTableId +
+            "/rows/" + encodeURIComponent(cpxUserId),
+            "GET"
+        );
+
+        if (!cpxUserResponse.ok) {
+            context.error("CPX user not found: " + cpxUserId);
+            return context.res.json(
+                { success: false, message: "User not found." },
+                404
+            );
+        }
+
+        const cpxUser = cpxUserResponse.data;
+        const cpxBalance = Number(cpxUser.coinBalance);
+        const cpxLifetime = Number(cpxUser.lifetimeEarned || 0);
+
+        if (
+            !Number.isSafeInteger(cpxBalance) ||
+            cpxBalance < 0 ||
+            !Number.isFinite(cpxLifetime) ||
+            cpxLifetime < 0
+        ) {
+            return context.res.json(
+                { success: false, message: "Invalid user balance." },
+                500
+            );
+        }
+
+        const cpxNewBalance = cpxBalance + cpxCoins;
+        const cpxNewLifetime = cpxLifetime + cpxCoins;
+
+        // Start an atomic Appwrite database transaction.
+        const cpxTxResponse = await appwriteRequest(
+            "/tablesdb/transactions",
+            "POST",
+            {}
+        );
+
+        if (!cpxTxResponse.ok || !cpxTxResponse.data.$id) {
+            context.error("Could not start CPX reward transaction.");
+            return context.res.json(
+                { success: false, message: "Transaction failed." },
+                500
+            );
+        }
+
+        const cpxTxId = cpxTxResponse.data.$id;
+
+        const cpxOpsResponse = await appwriteRequest(
+            "/tablesdb/transactions/" +
+            encodeURIComponent(cpxTxId) +
+            "/operations",
+            "POST",
+            {
+                operations: [
+                    {
+                        action: "update",
+                        databaseId: databaseId,
+                        tableId: userTableId,
+                        rowId: cpxUserId,
+                        data: {
+                            coinBalance: cpxNewBalance,
+                            lifetimeEarned: cpxNewLifetime
+                        }
+                    },
+                    {
+                        action: "create",
+                        databaseId: databaseId,
+                        tableId: rewardTableId,
+                        rowId: cpxReferenceID,
+                        data: {
+                            userID: cpxUserId,
+                            rewardType: "cpx_research",
+                            amount: cpxCoins,
+                            referenceID: cpxReferenceID,
+                            balanceBefore: cpxBalance,
+                            balanceAfter: cpxNewBalance
+                        }
+                    }
+                ]
+            }
+        );
+
+        if (!cpxOpsResponse.ok) {
+            await appwriteRequest(
+                "/tablesdb/transactions/" +
+                encodeURIComponent(cpxTxId),
+                "PATCH",
+                { rollback: true }
+            );
+
+            context.error("Could not stage CPX reward operations.");
+            return context.res.json(
+                { success: false, message: "Could not prepare reward." },
+                500
+            );
+        }
+
+        const cpxCommitResponse = await appwriteRequest(
+            "/tablesdb/transactions/" +
+            encodeURIComponent(cpxTxId),
+            "PATCH",
+            { commit: true }
+        );
+
+        if (!cpxCommitResponse.ok) {
+            context.error("Could not commit CPX reward transaction.");
+            return context.res.json(
+                { success: false, message: "Could not commit reward." },
+                500
+            );
+        }
+
+        context.log(
+            "CPX reward credited: " + cpxCoins +
+            " coins to user " + cpxUserId
+        );
+
+        return context.res.json({
+            success: true,
+            operation: "cpx_research_reward",
+            amount: cpxCoins,
+            message: "CPX reward processed."
+        });
+    }
 
     // =====================================================
     // CHECK FOR CPALEAD POSTBACK
