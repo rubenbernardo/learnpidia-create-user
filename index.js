@@ -53,6 +53,245 @@ module.exports = async function (context) {
     "6ac213c200378ddae29d";
 
     // =====================================================
+    // CHECK FOR CPAGRIP GLOBAL POSTBACK
+    // =====================================================
+
+    const cpagripContentType =
+        String(context.req.headers["content-type"] || "").toLowerCase();
+
+    let cpagripPostData = {};
+
+    if (context.req.body && cpagripContentType.includes("application/x-www-form-urlencoded")) {
+        const cpagripRawBody =
+            typeof context.req.body === "string"
+                ? context.req.body
+                : String(context.req.body);
+
+        for (const cpagripPair of cpagripRawBody.split("&")) {
+            if (!cpagripPair) continue;
+            const cpagripEqualsAt = cpagripPair.indexOf("=");
+            const cpagripKey = cpagripEqualsAt < 0
+                ? cpagripPair
+                : cpagripPair.slice(0, cpagripEqualsAt);
+            const cpagripValue = cpagripEqualsAt < 0
+                ? ""
+                : cpagripPair.slice(cpagripEqualsAt + 1);
+
+            try {
+                cpagripPostData[decodeURIComponent(cpagripKey.replace(/\\+/g, " "))] =
+                    decodeURIComponent(cpagripValue.replace(/\\+/g, " "));
+            } catch (error) {
+                return context.res.json(
+                    { success: false, message: "Invalid CPAGrip postback encoding." },
+                    400
+                );
+            }
+        }
+    } else if (context.req.body && typeof context.req.body === "object") {
+        cpagripPostData = context.req.body;
+    }
+
+    const cpagripPassword = cpagripPostData.password;
+    const cpagripPayout = cpagripPostData.payout;
+    const cpagripOfferId = cpagripPostData.offer_id;
+    const cpagripTrackingId = cpagripPostData.tracking_id;
+
+    if (
+        cpagripPassword !== undefined ||
+        cpagripPayout !== undefined ||
+        cpagripOfferId !== undefined ||
+        cpagripTrackingId !== undefined
+    ) {
+        const cpagripExpectedPassword = process.env.CPAGRIP_POSTBACK_PASSWORD;
+
+        if (
+            !cpagripExpectedPassword ||
+            typeof cpagripPassword !== "string" ||
+            cpagripPassword !== cpagripExpectedPassword ||
+            !cpagripTrackingId ||
+            !cpagripOfferId ||
+            cpagripPayout === undefined
+        ) {
+            context.error("CPAGrip postback rejected: invalid password or missing fields.");
+            return context.res.json(
+                { success: false, message: "Invalid CPAGrip postback." },
+                403
+            );
+        }
+
+        const cpagripPayoutAmount = Number(cpagripPayout);
+        const cpagripRewardCoins = Math.floor(cpagripPayoutAmount * 10000);
+
+        if (
+            !Number.isFinite(cpagripPayoutAmount) ||
+            cpagripPayoutAmount <= 0 ||
+            !Number.isSafeInteger(cpagripRewardCoins) ||
+            cpagripRewardCoins <= 0
+        ) {
+            return context.res.json(
+                { success: false, message: "Invalid CPAGrip payout." },
+                400
+            );
+        }
+
+        const cpagripUserId = String(cpagripTrackingId).trim();
+        const cpagripReferenceID =
+            "cpagrip_" + String(cpagripOfferId).trim() + "_" + cpagripUserId;
+
+        if (
+            cpagripUserId.length > 255 ||
+            String(cpagripOfferId).trim().length > 100 ||
+            !/^[A-Za-z0-9_.-]+$/.test(cpagripReferenceID)
+        ) {
+            return context.res.json(
+                { success: false, message: "Invalid CPAGrip tracking or offer ID." },
+                400
+            );
+        }
+
+        const cpagripExistingReward = await appwriteRequest(
+            "/tablesdb/" + databaseId +
+            "/tables/" + rewardTableId +
+            "/rows/" + encodeURIComponent(cpagripReferenceID),
+            "GET"
+        );
+
+        if (cpagripExistingReward.ok) {
+            return context.res.json({
+                success: true,
+                message: "CPAGrip offer already rewarded."
+            });
+        }
+
+        const cpagripUserResponse = await appwriteRequest(
+            "/tablesdb/" + databaseId +
+            "/tables/" + userTableId +
+            "/rows/" + encodeURIComponent(cpagripUserId),
+            "GET"
+        );
+
+        if (!cpagripUserResponse.ok) {
+            context.error("CPAGrip user lookup failed: " + JSON.stringify(cpagripUserResponse.data));
+            return context.res.json(
+                { success: false, message: "Learnpidia user account was not found." },
+                404
+            );
+        }
+
+        const cpagripUser = cpagripUserResponse.data;
+        const cpagripBalance = Number(cpagripUser.coinBalance);
+        const cpagripLifetime = Number(cpagripUser.lifetimeEarned || 0);
+
+        if (
+            !Number.isSafeInteger(cpagripBalance) ||
+            cpagripBalance < 0 ||
+            !Number.isFinite(cpagripLifetime) ||
+            cpagripLifetime < 0
+        ) {
+            return context.res.json(
+                { success: false, message: "Invalid account balance." },
+                500
+            );
+        }
+
+        const cpagripNewBalance = cpagripBalance + cpagripRewardCoins;
+        const cpagripNewLifetime = cpagripLifetime + cpagripRewardCoins;
+
+        if (
+            !Number.isSafeInteger(cpagripNewBalance) ||
+            !Number.isSafeInteger(cpagripNewLifetime)
+        ) {
+            return context.res.json(
+                { success: false, message: "Reward balance exceeds the supported limit." },
+                400
+            );
+        }
+
+        const cpagripTransactionResponse = await appwriteRequest(
+            "/tablesdb/transactions",
+            "POST",
+            {}
+        );
+
+        if (!cpagripTransactionResponse.ok || !cpagripTransactionResponse.data.$id) {
+            context.error("Could not start CPAGrip reward transaction: " + JSON.stringify(cpagripTransactionResponse.data));
+            return context.res.json(
+                { success: false, message: "Could not start CPAGrip reward transaction." },
+                500
+            );
+        }
+
+        const cpagripTransactionId = cpagripTransactionResponse.data.$id;
+        const cpagripOperationsResponse = await appwriteRequest(
+            "/tablesdb/transactions/" + encodeURIComponent(cpagripTransactionId) + "/operations",
+            "POST",
+            {
+                operations: [
+                    {
+                        action: "update",
+                        databaseId: databaseId,
+                        tableId: userTableId,
+                        rowId: cpagripUserId,
+                        data: {
+                            coinBalance: cpagripNewBalance,
+                            lifetimeEarned: cpagripNewLifetime
+                        }
+                    },
+                    {
+                        action: "create",
+                        databaseId: databaseId,
+                        tableId: rewardTableId,
+                        rowId: cpagripReferenceID,
+                        data: {
+                            userID: cpagripUserId,
+                            rewardType: "cpagrip_offer",
+                            amount: cpagripRewardCoins,
+                            referenceID: cpagripReferenceID,
+                            balanceBefore: cpagripBalance,
+                            balanceAfter: cpagripNewBalance
+                        }
+                    }
+                ]
+            }
+        );
+
+        if (!cpagripOperationsResponse.ok) {
+            await appwriteRequest(
+                "/tablesdb/transactions/" + encodeURIComponent(cpagripTransactionId),
+                "PATCH",
+                { rollback: true }
+            );
+            context.error("Could not stage CPAGrip reward: " + JSON.stringify(cpagripOperationsResponse.data));
+            return context.res.json(
+                { success: false, message: "Could not prepare CPAGrip reward." },
+                500
+            );
+        }
+
+        const cpagripCommitResponse = await appwriteRequest(
+            "/tablesdb/transactions/" + encodeURIComponent(cpagripTransactionId),
+            "PATCH",
+            { commit: true }
+        );
+
+        if (!cpagripCommitResponse.ok) {
+            context.error("Could not commit CPAGrip reward: " + JSON.stringify(cpagripCommitResponse.data));
+            return context.res.json(
+                { success: false, message: "Could not commit CPAGrip reward." },
+                500
+            );
+        }
+
+        context.log("CPAGrip offer rewarded for user " + cpagripUserId + ", offer " + cpagripOfferId);
+        return context.res.json({
+            success: true,
+            operation: "cpagrip_offer",
+            amount: cpagripRewardCoins,
+            message: "CPAGrip reward processed."
+        });
+    }
+
+    // =====================================================
     // CHECK FOR CPX RESEARCH POSTBACK
     // =====================================================
 
