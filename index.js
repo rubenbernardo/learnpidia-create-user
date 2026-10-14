@@ -5598,6 +5598,8 @@ if (operation === "get_knowledge_quiz_questions") {
             offset += pageRows.length;
         }
 
+        context.log("Knowledge quiz questions fetched: " + rows.length);
+
         return context.res.json(
             {
                 success: true,
@@ -5606,8 +5608,6 @@ if (operation === "get_knowledge_quiz_questions") {
                 questions: rows
             }
         );
-
-        context.log("Knowledge quiz questions fetched: " + rows.length);
 
     } catch (error) {
 
