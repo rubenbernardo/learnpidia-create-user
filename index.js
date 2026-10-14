@@ -5607,6 +5607,8 @@ if (operation === "get_knowledge_quiz_questions") {
             }
         );
 
+        context.log("Knowledge quiz questions fetched: " + rows.length);
+
     } catch (error) {
 
         context.error(
