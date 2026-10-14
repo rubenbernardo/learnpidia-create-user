@@ -5548,46 +5548,62 @@ if (operation === "get_knowledge_quiz_questions") {
             knowledgeQuizQuestionsTableId +
             "/rows";
 
-        const questionsResponse =
-            await appwriteRequest(
-                questionsPath,
-                "GET"
-            );
+        const pageSize = 100;
+        let offset = 0;
+        let rows = [];
 
-        if (!questionsResponse.ok) {
+        while (true) {
 
-            context.error(
-                "Could not read knowledge quiz questions: " +
-                JSON.stringify(
-                    questionsResponse.data
-                )
-            );
+            const questionsResponse =
+                await appwriteRequest(
+                    questionsPath +
+                    "?limit=" + pageSize +
+                    "&offset=" + offset,
+                    "GET"
+                );
 
-            return context.res.json(
-                {
-                    success: false,
-                    message:
-                        "Could not load knowledge quiz questions."
-                },
-                500
-            );
+            if (!questionsResponse.ok) {
+
+                context.error(
+                    "Could not read knowledge quiz questions: " +
+                    JSON.stringify(questionsResponse.data)
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+                        message:
+                            "Could not load knowledge quiz questions."
+                    },
+                    500
+                );
+            }
+
+            const pageRows =
+                questionsResponse.data.rows || [];
+
+            rows = rows.concat(pageRows);
+
+            const total =
+                Number(questionsResponse.data.total || 0);
+
+            if (
+                pageRows.length < pageSize ||
+                (total > 0 && rows.length >= total) ||
+                pageRows.length === 0
+            ) {
+                break;
+            }
+
+            offset += pageRows.length;
         }
-
-        const rows =
-            questionsResponse.data.rows || [];
-
-       const questions =
-            rows.map(
-                row => row
-            );
 
         return context.res.json(
             {
                 success: true,
                 operation:
                     "get_knowledge_quiz_questions",
-                questions:
-                    questions
+                questions: rows
             }
         );
 
