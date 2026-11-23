@@ -52,6 +52,9 @@ module.exports = async function (context) {
     const knowledgeQuizQuestionsTableId =
     "6ac213c200378ddae29d";
 
+   const notificationSettingsTableId =
+    "6b048f1a0002194293cb";
+
     // =====================================================
     // CHECK FOR CPAGRIP GLOBAL POSTBACK
     // =====================================================
@@ -1626,6 +1629,78 @@ async function appwriteRequest(
         };
     }
 
+    // =====================================================
+    // OPERATION: GET NOTIFICATION SETTINGS
+    // =====================================================
+    
+    if (operation === "get_notification_settings") {
+    
+        try {
+    
+            const response = await appwriteRequest(
+    
+                "/tablesdb/" +
+                databaseId +
+                "/tables/6b048f1a0002194293cb/rows/6b0492a30019c35f4c9a",
+    
+                "GET"
+            );
+    
+            if (!response.ok) {
+    
+                context.error(
+                    "Failed to load notification settings: " +
+                    JSON.stringify(response.data)
+                );
+    
+                return context.res.json(
+                    {
+                        success: false,
+                        message: "Unable to load notification settings."
+                    },
+                    response.status
+                );
+            }
+    
+            const row = response.data;
+    
+            return context.res.json({
+    
+                success: true,
+    
+                settings: {
+    
+                    daily_title: row.daily_title || "",
+                    daily_message: row.daily_message || "",
+    
+                    quiz_title: row.quiz_title || "",
+                    quiz_message: row.quiz_message || "",
+    
+                    scratch_title: row.scratch_title || "",
+                    scratch_message: row.scratch_message || "",
+    
+                    reward_title: row.reward_title || "",
+                    reward_message: row.reward_message || "",
+    
+                    reminder_time: row.reminder_time || "18:00"
+                }
+            });
+    
+        } catch (error) {
+    
+            context.error(
+                "Notification settings error: " + error.message
+            );
+    
+            return context.res.json(
+                {
+                    success: false,
+                    message: "An error occurred loading notification settings."
+                },
+                500
+            );
+        }
+    }
 
     // =====================================================
     // OPERATION 1
