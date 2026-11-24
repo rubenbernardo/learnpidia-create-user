@@ -1685,6 +1685,11 @@ async function appwriteRequest(
                     wheel_title: row.wheel_title || "",
                     wheel_message: row.wheel_message || "",
                     
+                    reward_image_url: row.reward_image_url || "",
+                    wheel_image_url: row.wheel_image_url || "",
+                    scratch_image_url: row.scratch_image_url || "",
+                    quiz_image_url: row.quiz_image_url || "",
+                    
                     reminder_time: row.reminder_time || "07:00"
                 }
             });
