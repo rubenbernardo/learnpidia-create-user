@@ -1630,6 +1630,83 @@ async function appwriteRequest(
     }
 
     // =====================================================
+    // OPERATION: GET LATEST APP UPDATE
+    // =====================================================
+
+    if (operation === "get_app_update") {
+
+        try {
+
+            const response = await appwriteRequest(
+                "/tablesdb/" +
+                databaseId +
+                "/tables/6b05f3190013997cb243/rows",
+                "GET"
+            );
+
+            if (!response.ok) {
+
+                context.error(
+                    "Failed to load app update information: " +
+                    JSON.stringify(response.data)
+                );
+
+                return context.res.json(
+                    {
+                        success: false,
+                        message: "Unable to load app update information."
+                    },
+                    response.status
+                );
+            }
+
+            const rows = response.data.rows || [];
+
+            if (rows.length === 0) {
+
+                return context.res.json(
+                    {
+                        success: false,
+                        message: "No app update information was found."
+                    },
+                    404
+                );
+            }
+
+            const row = rows[0];
+
+            return context.res.json({
+
+                success: true,
+
+                latest_version_code:
+                    Number(row.latest_version_code || 1),
+
+                latest_version_name:
+                    row.latest_version_name || "1.0",
+
+                download_url:
+                    row.download_url || "https://learnpidia.apk.com"
+            });
+
+        } catch (error) {
+
+            context.error(
+                "Get app update error: " + error.message
+            );
+
+            return context.res.json(
+                {
+                    success: false,
+                    message: "Unable to check for app updates."
+                },
+                500
+            );
+        }
+    }
+
+
+    // =====================================================
     // OPERATION: GET NOTIFICATION SETTINGS
     // =====================================================
     
