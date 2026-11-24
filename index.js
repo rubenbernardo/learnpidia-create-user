@@ -1681,8 +1681,11 @@ async function appwriteRequest(
     
                     reward_title: row.reward_title || "",
                     reward_message: row.reward_message || "",
-    
-                    reminder_time: row.reminder_time || "18:00"
+                    
+                    wheel_title: row.wheel_title || "",
+                    wheel_message: row.wheel_message || "",
+                    
+                    reminder_time: row.reminder_time || "07:00"
                 }
             });
     
