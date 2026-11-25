@@ -1531,11 +1531,16 @@ return context.res.json(
 
 
     // =====================================================
-    // HELPER: LUANDA DATE
+    // HELPER: LUANDA ACTIVITY DATE (NEW DAY STARTS AT 07:00)
     // =====================================================
     
-    function getLuandaDateString() {
+    function getLuandaActivityDateString() {
     
+        // Subtract seven hours before formatting in Luanda.
+        // This makes the activity date change at 07:00 Luanda time.
+        const activityDateTime =
+            new Date(Date.now() - 7 * 60 * 60 * 1000);
+
         return new Intl.DateTimeFormat(
             "en-CA",
             {
@@ -1545,7 +1550,7 @@ return context.res.json(
                 day: "2-digit"
             }
         ).format(
-            new Date()
+            activityDateTime
         );
     }
 
@@ -1842,13 +1847,13 @@ async function appwriteRequest(
                                 2,
 
                             scratchResetDate:
-                                getLuandaDateString(),
+                                getLuandaActivityDateString(),
 
                             wheelSpins:
                                 3,
 
                             wheelResetDate:
-                                getLuandaDateString(),
+                                getLuandaActivityDateString(),
                             
                             wheelExtraSpinUsed:
                                 false,
@@ -1857,7 +1862,7 @@ async function appwriteRequest(
                                 true,
                             
                             quizResetDate:
-                                getLuandaDateString(),
+                                getLuandaActivityDateString(),
                             
                             unlockedProducts:
                                 ""
@@ -2042,55 +2047,11 @@ async function appwriteRequest(
 
 
             // -------------------------------------------------
-            // GET TODAY'S DATE IN ANGOLA
+            // GET CURRENT ACTIVITY DAY IN ANGOLA (STARTS AT 07:00)
             // -------------------------------------------------
 
-            const dateParts =
-                new Intl.DateTimeFormat(
-                    "en-US",
-                    {
-                        timeZone:
-                            "Africa/Luanda",
-
-                        year:
-                            "numeric",
-
-                        month:
-                            "2-digit",
-
-                        day:
-                            "2-digit"
-                    }
-                ).formatToParts(
-                    new Date()
-                );
-
-
-            const dateValues = {};
-
-
-            dateParts.forEach(
-                function (part) {
-
-                    if (
-                        part.type !== "literal"
-                    ) {
-
-                        dateValues[
-                            part.type
-                        ] =
-                            part.value;
-                    }
-                }
-            );
-
-
             const today =
-                dateValues.year +
-                "-" +
-                dateValues.month +
-                "-" +
-                dateValues.day;
+                getLuandaActivityDateString();
 
 
             // -------------------------------------------------
@@ -2720,55 +2681,11 @@ async function appwriteRequest(
 
 
             // -------------------------------------------------
-            // GET TODAY'S DATE IN ANGOLA
+            // GET CURRENT ACTIVITY DAY IN ANGOLA (STARTS AT 07:00)
             // -------------------------------------------------
 
-            const dateParts =
-                new Intl.DateTimeFormat(
-                    "en-US",
-                    {
-                        timeZone:
-                            "Africa/Luanda",
-
-                        year:
-                            "numeric",
-
-                        month:
-                            "2-digit",
-
-                        day:
-                            "2-digit"
-                    }
-                ).formatToParts(
-                    new Date()
-                );
-
-
-            const dateValues = {};
-
-
-            dateParts.forEach(
-                function (part) {
-
-                    if (
-                        part.type !== "literal"
-                    ) {
-
-                        dateValues[
-                            part.type
-                        ] =
-                            part.value;
-                    }
-                }
-            );
-
-
             const today =
-                dateValues.year +
-                "-" +
-                dateValues.month +
-                "-" +
-                dateValues.day;
+                getLuandaActivityDateString();
 
 
             // -------------------------------------------------
@@ -3108,7 +3025,7 @@ async function appwriteRequest(
 // -------------------------------------------------
 
 const today =
-    getLuandaDateString();
+    getLuandaActivityDateString();
 
 const scratchResetDate =
     userRow.scratchResetDate || "";
@@ -3628,7 +3545,7 @@ if (
             
             
             const today =
-                getLuandaDateString();
+                getLuandaActivityDateString();
             
             
             const savedResetDate =
@@ -4081,7 +3998,7 @@ const currentLifetimeEarned =
 
 
 const today =
-    getLuandaDateString();
+    getLuandaActivityDateString();
 
 
 const savedResetDate =
@@ -4618,7 +4535,7 @@ if (
             
             
             const today =
-                getLuandaDateString();
+                getLuandaActivityDateString();
             
             
             const savedResetDate =
@@ -4844,7 +4761,7 @@ if (
 // -------------------------------------------------
 
 const today =
-    getLuandaDateString();
+    getLuandaActivityDateString();
 
 const scratchResetDate =
     userRow.scratchResetDate || "";
@@ -5585,7 +5502,7 @@ const scratchCards =
             // -------------------------------------------------
 
             const today =
-                getLuandaDateString();
+                getLuandaActivityDateString();
 
 
             const quizResetDate =
@@ -5911,7 +5828,7 @@ if (operation === "get_knowledge_quiz_questions") {
             // -------------------------------------------------
 
             const today =
-                getLuandaDateString();
+                getLuandaActivityDateString();
 
 
             const quizResetDate =
