@@ -1754,6 +1754,7 @@ async function appwriteRequest(
     
                     daily_title: row.daily_title || "",
                     daily_message: row.daily_message || "",
+                    daily_reminder_time: row.daily_reminder_time || "09:00",
     
                     quiz_title: row.quiz_title || "",
                     quiz_message: row.quiz_message || "",
