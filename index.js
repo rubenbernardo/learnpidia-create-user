@@ -7035,6 +7035,66 @@ if (operation === "purchase_product") {
 };
 
 
+            "content-repurposing-mastery": {
+                price: 120000,
+                fileKey:
+                    "Digital marketing/Books/Content Repurposing Mastery - Ebook.pdf"
+            },
+
+            "converting-content-funnel": {
+                price: 220000,
+                fileKey:
+                    "Digital marketing/Books/Converting Content Funnel – Ebook.pdf"
+            },
+
+            "from-zero-to-content-hero": {
+                price: 50000,
+                fileKey:
+                    "Digital marketing/Books/From Zero to Content Hero – Ebook.pdf"
+            },
+
+            "growth-with-social-proof": {
+                price: 75000,
+                fileKey:
+                    "Digital marketing/Books/Growth with Social Proof – Ebook.pdf"
+            },
+
+            "high-converting-landing-page-frameworks": {
+                price: 280000,
+                fileKey:
+                    "Digital marketing/Books/High-Converting Landing Page Frameworks – Ebook.pdf"
+            },
+
+            "monetize-your-micro-audience": {
+                price: 200000,
+                fileKey:
+                    "Digital marketing/Books/Monetize Your Micro-Audience – Ebook.pdf"
+            },
+
+            "sales-automation-chatbots": {
+                price: 320000,
+                fileKey:
+                    "Digital marketing/Books/Sales Automation Chatbots – Ebook.pdf"
+            },
+
+            "the-backlink-blueprint": {
+                price: 350000,
+                fileKey:
+                    "Digital marketing/Books/The Backlink Blueprint – Ebook.pdf"
+            },
+
+            "the-neuromarketing-edge": {
+                price: 380000,
+                fileKey:
+                    "Digital marketing/Books/The Neuromarketing Edge – Book.pdf"
+            },
+
+            "the-ugc-conversion-playbook": {
+                price: 380000,
+                fileKey:
+                    "Digital marketing/Books/The UGC Conversion Playbook - Ebook.pdf"
+            },
+
         const product =
             products[productId];
 
