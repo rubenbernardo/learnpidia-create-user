@@ -8173,6 +8173,57 @@ if (operation === "get_product_download_url") {
                     "Business & Entrepreneurship/Workbook/Winning Product Research - Workbook.pdf"
             },
 
+
+            "content-repurposing-mastery": {
+                fileKey:
+                    "Digital marketing/Books/Content Repurposing Mastery - Ebook.pdf"
+            },
+
+            "converting-content-funnel": {
+                fileKey:
+                    "Digital marketing/Books/Converting Content Funnel – Ebook.pdf"
+            },
+
+            "from-zero-to-content-hero": {
+                fileKey:
+                    "Digital marketing/Books/From Zero to Content Hero – Ebook.pdf"
+            },
+
+            "growth-with-social-proof": {
+                fileKey:
+                    "Digital marketing/Books/Growth with Social Proof – Ebook.pdf"
+            },
+
+            "high-converting-landing-page-frameworks": {
+                fileKey:
+                    "Digital marketing/Books/High-Converting Landing Page Frameworks – Ebook.pdf"
+            },
+
+            "monetize-your-micro-audience": {
+                fileKey:
+                    "Digital marketing/Books/Monetize Your Micro-Audience – Ebook.pdf"
+            },
+
+            "sales-automation-chatbots": {
+                fileKey:
+                    "Digital marketing/Books/Sales Automation Chatbots – Ebook.pdf"
+            },
+
+            "the-backlink-blueprint": {
+                fileKey:
+                    "Digital marketing/Books/The Backlink Blueprint – Ebook.pdf"
+            },
+
+            "the-neuromarketing-edge": {
+                fileKey:
+                    "Digital marketing/Books/The Neuromarketing Edge – Book.pdf"
+            },
+
+            "the-ugc-conversion-playbook": {
+                fileKey:
+                    "Digital marketing/Books/The UGC Conversion Playbook - Ebook.pdf"
+            },
+
 };
 
 
