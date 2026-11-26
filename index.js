@@ -7043,19 +7043,19 @@ if (operation === "purchase_product") {
             "converting-content-funnel": {
                 price: 220000,
                 fileKey:
-                    "Digital marketing/Books/Converting Content Funnel – Ebook.pdf"
+                    "Digital marketing/Books/Converting Content Funnel - Ebook.pdf"
             },
 
             "from-zero-to-content-hero": {
                 price: 50000,
                 fileKey:
-                    "Digital marketing/Books/From Zero to Content Hero – Ebook.pdf"
+                    "Digital marketing/Books/From Zero to Content Hero - Ebook.pdf"
             },
 
             "growth-with-social-proof": {
                 price: 75000,
                 fileKey:
-                    "Digital marketing/Books/Growth with Social Proof – Ebook.pdf"
+                    "Digital marketing/Books/Growth with Social Proof - Ebook.pdf"
             },
 
             "high-converting-landing-page-frameworks": {
@@ -7067,25 +7067,25 @@ if (operation === "purchase_product") {
             "monetize-your-micro-audience": {
                 price: 200000,
                 fileKey:
-                    "Digital marketing/Books/Monetize Your Micro-Audience – Ebook.pdf"
+                    "Digital marketing/Books/Monetize Your Micro-Audience - Ebook.pdf"
             },
 
             "sales-automation-chatbots": {
                 price: 320000,
                 fileKey:
-                    "Digital marketing/Books/Sales Automation Chatbots – Ebook.pdf"
+                    "Digital marketing/Books/Sales Automation Chatbots - Ebook.pdf"
             },
 
             "the-backlink-blueprint": {
                 price: 350000,
                 fileKey:
-                    "Digital marketing/Books/The Backlink Blueprint – Ebook.pdf"
+                    "Digital marketing/Books/The Backlink Blueprint - Ebook.pdf"
             },
 
             "the-neuromarketing-edge": {
                 price: 380000,
                 fileKey:
-                    "Digital marketing/Books/The Neuromarketing Edge – Book.pdf"
+                    "Digital marketing/Books/The Neuromarketing Edge - Book.pdf"
             },
 
             "the-ugc-conversion-playbook": {
@@ -8182,17 +8182,17 @@ if (operation === "get_product_download_url") {
 
             "converting-content-funnel": {
                 fileKey:
-                    "Digital marketing/Books/Converting Content Funnel – Ebook.pdf"
+                    "Digital marketing/Books/Converting Content Funnel - Ebook.pdf"
             },
 
             "from-zero-to-content-hero": {
                 fileKey:
-                    "Digital marketing/Books/From Zero to Content Hero – Ebook.pdf"
+                    "Digital marketing/Books/From Zero to Content Hero - Ebook.pdf"
             },
 
             "growth-with-social-proof": {
                 fileKey:
-                    "Digital marketing/Books/Growth with Social Proof – Ebook.pdf"
+                    "Digital marketing/Books/Growth with Social Proof - Ebook.pdf"
             },
 
             "high-converting-landing-page-frameworks": {
@@ -8202,22 +8202,22 @@ if (operation === "get_product_download_url") {
 
             "monetize-your-micro-audience": {
                 fileKey:
-                    "Digital marketing/Books/Monetize Your Micro-Audience – Ebook.pdf"
+                    "Digital marketing/Books/Monetize Your Micro-Audience - Ebook.pdf"
             },
 
             "sales-automation-chatbots": {
                 fileKey:
-                    "Digital marketing/Books/Sales Automation Chatbots – Ebook.pdf"
+                    "Digital marketing/Books/Sales Automation Chatbots - Ebook.pdf"
             },
 
             "the-backlink-blueprint": {
                 fileKey:
-                    "Digital marketing/Books/The Backlink Blueprint – Ebook.pdf"
+                    "Digital marketing/Books/The Backlink Blueprint - Ebook.pdf"
             },
 
             "the-neuromarketing-edge": {
                 fileKey:
-                    "Digital marketing/Books/The Neuromarketing Edge – Book.pdf"
+                    "Digital marketing/Books/The Neuromarketing Edge - Book.pdf"
             },
 
             "the-ugc-conversion-playbook": {
