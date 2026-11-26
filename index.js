@@ -7061,7 +7061,7 @@ if (operation === "purchase_product") {
             "high-converting-landing-page-frameworks": {
                 price: 280000,
                 fileKey:
-                    "Digital marketing/Books/High-Converting Landing Page Frameworks – Ebook.pdf"
+                    "Digital marketing/Books/High-Converting Landing Page Frameworks - Ebook.pdf"
             },
 
             "monetize-your-micro-audience": {
@@ -8197,7 +8197,7 @@ if (operation === "get_product_download_url") {
 
             "high-converting-landing-page-frameworks": {
                 fileKey:
-                    "Digital marketing/Books/High-Converting Landing Page Frameworks – Ebook.pdf"
+                    "Digital marketing/Books/High-Converting Landing Page Frameworks - Ebook.pdf"
             },
 
             "monetize-your-micro-audience": {
