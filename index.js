@@ -7032,7 +7032,6 @@ if (operation === "purchase_product") {
                     "Business & Entrepreneurship/Workbook/Winning Product Research - Workbook.pdf"
             },
 
-};
 
 
             "content-repurposing-mastery": {
@@ -7094,6 +7093,8 @@ if (operation === "purchase_product") {
                 fileKey:
                     "Digital marketing/Books/The UGC Conversion Playbook - Ebook.pdf"
             },
+
+        };
 
         const product =
             products[productId];
