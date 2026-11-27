@@ -7130,6 +7130,66 @@ if (operation === "purchase_product") {
                     "Digital marketing/Podcast/The Proof Effect - Podcast.zip"
             },
 
+            "11-quiet-mistakes-keeping-your-brand-out-of-ai-answers": {
+                price: 15000,
+                fileKey:
+                    "Digital marketing/Listicle/11 Quiet Mistakes Keeping Your Brand Out of AI Answers - Listicle.pdf"
+            },
+
+            "13-backlink-mistakes-quietly-killing-your-rankings-right-now": {
+                price: 18000,
+                fileKey:
+                    "Digital marketing/Listicle/13 Backlink Mistakes Quietly Killing Your Rankings Right Now - Listicle.pdf"
+            },
+
+            "13-conversion-frameworks-to-triple-your-results": {
+                price: 25000,
+                fileKey:
+                    "Digital marketing/Listicle/13 Conversion Frameworks to Triple Your Results - Listicle.pdf"
+            },
+
+            "13-profit-killing-errors-every-online-store-must-avoid": {
+                price: 20000,
+                fileKey:
+                    "Digital marketing/Listicle/13 Profit-Killing Errors Every Online Store Must Avoid - Listicle.pdf"
+            },
+
+            "13-proven-ways-to-monetize-a-small-audience": {
+                price: 20000,
+                fileKey:
+                    "Digital marketing/Listicle/13 Proven Ways to Monetize a Small Audience - Listicle.pdf"
+            },
+
+            "21-brain-triggers-that-make-people-stop-read-and-buy": {
+                price: 28000,
+                fileKey:
+                    "Digital marketing/Listicle/21 Brain Triggers That Make People Stop, Read, and Buy - Listicle.pdf"
+            },
+
+            "21-psychological-triggers-that-help-you-monetize-a-micro-audience": {
+                price: 30000,
+                fileKey:
+                    "Digital marketing/Listicle/21 Psychological Triggers That Help You Monetize a Micro-Audience - Listicle.pdf"
+            },
+
+            "7-chatbot-mistakes-killing-your-sales": {
+                price: 12000,
+                fileKey:
+                    "Digital marketing/Listicle/7 Chatbot Mistakes Killing Your Sales - Listicle.pdf"
+            },
+
+            "7-psychological-triggers-that-turn-browsers-into-buyers": {
+                price: 10000,
+                fileKey:
+                    "Digital marketing/Listicle/7 Psychological Triggers That Turn Browsers Into Buyers - Listicle.pdf"
+            },
+
+            "7-psychological-triggers-that-turn-visitors-into-buyers": {
+                price: 10000,
+                fileKey:
+                    "Digital marketing/Listicle/7 Psychological Triggers That Turn Visitors into Buyers - Listicle.pdf"
+            },
+
         };
 
         const product =
@@ -8289,6 +8349,56 @@ if (operation === "get_product_download_url") {
             "the-proof-effect": {
                 fileKey:
                     "Digital marketing/Podcast/The Proof Effect - Podcast.zip"
+            },
+
+            "11-quiet-mistakes-keeping-your-brand-out-of-ai-answers": {
+                fileKey:
+                    "Digital marketing/Listicle/11 Quiet Mistakes Keeping Your Brand Out of AI Answers - Listicle.pdf"
+            },
+
+            "13-backlink-mistakes-quietly-killing-your-rankings-right-now": {
+                fileKey:
+                    "Digital marketing/Listicle/13 Backlink Mistakes Quietly Killing Your Rankings Right Now - Listicle.pdf"
+            },
+
+            "13-conversion-frameworks-to-triple-your-results": {
+                fileKey:
+                    "Digital marketing/Listicle/13 Conversion Frameworks to Triple Your Results - Listicle.pdf"
+            },
+
+            "13-profit-killing-errors-every-online-store-must-avoid": {
+                fileKey:
+                    "Digital marketing/Listicle/13 Profit-Killing Errors Every Online Store Must Avoid - Listicle.pdf"
+            },
+
+            "13-proven-ways-to-monetize-a-small-audience": {
+                fileKey:
+                    "Digital marketing/Listicle/13 Proven Ways to Monetize a Small Audience - Listicle.pdf"
+            },
+
+            "21-brain-triggers-that-make-people-stop-read-and-buy": {
+                fileKey:
+                    "Digital marketing/Listicle/21 Brain Triggers That Make People Stop, Read, and Buy - Listicle.pdf"
+            },
+
+            "21-psychological-triggers-that-help-you-monetize-a-micro-audience": {
+                fileKey:
+                    "Digital marketing/Listicle/21 Psychological Triggers That Help You Monetize a Micro-Audience - Listicle.pdf"
+            },
+
+            "7-chatbot-mistakes-killing-your-sales": {
+                fileKey:
+                    "Digital marketing/Listicle/7 Chatbot Mistakes Killing Your Sales - Listicle.pdf"
+            },
+
+            "7-psychological-triggers-that-turn-browsers-into-buyers": {
+                fileKey:
+                    "Digital marketing/Listicle/7 Psychological Triggers That Turn Browsers Into Buyers - Listicle.pdf"
+            },
+
+            "7-psychological-triggers-that-turn-visitors-into-buyers": {
+                fileKey:
+                    "Digital marketing/Listicle/7 Psychological Triggers That Turn Visitors into Buyers - Listicle.pdf"
             },
 
 };
