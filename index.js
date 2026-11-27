@@ -7190,6 +7190,66 @@ if (operation === "purchase_product") {
                     "Digital marketing/Listicle/7 Psychological Triggers That Turn Visitors into Buyers - Listicle.pdf"
             },
 
+
+            "content-funnel-mapping": {
+                price: 12000,
+                fileKey:
+                    "Digital marketing/Checklist/Complete Content Funnel Mapping - Checklist.pdf"
+            },
+
+            "craft-your-one-sentence-hook": {
+                price: 8000,
+                fileKey:
+                    "Digital marketing/Checklist/Craft Your One-Sentence Hook - Checklist.pdf"
+            },
+
+            "crisis-management-step-by-step": {
+                price: 15000,
+                fileKey:
+                    "Digital marketing/Checklist/Crisis Management Step-by-Step - Checklist.pdf"
+            },
+
+            "how-to-setup-youtube-campaign": {
+                price: 12000,
+                fileKey:
+                    "Digital marketing/Checklist/How to Setup YouTube Campaign - Checklist.pdf"
+            },
+
+            "pain-desire-bridge-implementation": {
+                price: 10000,
+                fileKey:
+                    "Digital marketing/Checklist/Pain-Desire Bridge Implementation - Checklist.pdf"
+            },
+
+            "pre-launch-product-validation": {
+                price: 8000,
+                fileKey:
+                    "Digital marketing/Checklist/Pre-Launch Product Validation - Checklist.pdf"
+            },
+
+            "publish-smarter-on-the-right-platform": {
+                price: 8000,
+                fileKey:
+                    "Digital marketing/Checklist/Publish Smarter on the Right Platform - Checklist.pdf"
+            },
+
+            "sales-bot-strategy-mapping": {
+                price: 15000,
+                fileKey:
+                    "Digital marketing/Checklist/Sales Bot Strategy Mapping - Checklist.pdf"
+            },
+
+            "the-complete-review-collection-system": {
+                price: 15000,
+                fileKey:
+                    "Digital marketing/Checklist/The Complete Review Collection System - Checklist.pdf"
+            },
+
+            "the-strategic-ugc-launch": {
+                price: 15000,
+                fileKey:
+                    "Digital marketing/Checklist/The Strategic UGC Launch - Checklist.pdf"
+            },
         };
 
         const product =
@@ -8401,6 +8461,56 @@ if (operation === "get_product_download_url") {
                     "Digital marketing/Listicle/7 Psychological Triggers That Turn Visitors into Buyers - Listicle.pdf"
             },
 
+
+            "content-funnel-mapping": {
+                fileKey:
+                    "Digital marketing/Checklist/Complete Content Funnel Mapping - Checklist.pdf"
+            },
+
+            "craft-your-one-sentence-hook": {
+                fileKey:
+                    "Digital marketing/Checklist/Craft Your One-Sentence Hook - Checklist.pdf"
+            },
+
+            "crisis-management-step-by-step": {
+                fileKey:
+                    "Digital marketing/Checklist/Crisis Management Step-by-Step - Checklist.pdf"
+            },
+
+            "how-to-setup-youtube-campaign": {
+                fileKey:
+                    "Digital marketing/Checklist/How to Setup YouTube Campaign - Checklist.pdf"
+            },
+
+            "pain-desire-bridge-implementation": {
+                fileKey:
+                    "Digital marketing/Checklist/Pain-Desire Bridge Implementation - Checklist.pdf"
+            },
+
+            "pre-launch-product-validation": {
+                fileKey:
+                    "Digital marketing/Checklist/Pre-Launch Product Validation - Checklist.pdf"
+            },
+
+            "publish-smarter-on-the-right-platform": {
+                fileKey:
+                    "Digital marketing/Checklist/Publish Smarter on the Right Platform - Checklist.pdf"
+            },
+
+            "sales-bot-strategy-mapping": {
+                fileKey:
+                    "Digital marketing/Checklist/Sales Bot Strategy Mapping - Checklist.pdf"
+            },
+
+            "the-complete-review-collection-system": {
+                fileKey:
+                    "Digital marketing/Checklist/The Complete Review Collection System - Checklist.pdf"
+            },
+
+            "the-strategic-ugc-launch": {
+                fileKey:
+                    "Digital marketing/Checklist/The Strategic UGC Launch - Checklist.pdf"
+            },
 };
 
 
