@@ -7094,6 +7094,42 @@ if (operation === "purchase_product") {
                     "Digital marketing/Books/The UGC Conversion Playbook - Ebook.pdf"
             },
 
+            "ai-citation-secrets": {
+                price: 50000,
+                fileKey:
+                    "Digital marketing/Podcast/AI Citation Secrets - Podcast.zip"
+            },
+
+            "conversations-that-convert": {
+                price: 30000,
+                fileKey:
+                    "Digital marketing/Podcast/Conversations That Convert - Podcast.zip"
+            },
+
+            "link-building-intelligence": {
+                price: 45000,
+                fileKey:
+                    "Digital marketing/Podcast/Link Building Intelligence - Podcast.zip"
+            },
+
+            "marketing-to-the-subconscious": {
+                price: 60000,
+                fileKey:
+                    "Digital marketing/Podcast/Marketing to the Subconscious - Podcast.zip"
+            },
+
+            "the-micro-offer-method": {
+                price: 40000,
+                fileKey:
+                    "Digital marketing/Podcast/The Micro-Offer Method - Podcast.zip"
+            },
+
+            "the-proof-effect": {
+                price: 20000,
+                fileKey:
+                    "Digital marketing/Podcast/The Proof Effect - Podcast.zip"
+            },
+
         };
 
         const product =
@@ -8223,6 +8259,36 @@ if (operation === "get_product_download_url") {
             "the-ugc-conversion-playbook": {
                 fileKey:
                     "Digital marketing/Books/The UGC Conversion Playbook - Ebook.pdf"
+            },
+
+            "ai-citation-secrets": {
+                fileKey:
+                    "Digital marketing/Podcast/AI Citation Secrets - Podcast.zip"
+            },
+
+            "conversations-that-convert": {
+                fileKey:
+                    "Digital marketing/Podcast/Conversations That Convert - Podcast.zip"
+            },
+
+            "link-building-intelligence": {
+                fileKey:
+                    "Digital marketing/Podcast/Link Building Intelligence - Podcast.zip"
+            },
+
+            "marketing-to-the-subconscious": {
+                fileKey:
+                    "Digital marketing/Podcast/Marketing to the Subconscious - Podcast.zip"
+            },
+
+            "the-micro-offer-method": {
+                fileKey:
+                    "Digital marketing/Podcast/The Micro-Offer Method - Podcast.zip"
+            },
+
+            "the-proof-effect": {
+                fileKey:
+                    "Digital marketing/Podcast/The Proof Effect - Podcast.zip"
             },
 
 };
