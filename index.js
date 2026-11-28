@@ -7370,6 +7370,65 @@ if (operation === "purchase_product") {
                 price: 5000,
                 fileKey:
                     "Digital marketing/Guide/Create Converting Ads on TikTok - Guide.pdf"
+            },            
+            "ugc-management-system": {
+                price: 5800,
+                fileKey:
+                    "Digital marketing/Toolstack/UGC Management System - Toolstack.pdf"
+            },
+            
+            "the-repurposing-stack": {
+                price: 2500,
+                fileKey:
+                    "Digital marketing/Toolstack/The Repurposing Stack - Toolstack.pdf"
+            },
+            
+            "the-psychology-of-conversions": {
+                price: 4200,
+                fileKey:
+                    "Digital marketing/Toolstack/The Psychology of Conversions - Toolstack.pdf"
+            },
+            
+            "test-smarter-scale-faster": {
+                price: 5200,
+                fileKey:
+                    "Digital marketing/Toolstack/Test Smarter, Scale Faster - Toolstack.pdf"
+            },
+            
+            "sales-automation-and-conversational-ai": {
+                price: 7500,
+                fileKey:
+                    "Digital marketing/Toolstack/Sales Automation & Conversational AI - Toolstack.pdf"
+            },
+            
+            "nurture-sequence-builder": {
+                price: 3500,
+                fileKey:
+                    "Digital marketing/Toolstack/Nurture Sequence Builder - Toolstack.pdf"
+            },
+            
+            "landing-page-persuasion-toolstack": {
+                price: 3000,
+                fileKey:
+                    "Digital marketing/Toolstack/Landing Page Persuasion - Toolstack.pdf"
+            },
+            
+            "funnel-growth-stack": {
+                price: 6400,
+                fileKey:
+                    "Digital marketing/Toolstack/Funnel Growth Stack - Toolstack.pdf"
+            },
+            
+            "digital-advertising-testing": {
+                price: 4800,
+                fileKey:
+                    "Digital marketing/Toolstack/Digital Advertising Testing - Toolstack.pdf"
+            },
+            
+            "aeo-system": {
+                price: 7000,
+                fileKey:
+                    "Digital marketing/Toolstack/AEO System - Toolstack.pdf"
             },
         };
 
@@ -8731,6 +8790,55 @@ if (operation === "get_product_download_url") {
             "create-converting-ads-on-tiktok": {
                 fileKey:
                     "Digital marketing/Guide/Create Converting Ads on TikTok - Guide.pdf"
+            },            
+            "ugc-management-system": {
+                fileKey:
+                    "Digital marketing/Toolstack/UGC Management System - Toolstack.pdf"
+            },
+            
+            "the-repurposing-stack": {
+                fileKey:
+                    "Digital marketing/Toolstack/The Repurposing Stack - Toolstack.pdf"
+            },
+            
+            "the-psychology-of-conversions": {
+                fileKey:
+                    "Digital marketing/Toolstack/The Psychology of Conversions - Toolstack.pdf"
+            },
+            
+            "test-smarter-scale-faster": {
+                fileKey:
+                    "Digital marketing/Toolstack/Test Smarter, Scale Faster - Toolstack.pdf"
+            },
+            
+            "sales-automation-and-conversational-ai": {
+                fileKey:
+                    "Digital marketing/Toolstack/Sales Automation & Conversational AI - Toolstack.pdf"
+            },
+            
+            "nurture-sequence-builder": {
+                fileKey:
+                    "Digital marketing/Toolstack/Nurture Sequence Builder - Toolstack.pdf"
+            },
+            
+            "landing-page-persuasion-toolstack": {
+                fileKey:
+                    "Digital marketing/Toolstack/Landing Page Persuasion - Toolstack.pdf"
+            },
+            
+            "funnel-growth-stack": {
+                fileKey:
+                    "Digital marketing/Toolstack/Funnel Growth Stack - Toolstack.pdf"
+            },
+            
+            "digital-advertising-testing": {
+                fileKey:
+                    "Digital marketing/Toolstack/Digital Advertising Testing - Toolstack.pdf"
+            },
+            
+            "aeo-system": {
+                fileKey:
+                    "Digital marketing/Toolstack/AEO System - Toolstack.pdf"
             },
 };
 
