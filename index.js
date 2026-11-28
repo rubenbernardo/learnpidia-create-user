@@ -7250,6 +7250,66 @@ if (operation === "purchase_product") {
                 fileKey:
                     "Digital marketing/Checklist/The Strategic UGC Launch - Checklist.pdf"
             },
+
+            "b2b-lead-generation": {
+                price: 3800,
+                fileKey:
+                    "Digital marketing/Prompts/B2B Lead Generation - Prompts.pdf"
+            },
+
+            "build-your-automated-sales-chatbot": {
+                price: 4500,
+                fileKey:
+                    "Digital marketing/Prompts/Build Your Automated Sales Chatbot - Prompts.pdf"
+            },
+
+            "generative-engine-optimization": {
+                price: 4200,
+                fileKey:
+                    "Digital marketing/Prompts/Generative Engine Optimization - Prompt Pack.pdf"
+            },
+
+            "landing-page-persuasion": {
+                price: 2500,
+                fileKey:
+                    "Digital marketing/Prompts/Landing Page Persuasion - Prompts .pdf"
+            },
+
+            "micro-audience-monetization": {
+                price: 2200,
+                fileKey:
+                    "Digital marketing/Prompts/Micro-Audience Monetization - Prompts.pdf"
+            },
+
+            "optimize-your-marketing-funnel": {
+                price: 2800,
+                fileKey:
+                    "Digital marketing/Prompts/Optimize Your Marketing Funnel - Prompts.pdf"
+            },
+
+            "put-neuromarketing-to-work-today": {
+                price: 3500,
+                fileKey:
+                    "Digital marketing/Prompts/Put Neuromarketing to Work Today - Prompts.pdf"
+            },
+
+            "social-proof-for-e-commerce-success": {
+                price: 1500,
+                fileKey:
+                    "Digital marketing/Prompts/Social Proof for E-Commerce Success - Prompts.pdf"
+            },
+
+            "the-link-builders-helper": {
+                price: 1800,
+                fileKey:
+                    "Digital marketing/Prompts/The Link Builder’s Helper - Prompts.pdf"
+            },
+
+            "youtube-ads-optimization": {
+                price: 3500,
+                fileKey:
+                    "Digital marketing/Prompts/YouTube Ads Optimization - Prompts.pdf"
+            },
         };
 
         const product =
@@ -8510,6 +8570,56 @@ if (operation === "get_product_download_url") {
             "the-strategic-ugc-launch": {
                 fileKey:
                     "Digital marketing/Checklist/The Strategic UGC Launch - Checklist.pdf"
+            },
+
+            "b2b-lead-generation": {
+                fileKey:
+                    "Digital marketing/Prompts/B2B Lead Generation - Prompts.pdf"
+            },
+
+            "build-your-automated-sales-chatbot": {
+                fileKey:
+                    "Digital marketing/Prompts/Build Your Automated Sales Chatbot - Prompts.pdf"
+            },
+
+            "generative-engine-optimization": {
+                fileKey:
+                    "Digital marketing/Prompts/Generative Engine Optimization - Prompt Pack.pdf"
+            },
+
+            "landing-page-persuasion": {
+                fileKey:
+                    "Digital marketing/Prompts/Landing Page Persuasion - Prompts .pdf"
+            },
+
+            "micro-audience-monetization": {
+                fileKey:
+                    "Digital marketing/Prompts/Micro-Audience Monetization - Prompts.pdf"
+            },
+
+            "optimize-your-marketing-funnel": {
+                fileKey:
+                    "Digital marketing/Prompts/Optimize Your Marketing Funnel - Prompts.pdf"
+            },
+
+            "put-neuromarketing-to-work-today": {
+                fileKey:
+                    "Digital marketing/Prompts/Put Neuromarketing to Work Today - Prompts.pdf"
+            },
+
+            "social-proof-for-e-commerce-success": {
+                fileKey:
+                    "Digital marketing/Prompts/Social Proof for E-Commerce Success - Prompts.pdf"
+            },
+
+            "the-link-builders-helper": {
+                fileKey:
+                    "Digital marketing/Prompts/The Link Builder’s Helper - Prompts.pdf"
+            },
+
+            "youtube-ads-optimization": {
+                fileKey:
+                    "Digital marketing/Prompts/YouTube Ads Optimization - Prompts.pdf"
             },
 };
 
