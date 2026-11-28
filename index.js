@@ -7310,6 +7310,67 @@ if (operation === "purchase_product") {
                 fileKey:
                     "Digital marketing/Prompts/YouTube Ads Optimization - Prompts.pdf"
             },
+
+
+            "the-visual-social-proof-revolution": {
+                price: 2800,
+                fileKey:
+                    "Digital marketing/Guide/The Visual Social Proof Revolution - Guide.pdf"
+            },
+
+            "the-ultimate-negative-review-response-framework": {
+                price: 20000,
+                fileKey:
+                    "Digital marketing/Guide/The Ultimate Negative Review Response Framework - Guide.pdf"
+            },
+
+            "the-storyselling-framework": {
+                price: 3600,
+                fileKey:
+                    "Digital marketing/Guide/The Storyselling Framework - Guide.pdf"
+            },
+
+            "the-first-time-ad-test-setup": {
+                price: 3200,
+                fileKey:
+                    "Digital marketing/Guide/The First-Time Ad Test Setup - Guide.pdf"
+            },
+
+            "the-complete-customer-journey-mapping": {
+                price: 4000,
+                fileKey:
+                    "Digital marketing/Guide/The Complete Customer Journey Mapping - Guide.pdf"
+            },
+
+            "the-7-day-micro-offer-creation-process": {
+                price: 4500,
+                fileKey:
+                    "Digital marketing/Guide/The 7-Day Micro-Offer Creation Process - Guide.pdf"
+            },
+
+            "the-5-second-hook-formula": {
+                price: 2400,
+                fileKey:
+                    "Digital marketing/Guide/The 5-Second Hook Formula - Guide.pdf"
+            },
+
+            "strategic-youtube-campaign-creator": {
+                price: 5500,
+                fileKey:
+                    "Digital marketing/Guide/Strategic YouTube Campaign Creator - Guide.pdf"
+            },
+
+            "roas-that-actually-pays": {
+                price: 6000,
+                fileKey:
+                    "Digital marketing/Guide/ROAS that Actually Pays - Guide.pdf"
+            },
+
+            "create-converting-ads-on-tiktok": {
+                price: 5000,
+                fileKey:
+                    "Digital marketing/Guide/Create Converting Ads on TikTok - Guide.pdf"
+            },
         };
 
         const product =
@@ -8620,6 +8681,56 @@ if (operation === "get_product_download_url") {
             "youtube-ads-optimization": {
                 fileKey:
                     "Digital marketing/Prompts/YouTube Ads Optimization - Prompts.pdf"
+            },
+
+            "the-visual-social-proof-revolution": {
+                fileKey:
+                    "Digital marketing/Guide/The Visual Social Proof Revolution - Guide.pdf"
+            },
+
+            "the-ultimate-negative-review-response-framework": {
+                fileKey:
+                    "Digital marketing/Guide/The Ultimate Negative Review Response Framework - Guide.pdf"
+            },
+
+            "the-storyselling-framework": {
+                fileKey:
+                    "Digital marketing/Guide/The Storyselling Framework - Guide.pdf"
+            },
+
+            "the-first-time-ad-test-setup": {
+                fileKey:
+                    "Digital marketing/Guide/The First-Time Ad Test Setup - Guide.pdf"
+            },
+
+            "the-complete-customer-journey-mapping": {
+                fileKey:
+                    "Digital marketing/Guide/The Complete Customer Journey Mapping - Guide.pdf"
+            },
+
+            "the-7-day-micro-offer-creation-process": {
+                fileKey:
+                    "Digital marketing/Guide/The 7-Day Micro-Offer Creation Process - Guide.pdf"
+            },
+
+            "the-5-second-hook-formula": {
+                fileKey:
+                    "Digital marketing/Guide/The 5-Second Hook Formula - Guide.pdf"
+            },
+
+            "strategic-youtube-campaign-creator": {
+                fileKey:
+                    "Digital marketing/Guide/Strategic YouTube Campaign Creator - Guide.pdf"
+            },
+
+            "roas-that-actually-pays": {
+                fileKey:
+                    "Digital marketing/Guide/ROAS that Actually Pays - Guide.pdf"
+            },
+
+            "create-converting-ads-on-tiktok": {
+                fileKey:
+                    "Digital marketing/Guide/Create Converting Ads on TikTok - Guide.pdf"
             },
 };
 
